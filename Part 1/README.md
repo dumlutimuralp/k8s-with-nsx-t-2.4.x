@@ -5,15 +5,15 @@ This guide outlines the configuration steps needed to implement a basic overlay 
 
 # Table Of Contents
 
-[Topology Information](#Topology-Information)     
-[Fabric Preperation](#Fabric-Preperation)   
-[Host Transport Node](#Host-Transport-Node) 
+[Topology Information](#Topology-Information)       
+[Fabric Preperation](#Fabric-Preperation)  
+[Host Transport Node](#Host-Transport-Node)   
 [Edge Transport Node](#Edge-Transport-Node)   
 [Edge Cluster](#Edge-Cluster)  
-[Tier 0 Logical Router](#Tier-0-Logical-Router)  
+[Tier 0 Logical Router](#Tier-0-Logical-Router)    
 [Tier 1 Logical Router](#Tier-1-Logical-Router)  
 [Tier 0 BGP Configuration](#Tier-0-BGP-Configuration)  
-[K8S Node Dataplane Connectivity](#K8S-Node-Dataplane-Connectivity)
+[K8S Node Dataplane Connectivity](#K8S-Node-Dataplane-Connectivity)  
 
 # Topology Information
 [Back to Table of Contents](#Table-Of-Contents)
