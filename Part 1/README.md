@@ -5,7 +5,7 @@ This guide outlines the configuration steps needed to implement a basic overlay 
 
 # Table Of Contents
 
-[Topology Information](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#topology-information)     
+[Topology Information](#Topology-Information)     
 [Fabric Preperation](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#fabric-preperation)   
 [Host Transport Node](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#host-transport-node) 
 [Edge Transport Node](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#edge-transport-node) 
