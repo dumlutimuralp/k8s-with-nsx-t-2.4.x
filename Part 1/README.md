@@ -163,7 +163,8 @@ To provide resiliency for the centralized services (Tier 0 Services router - SR 
 # Tier 0 Logical Router
 [Back to Table of Contents](#Table-Of-Contents)
 
-### Create Logical Switch/Segment for Tier 0 Logical Router Uplink Interface (_**Advanced Networking & Security -> Networking -> Switching -> Switches**_) 
+### Create Logical Switch/Segment for Tier 0 Logical Router Uplink Interface 
+(_**Advanced Networking & Security -> Networking -> Switching -> Switches**_) 
 
 To attach Tier 0 Logical Router to the physical network, a VLAN logical switch/segment is needed to be provisioned first. Shown below. A logical switch/segment named as "T0UplinkLS" is provisioned. Notice the VLAN ID : 0 . As mentioned earlier, all traffic is being tagged at the underlying vSS on the ESX Host which the Edge Transport Node is running on. 
 
