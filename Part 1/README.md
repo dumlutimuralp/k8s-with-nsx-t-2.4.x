@@ -5,15 +5,15 @@ This guide outlines the configuration steps needed to implement a basic overlay 
 
 # Table Of Contents
 
-[Topology Information](##Topology-Information)     
-[Fabric Preperation](##Fabric-Preperation)   
-[Host Transport Node](##Host-Transport-Node)  
-[Edge Transport Node](##Edge-Transport-Node)  
-[Edge Cluster](##Edge-Cluster)  
-[Tier 0 Logical Router](##Tier-0-Logical-Router)  
-[Tier 1 Logical Router](##K8S-Node-Tier-1-Logical-Router)  
-[Tier 0 BGP Configuration](##Tier-0-BGP-Configuration)  
-[K8S Node Dataplane Connectivity](##K8S-Node-Dataplane-Connectivity)
+[Topology Information](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#topology-information)     
+[Fabric Preperation](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#fabric-preperation)   
+[Host Transport Node](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#host-transport-node) 
+[Edge Transport Node](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#edge-transport-node) 
+[Edge Cluster](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#edge-cluster)  
+[Tier 0 Logical Router](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#tier-0-logical-router)  
+[Tier 1 Logical Router](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#tier-1-logical-router)  
+[Tier 0 BGP Configuration](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#tier-0-bgp-configuration)  
+[K8S Node Dataplane Connectivity](https://github.com/dumlutimuralp/nsx-t-k8s/tree/master/Part%201#k8s-node-dataplane-connectivity)
 
 # Topology Information
 [Back to Table of Contents](#Table-Of-Contents)
