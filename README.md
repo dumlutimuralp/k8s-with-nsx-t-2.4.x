@@ -1,4 +1,4 @@
-## NSX-T with Vanilla K8S Installation Guide
+## NSX-T with Kubernetes (K8S) Installation Guide
 by Dumlu Timuralp (@dumlutimuralp) (https://www.linkedin.com/in/dumlutimuralp/)  
 by Hakan Akkurt (https://www.linkedin.com/in/hakkurt/)
 
