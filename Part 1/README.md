@@ -170,13 +170,15 @@ To attach Tier 0 Logical Router to the physical network, a VLAN logical switch/s
 
 ![](2019-05-16-20-40-25.png)
 
-### Create Tier 0 Logical Router (_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-0 Router**_)
+### Create Tier 0 Logical Router 
+(_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-0 Router**_)
 
 A new Tier 0 Logical Router named as "T0-K8S-Domain" is provisioned. Tier 0 Logical Router always has an SR (Services Router) component. When provisioning Tier 0 Logical Router, an Edge Cluster has to be selected to instantiate the SR component. Failover mode has been selected as the default, which is "Non Preemptive".
 
 ![](2019-05-16-20-42-49.png)
 
-### Tier 0 Logical Router Uplink Interface Configuration : (_**Advanced Networking & Security -> Networking -> Routers -> "T0-K8S-Domain" -> Configuration -> Router Ports -> Add**_)
+### Tier 0 Logical Router Uplink Interface Configuration 
+(_**Advanced Networking & Security -> Networking -> Routers -> "T0-K8S-Domain" -> Configuration -> Router Ports -> Add**_)
 
 A new uplink interface is provisioned on the Tier 0 Logical Router. This interface is connected to the VLAN logical switch/segment provisioned in the earlier step (Logical Switch : T0UplinkLS).  Also notice that this is the step where the Edge Transport Node, that the uplink is connected to, needs to be specified. This way the the management plane knows where to place the SR component of the Tier 0. 
 
@@ -189,13 +191,15 @@ Similarly a second uplink interface is provisioned and connected to the same upl
 # Tier 1 Logical Router
 [Back to Table of Contents](#Table-Of-Contents)
 
-### Creating a Tier 1 Logical Router (_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-1 Router**_)
+### Creating a Tier 1 Logical Router 
+(_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-1 Router**_)
 
 A new Tier 1 Logical Router named as "T1-K8S-Node-Management"  is provisioned. For Tier 1, an Edge Cluster is not selected. SR component is not mandatory for Tier 1, it is needed only when running any centralized services (eg FW, NAT, LB) In this environment, only the distributed routing feature will be used with this Tier 1 Logical Router. This logical router, with only DR (Distributed Router) component, is connected to the Tier 0 which is provisioned earlier.
 
 ![](2019-05-16-21-46-46.png)
 
-### Create a Logical Switch/Segment for K8S Node VM Management Connectivity (_**Advanced Networking & Security -> Networking -> Switching -> Switches**_) 
+### Create a Logical Switch/Segment for K8S Node VM Management Connectivity 
+(_**Advanced Networking & Security -> Networking -> Switching -> Switches**_) 
 
 Each K8S Node is a VM. The VM#1, VM#2 and VM#3 shown in the topology in the beginning of this guide is actually a three node K8S cluster. One master with two worker nodes. Each K8S Node VM will be based on Ubuntu 16.04 OS and have two Ethernet interfaces. First is ens160 (vNIC1) and second is ens192 (vNIC2) .
 
@@ -203,13 +207,15 @@ A new _**overlay**_ logical switch/segment, named as ****"K8SNodeManagementPlane
 
 ![](2019-05-16-22-12-06.png)
 
-### Tier 1 Logical Router Downlink Interface Configuration (_**Advanced Networking & Security -> Networking -> Routers -> ""T1-K8S-Node-Management" -> Configuration -> Router Ports -> Add**_)
+### Tier 1 Logical Router Downlink Interface Configuration 
+(_**Advanced Networking & Security -> Networking -> Routers -> ""T1-K8S-Node-Management" -> Configuration -> Router Ports -> Add**_)
 
 A new downlink interface is provisioned on the Tier 1 logical router. This interface is connected to the overlay logical switch/segment provisioned in the previous step. (Logical Switch : K8SNodeManagementPlaneLS)
 
 ![](2019-05-16-21-50-19.png)
 
-### Route Advertisement on Tier 1 Logical Router (_**Advanced Networking & Security -> Networking -> Routers -> "T1-K8S-Node-Management" -> Routing -> Route Advertisement**_) 
+### Route Advertisement on Tier 1 Logical Router 
+(_**Advanced Networking & Security -> Networking -> Routers -> "T1-K8S-Node-Management" -> Routing -> Route Advertisement**_) 
 
 Tier 0 logical router does _**NOT**_ magically get the Tier 1 logical rotuer' s southbound subnet information. For this, "Route Advertisement" on Tier 1 should be properly configured. As shown below :
 
