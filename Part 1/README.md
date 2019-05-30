@@ -8,7 +8,7 @@ This guide outlines the configuration steps needed to implement a basic overlay 
 [Topology Information](#Topology-Information)     
 [Fabric Preperation](#Fabric-Preperation)   
 [Host Transport Node](#Host-Transport-Node) 
-[Edge Transport Node](#Edge-Transport-Node) 
+[Edge Transport Node](#Edge-Transport-Node)   
 [Edge Cluster](#Edge-Cluster)  
 [Tier 0 Logical Router](#Tier-0-Logical-Router)  
 [Tier 1 Logical Router](#Tier-1-Logical-Router)  
