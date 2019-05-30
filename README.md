@@ -23,7 +23,7 @@ https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
 
 At this stage the focus is on the basic integration, planning to extend to wider topics later. All right, let' s get to it.
 
-### [Part 1]()
+### [Part 1](https://github.com/dumlutimuralp/nsx-t-k8s/part-1/README.md)
 
 ### [Part 2]()
 
