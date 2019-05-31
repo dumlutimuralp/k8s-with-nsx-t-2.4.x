@@ -127,7 +127,7 @@ As mentioned earlier Edge Transport Nodes are attached to "TZ-VLAN-Edge" and "TZ
 
 ![](2019-05-16-15-02-09.png)
 
-* Edge Transport Node#1 and Edge Transport Node#2 are both deployed on ESX1 in ClusterA. ESX1 is _**NOT**_ prepared for NSX. There is no need to do so as the overlay encapsulation/decapsulation takes place on NSX Edge VM itself **NOT** on the underlying ESX Host.
+* Edge Transport Node#1 and Edge Transport Node#2 are both deployed on ESX#1 in ClusterA. ESX#1 is _**NOT**_ prepared for NSX. There is no need to do so as the overlay encapsulation/decapsulation takes place on NSX Edge VM itself **NOT** on the underlying ESX Host.
 
 ![](2019-05-16-15-03-27.png)
 
