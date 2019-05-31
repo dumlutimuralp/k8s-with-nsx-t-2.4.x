@@ -2,7 +2,7 @@
 by Dumlu Timuralp [@dumlutimuralp](https://twitter.com/dumlutimuralp) [LinkedIn](https://www.linkedin.com/in/dumlutimuralp/)  
 by Hakan Akkurt [LinkedIn](https://www.linkedin.com/in/hakkurt/)
 
-The goal of this series of posts is to outline and explain the steps needed to integrate VMware NSX-T Platform with Vanilla Kubernetes. 
+The goal of this series of posts is to outline and explain the steps to integrate VMware NSX-T Platform with Vanilla Kubernetes. 
 
 Software components used are shown below.
 
