@@ -1,7 +1,7 @@
 
 # NSX-T & K8S - PART 1
 
-This guide outlines the configuration steps needed to implement a basic overlay network topology as shown in the diagram  below.  The assumption is that vCenter, ESX Hosts and NSX-T Manager has already been deployed.
+This guide outlines the configuration steps needed to implement a basic logical network topology. The assumption is vCenter, ESX Hosts and NSX-T Manager has already been deployed.
 
 # Table Of Contents
 
