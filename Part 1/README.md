@@ -143,7 +143,7 @@ As mentioned earlier Edge Transport Nodes are attached to "TZ-VLAN-Edge" and "TZ
 
 ![](2019-05-16-15-12-33.png)
 
-* Repeat above steps for Edge Transport Node#2. Obviously provisioning the Edge Transport Node#2 on another ESX Host would make it more resilient.
+* Repeat above steps for Edge Transport Node#2. In a real life scenario Edge Transport Node#2 would be provisioned on another ESX Host for resiliency.
 
 * Below screenshot shows how the vNIC of the Edge Node shows up in vCenter GUI.
 
