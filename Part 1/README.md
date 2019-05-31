@@ -113,8 +113,6 @@ Two Edge Transport Node VMs are configured in this environment. (_**System -> Fa
 
 As mentioned earlier Edge Transport Nodes are attached to "TZ-VLAN-Edge" and "TZ-Overlay". Essentially, this means that two different N-VDS will be instantiated on the Edge Transport Node. 
 
-![](2019-05-16_14-14-23.png)
-
 ![](2019-05-28-17-18-25.png)
 
 * Below diagram depicts the connectivity of Edge Transport Node(s) on ESX#1 in ClusterA. (Both Edge#1 and Edge#2 are connected to the virtual switch (vSS) the same way)
