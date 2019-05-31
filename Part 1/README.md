@@ -97,6 +97,8 @@ vmnic0 is used by vSS. Management vmkernel interface of the ESX Host (vmk0) is a
 
 ![](2019-05-16-12-53-49.png)
 
+Note : The logical switches/segments that show up on N-VDS in thiis screenshot are actually configured in an upcoming step. At this stage there is supposed to be no logical switches on the N-VDS.
+
 The transport zones and uplink associations for this ESX Host is shown below.
 
 ![](2019-05-16-13-49-15.png)
