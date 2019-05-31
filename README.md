@@ -25,8 +25,8 @@ At this stage the focus is on the basic integration, planning to extend to wider
 
 ### [Part 1](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%201/README.md)
 
-### [Part 2]()
+### [Part 2](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
 
-### [Part 3]()
+### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
 
