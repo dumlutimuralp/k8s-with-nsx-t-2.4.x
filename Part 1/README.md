@@ -145,7 +145,7 @@ As mentioned earlier Edge Transport Nodes are attached to "TZ-VLAN-Edge" and "TZ
 
 * Repeat above steps for Edge Transport Node#2. In a real life scenario Edge Transport Node#2 would be provisioned on another ESX Host for resiliency.
 
-* Below screenshot shows how the vNIC of the Edge Node shows up in vCenter GUI.
+* Below screenshot shows how the vNIC of the Edge Node shows up in vCenter GUI. Notice that vNIC4 is also connected to EdgeTEP port group on vSS, however in this environment vNIC is NOT used by the Edge at all (based on the configuration we implemented) , however during deployment NSX-T automatically connects vNIC2 and vNIC4 to the same port group on the underlying vSS. 
 
 ![](2019-05-28-17-16-41.png)
 
