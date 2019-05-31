@@ -81,7 +81,7 @@ Two uplink profiles are used. (_**System ->  Fabric -> Profiles -> Uplink Profil
 
 The uplink names "uplink1" and "uplink2" in the "esx-uplink-profile" are just user defined names. They can be "vmware1" , "vmware2" as well.  The same names mst be used when preparing the transport node with the respective uplink profile. This is another abstraction that NSX-T has for easier automation.
 
-Notice that "esx-uplink-profile" has Transport VLAN ID : 30. Because VTEP interface (vmkernel/vmk) on the ESX Host will be tagging all the overlay traffic. The "nsx-edge-single-nic-uplink-profile" on the other hand does _**NOT**_ have a VLAN ID configured. The reason is VTEP interface of the Edge Transport Node will _**NOT**_ be tagging the overlay traffic. It will be sending the overlay traffic untagged to the underlying "vSphere Standard Switch (vSS)" on the ESX Host. The respective port group on "vSS"  will be tagging the overlay traffic with the appropriate VLAN ID onwards to the physical network. Detailed diagrams for the two cases are provided in the upcoming steps.
+Notice that "esx-uplink-profile" has Transport VLAN ID : 30. Because VTEP interface (vmkernel/vmk) on the ESX Host will be tagging all the overlay traffic. The "nsx-edge-single-nic-uplink-profile" on the other hand does _**NOT**_ have a VLAN ID configured. The reason is VTEP interface of the Edge Transport Node will _**NOT**_ be tagging the overlay traffic. It will be sending the overlay traffic untagged to the underlying "vSphere Standard Switch (vSS)" on the ESX Host. The respective port group on "vSS"  will be tagging the overlay traffic with the appropriate VLAN ID onwards to the physical network. 
 
 
 # Host Transport Node
