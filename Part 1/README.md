@@ -115,7 +115,7 @@ As mentioned earlier Edge Transport Nodes are attached to "TZ-VLAN-Edge" and "TZ
 
 ![](2019-05-28-17-18-25.png)
 
-* Below diagram shows an overall connectivity diagram of the configuration of Edge Transport Node#1 on ESX#1 in ClusterA.  (Edge Transport Node#2 will be identical) 
+* Below diagram depicts the connectivity of Edge Transport Node(s) on ESX#1 in ClusterA. (Both Edge#1 and Edge#2 are connected to the virtual switch the same way)
 
 ![](2019-05-16-21-37-24.png)
 
