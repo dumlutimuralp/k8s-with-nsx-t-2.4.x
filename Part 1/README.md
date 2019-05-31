@@ -93,9 +93,7 @@ A single ESX Host (ESX#5) in ClusterC is prepared for NSX-T. (_**System ->  Fabr
 
 ESX#5 has three vmnics (pnics). 
 
-vmnic0 is used by vSS. Management vmkernel interface of the ESX Host (vmk0) is also attached to vSS. In this environment, for testing purposes, there is no redundancy for vSS uplink connecitivity. 
-
-vmnic1 and vmnic2 is used by N-VDS.
+vmnic0 is used by vSS. Management vmkernel interface of the ESX Host (vmk0) is also attached to vSS. vmnic1 and vmnic2 are attached to N-VDS.
 
 ![](2019-05-16-12-53-49.png)
 
