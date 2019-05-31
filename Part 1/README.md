@@ -64,7 +64,7 @@ Notice that both "TZ-VLAN" and "TZ-Overlay" transport zones have the exact same 
 
 ## VTEP Pool
 
-"VTEP" stands for the "Virtual Tunnel EndPoint" on an Edge Transport Node or Host Transport Node. It is the virtual interface which encapsulates the traffic,from the VMs or K8S Pods, with a GENEVE header and sends towards the physical network. Each transport node picks an available IP from the VTEP Pool to assign to its VTEP interface. This VTEP pool will be referenced later on in the NSX host/edge preperation steps. (On ESX Host this interface is instantiated as a vmkernel interface.) 
+"VTEP" stands for the "Virtual Tunnel EndPoint" on an Edge Transport Node or Host Transport Node. It is the virtual interface which encapsulates the traffic, from the VMs or K8S Pods, with a GENEVE header and then sends towards the destination through the physical network. Each transport node picks an available IP from the VTEP Pool to be assigned to its VTEP interface. This VTEP pool will be referenced later on in the NSX host/edge preperation steps. (On ESX Host this interface is instantiated as a vmkernel interface.) 
 
 _**Advanced Networking & Security -> Inventory -> Groups -> Ip Pools**_
 
