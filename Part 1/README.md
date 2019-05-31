@@ -87,7 +87,7 @@ Notice that "esx-uplink-profile" has Transport VLAN ID : 30. Because VTEP interf
 # Host Transport Node
 [Back to Table of Contents](#Table-Of-Contents)
 
-A single ESX Host (ESX#5) in ClusterC is prepared for NSX-T. (_**System ->  Fabric -> Nodes -> Host Transport Nodes**_)
+The ESX Host (ESX#5) in ClusterC is prepared for NSX-T. (_**System ->  Fabric -> Nodes -> Host Transport Nodes**_)
 
 ![](2019-05-16-12-21-57.png)
 
