@@ -182,7 +182,7 @@ A new uplink interface is provisioned on the Tier 0 Logical Router. This interfa
 
 ![](2019-05-16-20-37-15.png) 
 
-Similarly the second uplink interface for Tier 0 Logical Router is provisioned as shown below. This interface is also connected to the same  VLAN Logical Switch, ("T0UplinkLS") Notice that the Edge Transport Node selection is specifie again; this way the management plane knows where to place the _**STANDBY**_ SR component of the Tier 0. Hence this time Edge Transport Node#2 is selected. 
+Similarly the second uplink interface for Tier 0 Logical Router is provisioned as shown below. This interface is also connected to the same  VLAN Logical Switch, ("T0UplinkLS") Notice that the Edge Transport Node selection is specified again; this way the management plane knows where to place the _**STANDBY**_ SR component of the Tier 0. Hence this time Edge Transport Node#2 is selected. 
 
 ![](2019-05-16-20-47-49.png)
 
@@ -192,7 +192,7 @@ Similarly the second uplink interface for Tier 0 Logical Router is provisioned a
 ### Creating a Tier 1 Logical Router 
 (_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-1 Router**_)
 
-A new Tier 1 Logical Router named as "T1-K8S-Node-Management"  is provisioned. For Tier 1, an Edge Cluster is not selected. SR component is not mandatory for Tier 1, it is needed only when running any centralized services (eg FW, NAT, LB) In this environment, only the distributed routing feature will be used with this Tier 1 Logical Router. This logical router, with only DR (Distributed Router) component, is connected to the Tier 0 which is provisioned earlier.
+A new Tier 1 Logical Router named as "T1-K8S-Node-Management"  is provisioned and an Edge Cluster is NOT selected. Tier 1 Logical Router will not use an SR component, and it SR component is not mandatory for Tier 1; it is needed only when any centralized services (eg FW, NAT, LB) is used in Tier 1 Logical Router. In this environment, only the distributed routing feature will be used with this Tier 1 Logical Router. Tier 1's DR (Distributed Router) component will be connected to the Tier 0 which is provisioned earlier.
 
 ![](2019-05-16-21-46-46.png)
 
