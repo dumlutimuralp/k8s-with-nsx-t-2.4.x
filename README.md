@@ -1,4 +1,4 @@
-## NSX-T with Kubernetes (K8S) Installation Guide
+## VMware NSX-T with Kubernetes (K8S) Installation Guide
 by Dumlu Timuralp [@dumlutimuralp](https://twitter.com/dumlutimuralp) [LinkedIn](https://www.linkedin.com/in/dumlutimuralp/)  
 by Hakan Akkurt [LinkedIn](https://www.linkedin.com/in/hakkurt/)
 
