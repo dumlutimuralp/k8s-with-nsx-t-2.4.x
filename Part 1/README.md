@@ -153,7 +153,7 @@ As mentioned earlier Edge Transport Nodes are attached to "TZ-VLAN-Edge" and "TZ
 # Edge Cluster
 [Back to Table of Contents](#Table-Of-Contents)
 
-To provide resiliency for the centralized services (Tier 0 Services router - SR Component) that will be configured later on, an Edge Cluster is provisioned. (_**System -> Fabric -> Nodes -> Edge Clusters**_)
+To provide resiliency for the centralized services (Tier 0 Services Router - SR Component) that will be configured later on, an Edge Cluster is provisioned. (_**System -> Fabric -> Nodes -> Edge Clusters**_)
 
 ![](2019-05-16-15-24-25.png)
 
@@ -164,25 +164,25 @@ To provide resiliency for the centralized services (Tier 0 Services router - SR 
 ### Create Logical Switch/Segment for Tier 0 Logical Router Uplink Interface 
 (_**Advanced Networking & Security -> Networking -> Switching -> Switches**_) 
 
-To attach Tier 0 Logical Router to the physical network, a VLAN logical switch/segment is needed to be provisioned first. A logical switch/segment named as "T0UplinkLS" is provisioned, as shown below. Notice the VLAN ID : 0 . As mentioned earlier, all traffic is being tagged by the underlying vSS on the ESX Host (which the Edge Transport Node is running on)
+To attach Tier 0 Logical Router to the physical network, a VLAN logical switch/segment is needed. It is configured as "T0UplinkLS", shown below. Notice the VLAN ID : 0 , this means this logical switch will NOT tag traffic. As mentioned earlier, all traffic is being tagged by the underlying vSS on the ESX Host (which the Edge Transport Node is running on)
 
 ![](2019-05-16-20-40-25.png)
 
 ### Create Tier 0 Logical Router 
 (_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-0 Router**_)
 
-A new Tier 0 Logical Router named as "T0-K8S-Domain" is provisioned. Tier 0 Logical Router always has an SR (Services Router) component. When provisioning Tier 0 Logical Router, an Edge Cluster has to be selected to instantiate the SR component. Failover mode has been selected as the default, which is "Non Preemptive".
+A new Tier 0 Logical Router named as "T0-K8S-Domain" is provisioned. Tier 0 Logical Router always has an SR (Services Router) component. When provisioning Tier 0 Logical Router, an Edge Cluster has to be selected to instantiate the SR component. Failover mode has been selected as the default, which is "Non-Preemptive".
 
 ![](2019-05-16-20-42-49.png)
 
 ### Tier 0 Logical Router Uplink Interface Configuration 
 (_**Advanced Networking & Security -> Networking -> Routers -> "T0-K8S-Domain" -> Configuration -> Router Ports -> Add**_)
 
-A new uplink interface is provisioned on the Tier 0 Logical Router. This interface is connected to the VLAN logical switch/segment provisioned in the earlier step (Logical Switch : T0UplinkLS).  Also notice that this is the step where the Edge Transport Node, that the uplink is connected to, needs to be specified. This way the the management plane knows where to place the SR component of the Tier 0. 
+A new uplink interface is provisioned on the Tier 0 Logical Router. This interface is connected to the VLAN logical switch/segment provisioned in the earlier step (Logical Switch : "T0UplinkLS").  Also notice that this is the step where the Edge Transport Node, that the uplink is connected to, needs to be specified. This way the the management plane knows where to place the SR component of the Tier 0. 
 
 ![](2019-05-16-20-37-15.png) 
 
-Similarly a second uplink interface is provisioned and connected to the same uplink VLAN Logical Switch. (T0UplinkLS) Again, notice that the Edge Transport Node selection is required, this way the management plane knows where to place the _**STANDBY**_ SR component of the Tier 0. Hence this time Edge Transport Node#2 is selected. 
+Similarly the second uplink interface for Tier 0 Logical Router is provisioned as shown below. This interface is also connected to the same  VLAN Logical Switch, ("T0UplinkLS") Notice that the Edge Transport Node selection is specifie again; this way the management plane knows where to place the _**STANDBY**_ SR component of the Tier 0. Hence this time Edge Transport Node#2 is selected. 
 
 ![](2019-05-16-20-47-49.png)
 
