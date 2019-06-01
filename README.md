@@ -18,10 +18,10 @@ Software components used are shown below.
 It is highly recommended to check the following resources for compatibility requirements
 * VMware Product Interoperability Matrices  
 https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&175=&2=&1=
-* VMware NSX Container Plugin Release Notes which is located below  
+* VMware NSX Container Plugin Release Notes 
 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
 
-At this stage the focus is on the basic integration, planning to extend to wider topics later. All right, let' s get to it.
+The series below focus on the basic integration. Will try to dive into details an troubleshooting in follow up articles.
 
 ### [Part 1](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%201/README.md)
 
