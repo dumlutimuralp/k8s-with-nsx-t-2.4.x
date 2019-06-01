@@ -29,4 +29,6 @@ The series below focus on the basic integration. Will try to dive into details a
 
 ### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
+### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
+
 
