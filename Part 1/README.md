@@ -244,7 +244,7 @@ At a minimum Tier 0 NAT, Tier 1 Downlink and Tier 1 LB VIP prefixes should be re
 
 ![](2019-05-17-11-00-14.png)
 
-This logical switch/segment will **NOT** be connected to any Tier 0 or Tier 1 logical router. It will solely serve for the purpose of providing the transport for K8S Pods. This will be explained in the upcoming chapters.
+This logical switch/segment will **NOT** be connected to any Tier 0 or Tier 1 Logical Router. It will solely serve for the purpose of providing the transport for K8S Pods. This will be explained in the upcoming chapters.
 
 [Back to Table of Contents](#Table-Of-Contents)
 
