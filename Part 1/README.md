@@ -192,34 +192,34 @@ Similarly the second uplink interface for Tier 0 Logical Router is provisioned a
 ### Creating a Tier 1 Logical Router 
 (_**Advanced Networking & Security -> Networking -> Routers -> Add -> Tier-1 Router**_)
 
-A new Tier 1 Logical Router named as "T1-K8S-Node-Management"  is provisioned and an Edge Cluster is NOT selected. Tier 1 Logical Router will not use an SR component, and it SR component is not mandatory for Tier 1; it is needed only when any centralized services (eg FW, NAT, LB) is used in Tier 1 Logical Router. In this environment, only the distributed routing feature will be used with this Tier 1 Logical Router. Tier 1's DR (Distributed Router) component will be connected to the Tier 0 which is provisioned earlier.
+A new Tier 1 Logical Router named as "T1-K8S-Node-Management"  is provisioned and an Edge Cluster is NOT selected. Tier 1 Logical Router will not use an SR component. SR component is not mandatory for Tier 1; it is needed only when any centralized services (eg FW, NAT, LB) is used in Tier 1 Logical Router. In this environment, only the distributed routing feature will be used with this Tier 1 Logical Router. Tier 1's DR (Distributed Router) component will be connected to the Tier 0 which is provisioned earlier.
 
 ![](2019-05-16-21-46-46.png)
 
 ### Create a Logical Switch/Segment for K8S Node VM Management Connectivity 
 (_**Advanced Networking & Security -> Networking -> Switching -> Switches**_) 
 
-Each K8S Node is a VM. The VM#1, VM#2 and VM#3 shown in the topology in the beginning of this guide is actually a three node K8S cluster. One master with two worker nodes. Each K8S Node VM will be based on Ubuntu 16.04 OS and have two Ethernet interfaces. First is ens160 (vNIC1) and second is ens192 (vNIC2) .
+Each K8S Node is a VM. The VM#1, VM#2 and VM#3 shown in the topology in the beginning of this guide is actually a three node K8S cluster. One master with two worker nodes. Each K8S Node VM will be based on Ubuntu 16.04 OS and have two Ethernet interfaces. First interface is called ens160 (vNIC1) and second interface is called ens192 (vNIC2) .
 
-A new _**overlay**_ logical switch/segment, named as ****"K8SNodeManagementPlaneLS"** is provisioned. Each K8S Node VM' s vNIC1 (ens160) will be connected to this logical switch/segment. K8S Master Node and Worker Nodes will be communicating with each other through this logical switch/segment. K8S Nodes will also check the liveness/readiness of the K8S PODs through this network.
+A new _**overlay**_ logical switch/segment, named as ****"K8SNodeManagementPlaneLS"** is provisioned. Each K8S Node VM' s vNIC1 (ens160) will be connected to this logical switch/segment. K8S Master Node and Worker Nodes will be communicating with each other through this logical switch/segment. K8S Nodes will also check the liveness/readiness of the K8S PODs through this network/ens160(vNIC1)
 
 ![](2019-05-16-22-12-06.png)
 
-### Tier 1 Logical Router Downlink Interface Configuration 
+### Tier 1 Downlink Interface Configuration 
 (_**Advanced Networking & Security -> Networking -> Routers -> ""T1-K8S-Node-Management" -> Configuration -> Router Ports -> Add**_)
 
-A new downlink interface is provisioned on the Tier 1 logical router. This interface is connected to the overlay logical switch/segment provisioned in the previous step. (Logical Switch : K8SNodeManagementPlaneLS)
+A new downlink interface is provisioned on the Tier 1 Logical Router. This interface is connected to the overlay logical switch/segment provisioned in the previous step. (Logical Switch : "K8SNodeManagementPlaneLS")
 
 ![](2019-05-16-21-50-19.png)
 
 ### Route Advertisement on Tier 1 Logical Router 
 (_**Advanced Networking & Security -> Networking -> Routers -> "T1-K8S-Node-Management" -> Routing -> Route Advertisement**_) 
 
-Tier 0 logical router does _**NOT**_ magically get the Tier 1 logical rotuer' s southbound subnet information. For this, "Route Advertisement" on Tier 1 should be properly configured. As shown below :
+Tier 0 logical router does _**NOT**_ magically get the Tier 1 Logical Router' s downlink interface' s subnet prefix. For this, "Route Advertisement" on Tier 1 should be properly configured. As shown below.
 
 ![](2019-05-16-22-41-02.png)
 
-At this point Tier 0' s routing table should see  Tier 1's southbound interface prefix on its routing table. To check that, the user can SSH to the Edge Transport Node' s management IP address (10.190.1.111 in this case, we assume that Edge Transport Node#1 is hosting the Tier 0 Active services router. You can check this by looking at Tier 0' s information tab in NSX GUI.) Once SSHed to Edge Transport Node, then in the CLI, perform "get logical-routers" command, and then perform "vrf <Tier 0 SR' s VRF ID> ", and then perform "get route". The output should have 10.190.5.0/24 as a route with a next hop pointing to Tier 1' s uplink IP.
+At this point Tier 0' s routing table should see  Tier 1's downlink interface prefix on its routing table. To check that, the user can SSH to the Edge Transport Node' s management IP address (10.190.1.111 in this case, assuming that Edge Transport Node#1 is hosting the Tier 0 Active services router. You can check this by looking at Tier 0' s information tab in NSX GUI.) Once SSHed to Edge Transport Node, then in the CLI, perform "get logical-routers" command, and then perform "vrf <Tier 0 SR' s VRF ID> ", then "get route". The output should have 10.190.5.0/24 as a route with a next hop pointing to Tier 1' s uplink IP.
 
 # Tier 0 BGP Configuration 
 [Back to Table of Contents](#Table-Of-Contents)
