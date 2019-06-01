@@ -16,7 +16,7 @@ Software components used are shown below.
 - Open vSwitch 2.10.2.13185890
 
 It is highly recommended to check the following resources for compatibility requirements
-* VMware Interoperability Matrice  
+* VMware Product Interoperability Matrices  
 https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&175=&2=&1=
 * VMware NSX Container Plugin Release Notes which is located below  
 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
