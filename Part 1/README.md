@@ -250,7 +250,7 @@ This logical switch/segment will **NOT** be connected to any Tier 0 or Tier 1 lo
 
 This concludes Part 1. We will look into the details of which other NSX-T objects will be integrated with K8S and also prepare a K8S cluster in Part 2.
 
-[Part 2] (https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
+### [Part 2](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
 
 
 
