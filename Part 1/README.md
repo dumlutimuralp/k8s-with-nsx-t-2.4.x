@@ -226,12 +226,12 @@ At this point Tier 0' s routing table should see  Tier 1's downlink interface pr
 
 * BGP neighborship : (_**Advanced Networking & Security -> Networking -> Routers -> "T0-K8S-Domain" -> Routing -> BGP**_)
 
-At this point Tier 0 Active and Tier 0 Standby can be configured with BGP to dynamically announce the prefixes, in the NSX domain, to physical network. Below are the BGP parameters used. Notice that "Local Address" is set to "All Uplinks" . This setting effectively enables BGP neighborship initiation on both Tier 0 Active and Tier 0 Standby uplink interfaces. Tier 0 Standby automatically starts prepending the local AS number three times to make itself less influential for ingress traffic; which actually means that Tier 0 Standby' s control plane is active but data plane is completely  standby.
+At this point Tier 0 Active and Tier 0 Standby can be configured with BGP to dynamically announce the prefixes in the NSX domain to the physical network. Below are the BGP parameters used. Notice that "Local Address" is set to "All Uplinks" . This setting effectively enables BGP neighborship initiation on both Tier 0 Active and Tier 0 Standby uplink interfaces. Tier 0 Standby automatically starts prepending the local AS number three times to make itself less influential for ingress traffic. Tier 0 Standby' s control plane is active but data plane is completely standby.
 
 ![](2019-05-16-22-20-07.png)
 
 * Route Redistribution to BGP : (_**Advanced Networking & Security -> Networking -> Routers -> "T0-K8S-Domain" ->  Routing -> Route Redistribution**_)
-At a minimum Tier 0 NAT, Tier 1 Downlink and Tier 1 LB VIP prefixes should be redistributed to BGP. This will be explained in upcoming chapters but just to quickly touch on it, Tier 0 NAT is needed for K8S Pods -> external access, Tier 1 Downlink is for external -> K8S Node access and Tier 1 LB VIP is needed for external -> K8S Services access. 
+At a minimum Tier 0 NAT, Tier 1 Downlink and Tier 1 LB VIP prefixes should be redistributed to BGP. This will be explained in upcoming chapters but just to quickly touch on it, Tier 0 NAT is needed for K8S Pods -> external access, Tier 1 Downlink is needed for external -> K8S Node access and Tier 1 LB VIP is needed for external -> K8S Services access. 
 
 ![](2019-05-16-22-27-42.png)
 
@@ -250,7 +250,7 @@ This logical switch/segment will **NOT** be connected to any Tier 0 or Tier 1 lo
 
 This concludes Part 1. We will look into the details of which other NSX-T objects will be integrated with K8S and also prepare a K8S cluster in Part 2.
 
-< SHORTCUT to PART 2>
+[Part 2] (https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
 
 
 
