@@ -8,7 +8,7 @@
 [Reachability](#Reachability)  
 [Tagging NSX-T Objects for K8S](#Tagging-NSX-T-Objects-for-K8S)  
 [CNI Plugin Installation](#CNI-Plugin-Installation)   
-[Open vSwitch (OVS) Installation](#Open-vSwitch-(OVS)-Installation)  
+[Open vSwitch (OVS) Installation](#Open-vSwitch-Installation)  
 [Docker Installation](#Docker-Installation)   
 [Deploy K8S](#Deploy-K8S)      
 
@@ -312,7 +312,7 @@ Setting up nsx-cni (2.4.1.13515827) ...
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes/ubuntu_amd64#
 </code></pre>
 
-# Open vSwitch (OVS) Installation
+# Open vSwitch Installation
 [Back to Table of Contents](#Table-Of-Contents)
 
 * NSX-T and K8S integration leverages Open vSwitch (OVS) in the data plane. OVS installation files also come as part of the NSX-T Container package which has been extracted and copied to the Ubuntu node in the previous step.
