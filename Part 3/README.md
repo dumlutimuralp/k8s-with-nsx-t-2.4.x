@@ -172,52 +172,6 @@ Following objects will be tagged with "k8s-cluster1" and with scope of "ncp/clus
 
 _**Why "k8s-cluster1" ? Will be explained with detail in Part 4 of this series. In short, the same NSX-T domain can be integrated with multiple K8S clusters. Hence it is important to track each NSX-T object with the respective cluster number or name.**_
 
-## Tier 0 Logical Router
-
-Navigate to "Advanced Networking & Security -> Networking -> Routers" in the NSX-T GUI and then tick the box next to "T0-K8S-Domain" and then click on "Actions" on the top right (shown below) and select "Manage Tags" .
-
-![](2019-05-24-01-42-54.png)
-
-Configure the tag and scope as shown below. 
-
-![](2019-05-24-01-43-46.png)
-
-## Overlay Transport Zone
-
-Navigate to "System -> Fabric -> Transport Zones" in the NSX-T GUI and then tick the box next to "TZ-Overlay" and then click on "Actions" on the top right (shown below) and select "Manage Tags" .
-
-![](2019-05-24-01-45-59.png)
-
-Configure the tag and scope as shown below. 
-
-![](2019-05-24-01-47-28.png)
-
-## IPAM
-
-Navigate to "Advanced Networking & Security -> Networking -> IPAM" in the NSX-T GUI and then tick the box next to "K8S-POD-IP-BLOCK" and then click on "Actions" on the top right (shown below) and select "Manage Tags" 
-
-![](2019-05-24-01-49-10.png)
-
-Configure the tag and scope as shown below. 
-
-![](2019-05-24-01-49-32.png)
-
-## IP Pools
-
-Navigate to "Advanced Networking & Security -> Inventory -> Groups -> IP Pools" in the NSX-T GUI and then tick the box next to "K8S-LB-Pool"
-
-![](2019-05-24-01-50-29.png)
-
-Configure the tag and scope as shown below. 
-
-![](2019-05-24-01-51-44.png)
-
-Repeat the steps for the "K8S-SNAT-Pool"
-
-![](2019-05-24-01-52-14.png)
-
-![](2019-05-24-01-52-52.png)
-
 ## K8S Nodes
 
 In this section the logical ports (in the "K8SNodeDataPlaneLS"), to which the Kubernetes Nodes second vNIC is connected to, will be tagged.
