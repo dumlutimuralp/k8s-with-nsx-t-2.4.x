@@ -925,7 +925,7 @@ OUTPUT OMITTED
 |
 |
 rol-plane by adding the label "node-role.kubernetes.io/master=''"
-[mark-control-plane] Marking the node k8s-master as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+<b>[mark-control-plane] Marking the node k8s-master as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]</b>
 [bootstrap-token] Using token: uvty9c.o9lpnuxin9vavyfa
 [bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
 [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
@@ -954,6 +954,8 @@ kubeadm join 10.190.5.10:6443 --token uvty9c.o9lpnuxin9vavyfa \
 </code></pre>
 
 * Preflight check error about cgroup driver can be ignored in the test environment however in real life scenarios its impact is well explained in this thread : https://github.com/kubernetes/kubeadm/issues/1394
+
+* By default K8S do not schedule any workload/Application Pods on the master node. You can see that in the logs in the above output. (...by adding the taints [node-role.kubernetes.io/master:NoSchedule])
 
 ### Configure the Environment variables for Kubeconfig
 
