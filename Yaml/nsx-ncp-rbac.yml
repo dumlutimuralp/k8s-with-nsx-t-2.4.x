@@ -1,0 +1,171 @@
+# Create Namespace for NSX owned resources
+kind: Namespace
+apiVersion: v1
+metadata:
+ name: nsx-system
+
+---
+
+# Create a ServiceAccount for NCP namespace
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+ name: ncp-svc-account
+ namespace: nsx-system
+
+---
+
+# Create ClusterRole for NCP
+kind: ClusterRole
+# Set the apiVersion to rbac.authorization.k8s.io/v1beta1 when k8s < v1.8
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: ncp-cluster-role
+rules:
+ - apiGroups:
+   - ""
+   - extensions
+   - networking.k8s.io
+   resources:
+     - deployments
+     - endpoints
+     - pods
+     - pods/log
+     - networkpolicies
+     # Move 'nodes' to ncp-patch-role when hyperbus is disabled.
+     - nodes
+     - replicationcontrollers
+     # Remove 'secrets' if not using Native Load Balancer.
+     - secrets
+   verbs:
+     - get
+     - watch
+     - list
+
+---
+
+# Create ClusterRole for NCP to edit resources
+kind: ClusterRole
+# Set the apiVersion to rbac.authorization.k8s.io/v1beta1 when k8s < v1.8
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: ncp-patch-role
+rules:
+ - apiGroups:
+   - ""
+   - extensions
+   resources:
+     # NCP needs to annotate the SNAT errors on namespaces
+     - namespaces
+     - ingresses
+     - services
+   verbs:
+     - get
+     - watch
+     - list
+     - update
+     - patch
+ # NCP needs permission to CRUD custom resource nsxerrors
+ - apiGroups:
+   # The api group is specified in custom resource definition for nsxerrors
+   - vmware.eng.com
+   resources:
+     - nsxerrors
+   verbs:
+     - create
+     - get
+     - list
+     - patch
+     - delete
+ - apiGroups:
+   - ""
+   - extensions
+   resources:
+     - ingresses/status
+     - services/status
+   verbs:
+     - replace
+     - update
+     - patch
+---
+
+# Bind ServiceAccount created for NCP to its ClusterRole
+kind: ClusterRoleBinding
+# Set the apiVersion to rbac.authorization.k8s.io/v1beta1 when k8s < v1.8
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: ncp-cluster-role-binding
+roleRef:
+ # Comment out the apiGroup while using OpenShift
+ apiGroup: rbac.authorization.k8s.io
+ kind: ClusterRole
+ name: ncp-cluster-role
+subjects:
+ - kind: ServiceAccount
+   name: ncp-svc-account
+   namespace: nsx-system
+
+---
+
+# Bind ServiceAccount created for NCP to the patch ClusterRole
+kind: ClusterRoleBinding
+# Set the apiVersion to rbac.authorization.k8s.io/v1beta1 when k8s < v1.8
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: ncp-patch-role-binding
+roleRef:
+ apiGroup: rbac.authorization.k8s.io
+ kind: ClusterRole
+ name: ncp-patch-role
+subjects:
+ - kind: ServiceAccount
+   name: ncp-svc-account
+   namespace: nsx-system
+
+---
+
+# Create a ServiceAccount for nsx-node-agent
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+ name: nsx-node-agent-svc-account
+ namespace: nsx-system
+
+---
+
+# Create ClusterRole for nsx-node-agent
+kind: ClusterRole
+# Set the apiVersion to rbac.authorization.k8s.io/v1beta1 when k8s < v1.8
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: nsx-node-agent-cluster-role
+rules:
+ - apiGroups:
+   - ""
+   resources:
+     - endpoints
+     - services
+     # Uncomment the following resources when hyperbus is disabled
+     # - nodes
+     # - pods
+   verbs:
+     - get
+     - watch
+     - list
+
+---
+
+# Bind ServiceAccount created for nsx-node-agent to its ClusterRole
+kind: ClusterRoleBinding
+# Set the apiVersion to rbac.authorization.k8s.io/v1beta1 when k8s < v1.8
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: nsx-node-agent-cluster-role-binding
+roleRef:
+ apiGroup: rbac.authorization.k8s.io
+ kind: ClusterRole
+ name: nsx-node-agent-cluster-role
+subjects:
+ - kind: ServiceAccount
+   name: nsx-node-agent-svc-account
+   namespace: nsx-system
