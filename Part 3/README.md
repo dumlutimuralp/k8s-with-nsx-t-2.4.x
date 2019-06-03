@@ -979,9 +979,9 @@ root@k8s-node1:~#<b>kubeadm join 10.190.5.10:6443 --token 3l6vkk.yge3ejvgypen7lm
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl get nodes</b>
 NAME         STATUS   ROLES    AGE   VERSION
-k8s-master   Ready    master   15m   v1.14.1
-k8s-node1    Ready    <none>   50s   v1.14.1
-k8s-node2    Ready    <none>   14s   v1.14.1
+k8s-master   <b>Ready</b>    master   15m   v1.14.1
+k8s-node1    <b>Ready</b>    <none>   50s   v1.14.1
+k8s-node2    <b>Ready</b>    <none>   14s   v1.14.1
 </code></pre>
 
 **Note** : Whenever a new Kubernetes worker needs to be added to the cluster a new token can be generated on K8S master by using "_kubeadm token create --print-join-command_" and then the output will provide the command that needs to be used to join the new worker node.
