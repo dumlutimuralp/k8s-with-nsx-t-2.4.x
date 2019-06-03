@@ -428,6 +428,10 @@ nsx-system    nsx-node-agent-nqwgx                 2/2     Running   0          
 root@k8s-master:/home/vmware#
 </code></pre>
 
+At this stage the topology looks like this 
+
+![](2019-06-04_00-38-29.jpg)
+
 ## Test Pod 
 
 * Let' s create a test pod in it (in imperative way)
