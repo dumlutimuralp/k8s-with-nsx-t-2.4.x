@@ -137,7 +137,7 @@ k8s.gcr.io/pause                               3.1                 da86e6ba6ca1 
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes#
 </code></pre>
 
-Make sure to update the image name from "nsx-ncp-ubuntu" => "nsx-ncp" , since the yml files, for both NCP and NSX Node Agent , are referring to image name as "nsx-ncp"
+Make sure to update the image name from "nsx-ncp-ubuntu" => "nsx-ncp" , since the yaml files, for both NCP and NSX Node Agent, are referring to image name as "nsx-ncp"
 
 <pre><code>
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes# <b> docker tag registry.local/2.4.1.13515827/nsx-ncp-ubuntu:latest nsx-ncp:latest</b>
@@ -160,9 +160,23 @@ k8s.gcr.io/etcd                                3.3.10              2c4adeb21b4f 
 k8s.gcr.io/pause                               3.1                 da86e6ba6ca1        17 months ago       742kB
 </code></pre>
 
-## Create "nsx-system" for NSX NCP, Node Agent Pods and Apply K8S RBAC for those Pods 
+## Creating NSX Specific K8S Resources 
 
-* A single yaml file will be used to create a new dedicated namespace for NCP and Node Agent Pods , the yaml is put together by @Yasen Simeonov (Technical Product Manager at VMware) which is public here => https://raw.githubusercontent.com/yasensim/k8s-lab/master/nsx-ncp-rbac.yaml
+For better isolation and security, NSX infrastructure Pods (NSX Container Plugin (NCP) and NSX Node Agent) will be running in their dedicated K8S namespace and a K8S Role Based Access Control (RBAC) policy will be applied for that namespace.
+
+A single yaml file will be used to :
+
+   * create dedicated K8S namespace, as "nsx-system", for NCP and Node Agent Pods  
+create service account, as "ncp-svc-account", for NCP
+create service account, as "nsx-node-agent-svc-account", for Node agent
+create a cluster role, as "ncp-cluster-role" , for NCP (having specific API access) 
+create a cluster role "ncp-patch-role" , for NCP (having specific API access)
+bind "ncp-svc-account" to "ncp-cluster-role"
+bind "ncp-svc-account" to "ncp-patch-role"
+create a cluster role "nsx-node-agent-cluster-role" 
+bind "nsx-node-agent-svc-account" to "nsx-node-agent-cluster-role"
+
+the yaml is put together by @Yasen Simeonov (Technical Product Manager at VMware) which is public here => https://raw.githubusercontent.com/yasensim/k8s-lab/master/nsx-ncp-rbac.yaml
 
 <pre><code>
 root@k8s-master:~# <b>kubectl create -f https://raw.githubusercontent.com/yasensim/k8s-lab/master/nsx-ncp-rbac.yaml</b>
