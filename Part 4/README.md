@@ -14,9 +14,9 @@ Previously in Part 3 K8S cluster has successfully been formed using kubeadm.
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl get nodes</b>
 NAME         STATUS   ROLES    AGE   VERSION
-k8s-master   Ready    master   15m   v1.14.1
-k8s-node1    Ready    <none>   50s   v1.14.1
-k8s-node2    Ready    <none>   14s   v1.14.1
+k8s-master   <b>Ready</b>    master   15m   v1.14.1
+k8s-node1    <b>Ready</b>    <none>   50s   v1.14.1
+k8s-node2    <b>Ready</b>    <none>   14s   v1.14.1
 </code></pre>
 
 To see which infrastructure Pods are automatically provisioned during the initialization of K8S cluster :
