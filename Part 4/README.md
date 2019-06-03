@@ -214,8 +214,6 @@ Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plug
 
 To deploy the NSX Container Plugin, NSX-T specific environmental parameters need to be configured in the configmap section of the deployment. Following parameters need to be configured in the configmap section : 
 
-
-
 ## Copy the edited NCP-Deployment file to a central location or to K8S Master Node local folder and then deploy the NSX NCP Pod in the "nsx-system" namespace by using the following command
 
 <pre><code>
