@@ -98,10 +98,9 @@ _**Note : As mentioned, highlighted earlier, in this environment all K8S Nodes a
 
 ### Container level logical topology
 
-This will be the end state of the topology after implementing K8S and integrating it with NSX-T. Information shown in this topology will be explained in the upcoming sections and Part 3 of this series.. 
+After implementing K8S and integrating it with NSX-T, the topology will look like below. Information shown in this topology will be explained in this article and also in Part 4 of this series. 
 
 ![](ContainerTopology.gif)
-
 
 # IPAM and IP Pools
 [Back to Table of Contents](#Table-Of-Contents)
