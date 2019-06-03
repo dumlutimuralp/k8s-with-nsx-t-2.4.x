@@ -92,11 +92,13 @@ Only the two empty firewall sections and the default section exist in the rule b
 # NSX Container Plugin and NSX Node Agent Installation
 [Back to Table of Contents](#Table-Of-Contents)
 
+Once again, the content and files in the NSX container folder that was copied to each K8S node will be used in this section. 
+
 ## Load The Docker Image for NSX NCP and Node Agent on K8S Nodes
 
-* For the commands below, "sudo" can be used with each command or privilege can be escalated to root by using "sudo -H bash" in advance
+For the commands below, "sudo" can be used with each command or privilege can be escalated to root by using "sudo -H bash" in advance.
 
-* On each K8S node, navigate to "/home/vmware/nsx-container-2.4.1.13515827/Kubernetes" folder then execute the following command to load respective image to the local Docker repository of each K8S Node. Same image will be used for both NCP and Node Agent Pods.
+On each K8S node, navigate to "/home/vmware/nsx-container-2.4.1.13515827/Kubernetes" folder then execute the following command to load respective image to the local Docker repository of each K8S Node. _**NSX Container Plugin (NCP) and Node Agent Pods use the same container image.**_
 
 <pre><code>
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes# <b>docker load -i nsx-ncp-ubuntu-2.4.1.13515827.tar</b>
@@ -119,7 +121,7 @@ Loaded image: registry.local/2.4.1.13515827/nsx-ncp-ubuntu:latest
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes#
 </code></pre>
 
-* Make sure the image is now in the local Docker repository
+Make sure the image is now in the local Docker repository :
 
 <pre><code>
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes# <b>docker images</b>
@@ -135,11 +137,27 @@ k8s.gcr.io/pause                               3.1                 da86e6ba6ca1 
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes#
 </code></pre>
 
-* Make sure to update the image name from "nsx-ncp-ubuntu" => "nsx-ncp" , since the yml files, for both NCP and NSX Node Agent , are referring to image name as "nsx-ncp"
+Make sure to update the image name from "nsx-ncp-ubuntu" => "nsx-ncp" , since the yml files, for both NCP and NSX Node Agent , are referring to image name as "nsx-ncp"
 
 <pre><code>
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes# <b> docker tag registry.local/2.4.1.13515827/nsx-ncp-ubuntu:latest nsx-ncp:latest</b>
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes#
+</code></pre>
+
+Verify the image name has changed. 
+
+<pre><code>
+root@k8s-master:/home/vmware# <b>docker images</b>
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+k8s.gcr.io/kube-proxy                          v1.14.2             5c24210246bb        2 weeks ago         82.1MB
+k8s.gcr.io/kube-apiserver                      v1.14.2             5eeff402b659        2 weeks ago         210MB
+k8s.gcr.io/kube-controller-manager             v1.14.2             8be94bdae139        2 weeks ago         158MB
+k8s.gcr.io/kube-scheduler                      v1.14.2             ee18f350636d        2 weeks ago         81.6MB
+<b>nsx-ncp</b>                                        latest              5714a979b290        5 weeks ago         518MB
+<b>registry.local/2.4.1.13515827/nsx-ncp-ubuntu</b>   latest              5714a979b290        5 weeks ago         518MB
+k8s.gcr.io/coredns                             1.3.1               eb516548c180        4 months ago        40.3MB
+k8s.gcr.io/etcd                                3.3.10              2c4adeb21b4f        6 months ago        258MB
+k8s.gcr.io/pause                               3.1                 da86e6ba6ca1        17 months ago       742kB
 </code></pre>
 
 ## Create "nsx-system" for NSX NCP, Node Agent Pods and Apply K8S RBAC for those Pods 
