@@ -153,7 +153,7 @@ In the above screenshot :
 # Tagging NSX-T Objects for K8S
 [Back to Table of Contents](#Table-Of-Contents)
 
-A few objects in NSX-T need to be tagged for integration with K8S. The reason for this will be explained in the next chapter. 
+A few objects in NSX-T need to be tagged for integration with K8S. The reason for this will be explained in Part 4. 
 
 Following objects will be tagged with "k8s-cluster1" and with scope of "ncp/cluster" (and also "ncp/node_name" for K8S Nodes)   
 
