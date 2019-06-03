@@ -206,10 +206,10 @@ kube-system       Active   5h22m
 root@k8s-master:~#
 </code></pre>
 
-The above yml file is also published (**WITHOUT** the nsx-system namespace resource though) in VMware NSX-T 2.4 Installation Guide here => https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-AC96C51A-052B-403F-9670-67E55C4C9170.html
+The above yml file is also published (**WITHOUT** the nsx-system namespace resource though) in VMware NSX-T 2.4 Installation Guide [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-AC96C51A-052B-403F-9670-67E55C4C9170.html)
 
 
-## NCP.ini Parameters
+## Configuring NCP.INI Integration Parameters
 NCP.ini file is the single source of truth that holds all the parameters related to how NCP will consume NSX-T.  
 ## Dont forghet to specify the service account
 
