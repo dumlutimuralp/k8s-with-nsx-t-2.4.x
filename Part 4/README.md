@@ -56,7 +56,6 @@ Below is a revisit of the NSX-T and K8S integration architecture (which was ment
 ![Alt desc](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/2019-06-03-00-01-20.png)
 
 ## NSX-T Topology
-[Back to Table of Contents](#Table-Of-Contents)
 
 Current state of the topology is still as the same that we created in Part 1. Shown below. The only difference now is K8S cluster is deployed hence the infrastructure Pods are scheduled on K8S nodes. 
 
