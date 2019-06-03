@@ -15,7 +15,7 @@
 # Ubuntu OS Installation
 [Back to Table of Contents](#Table-Of-Contents)
 
-Previously in Part 1 , the NSX-T logical networking constructs were prepared to implement a basic topology. In this section three Ubuntu VMs will be provisioned; two of them will be K8S worker nodes and one will be K8S master node. Each VM will be connected to the current topology as shown below. 
+Previously in Part 1, the NSX-T logical networking constructs were prepared to implement a basic topology. In this section three Ubuntu VMs will be provisioned; two of them will be K8S worker nodes and one will be K8S master node. Each VM will be connected to the current topology as shown below. 
 
 ![](2019-05-22-11-06-18.png)
 
@@ -25,7 +25,7 @@ Below steps in this section will be performed for each Ubuntu VM.
 
 * Create a new Virtual Machine with the following properties. The virtual machine will be running on ESX5 since that is the ESX Host which is prepared as a Host Transport Node for NSX-T.
 
-*  The first vNIC should be connected to the **"K8SNodeManagementPlaneLS"** and the second vNIC should be connected to the **"K8SNodeDataPlaneLS"** . These logical switches/segments were provisioned in the previous chapter. (1-NSXT-Basic-Configuration)
+*  The first vNIC should be connected to the **"K8SNodeManagementPlaneLS"** and the second vNIC should be connected to the **"K8SNodeDataPlaneLS"** . These logical switches/segments were provisioned in Part 1 of this series. 
 
 ![](2019-05-16-23-42-23.png)
 
@@ -43,7 +43,7 @@ Below steps in this section will be performed for each Ubuntu VM.
 
 ![](2019-05-16-23-45-47.png)
 
-In the previous chapter "K8SNodeManagementPlaneLS" was connected to Tier 1 Logical Router ("T1-K8S-Node-Management") and the IP address assigned to the router interface was 10.190.5.1 /24, hence an IP address from the same subnet is picked up, shown below.
+In Part 1 of this series "K8SNodeManagementPlaneLS" was connected to Tier 1 Logical Router ("T1-K8S-Node-Management") and the IP address assigned to the router interface was 10.190.5.1 /24, hence an IP address from the same subnet is picked up, shown below.
 
 ![](2019-05-22-17-45-21.png)
 
@@ -90,7 +90,7 @@ _**Note : If an existing Ubuntu node will be used, take a look at the Appendix t
 
 ![](2019-05-19-03-10-59.png)
 
-As mentioned in the previous chapter, logical switch/segment "K8SDataPlaneLS" is used as a transport medium for the K8S Pods (**NOT** nodes). K8S Pods will be connected to individual logical switches/segments per K8S Namespace. This will be explained in more detail later on.
+As mentioned in Part 1 of this series, logical switch/segment "K8SDataPlaneLS" is used as a transport medium for the K8S Pods (**NOT** nodes). K8S Pods will be connected to individual logical switches/segments per K8S Namespace. This will be explained in more detail later on.
 
 _**Note : As mentioned, highlighted earlier, in this environment all K8S Nodes are running on the same ESX Host because of resource constraints. In a realy life environment K8S nodes would be spanning across ESX Hosts. A sample topology is shown below. 
 
