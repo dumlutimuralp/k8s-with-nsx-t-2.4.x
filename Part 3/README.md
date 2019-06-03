@@ -1049,8 +1049,8 @@ Note : It may generate an error about resolving hostname but it can be ignored.
 
 * Check if the interface is up and running : 
 
-</code><pre>
-vmware@k8s-master:~$ <b>ip addr</b>
+<pre><code>
+vmware@k8s-master:~$<b>ip addr</b>
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
