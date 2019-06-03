@@ -1,0 +1,288 @@
+# yaml template for nsx-node-agent and nsx-kube-proxy DaemonSet
+# Right kubernetes API parameters and NCP Docker image must be
+# specified.
+# This yaml file is part of NCP 2.4.0 release.
+
+# ConfigMap for ncp.ini
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nsx-node-agent-config
+  labels:
+    version: v1
+data:
+  ncp.ini: |
+    [DEFAULT]
+
+    # Set to True to enable logging to stderr
+    #use_stderr = True
+    # Set to True to send logs to the syslog daemon
+    #use_syslog = False
+    # Enabler debug-level logging for the root logger. If set to True, the
+    # root logger debug level will be DEBUG, otherwise it will be INFO.
+    #debug = True
+
+    # The log file path must be set to something like '/var/log/nsx-ujo/'. By
+    # default, logging to file is disabled.
+    #log_dir = None
+
+    # Name of log file to send logging output to. If log_dir is set but log_file is
+    # not, the binary name will be used, i.e., ncp.log, nsx_node_agent.log and
+    # nsx_kube_proxy.log.
+    #log_file = None
+
+    # max MB for each compressed file. Defaults to 100 MB
+    #log_rotation_file_max_mb = 100
+
+    # Total number of compressed backup files to store. Defaults to 5.
+    #log_rotation_backup_count = 5
+    [coe]
+    #
+    # Common options for Container Orchestrators
+    #
+
+    # Container orchestrator adaptor to plug in
+    # Options: kubernetes (default), openshift, pcf.
+    #adaptor = kubernetes
+
+    # Specify cluster for adaptor. It is a prefix of NSX resources name to
+    # distinguish multiple clusters who are using the same NSX.
+    # This is also used as the tag of IP blocks for cluster to allocate
+    # IP addresses. Different clusters should have different IP blocks.
+    #cluster = k8scluster
+
+    # Log level for the NCP operations. If set, overrides the level specified
+    # for the root logger. Possible values are NOTSET, DEBUG, INFO, WARNING,
+    # ERROR, CRITICAL
+    #loglevel=None
+
+    # Log level for the NSX API client operations. If set, overrides the level
+    # specified for the root logger. Possible values are NOTSET, DEBUG, INFO,
+    # WARNING, ERROR, CRITICAL
+    nsxlib_loglevel=INFO
+
+    # Once enabled, all projects in this cluster will be mapped to a NAT
+    # topology in NSX backend
+    #enable_snat = True
+
+    # The type of container node. Possible values are HOSTVM, BAREMETAL.
+    #node_type = HOSTVM
+
+    # The time in seconds for NCP/nsx_node_agent to recover the connection to
+    # NSX manager/container orchestrator adaptor/Hyperbus before exiting.
+    # If the value is 0, NCP/nsx_node_agent won't exit automatically when
+    # the connection check fails
+    #connect_retry_timeout = 0
+
+    [ha]
+    #
+    # NCP High Availability configuration options
+    #
+
+    # Time duration in seconds of mastership timeout. NCP instance will
+    # remain master for this duration after elected. Note that the heartbeat
+    # period plus the update timeout must be less than this period. This
+    # is done to ensure that the master instance will either confirm
+    # liveness or fail before the timeout.
+    #master_timeout = 9
+
+    # Time in seconds between heartbeats for elected leader. Once an NCP
+    # instance is elected master, it will periodically confirm liveness based
+    # on this value.
+    #heartbeat_period = 3
+
+    # Timeout duration in seconds for update to election resource. If the
+    # update request does not complete before the timeout it will be
+    # aborted. Used for master heartbeats to ensure that the update finishes
+    # or is aborted before the master timeout occurs.
+    #update_timeout = 3
+
+    [k8s]
+    #
+    # From kubernetes
+    #
+
+    # IP address of the Kubernetes API Server. If not set, will try to
+    # read and use the Kubernetes Service IP from environment variable
+    # KUBERNETES_SERVICE_HOST.
+    #apiserver_host_ip = <ip_address>
+
+    # Port of the Kubernetes API Server.
+    # Set to 6443 for https. If not set, will try to
+    # read and use the Kubernetes Service port from environment
+    # variable KUBERNETES_SERVICE_PORT.
+    #apiserver_host_port = <port>
+
+    # Specify a CA bundle file to use in verifying the Kubernetes API server
+    # certificate. (string value)
+    #ca_file = <None>
+    ca_file = /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+
+    # Full path of the Token file to use for authenticating with the k8s API server.
+    #client_token_file = <None>
+    client_token_file = /var/run/secrets/kubernetes.io/serviceaccount/token
+
+    # Full path of the client certificate file to use for authenticating
+    # with the k8s API server. It must be specified together with
+    # "client_private_key_file"
+    #client_cert_file = <None>
+
+    # Full path of the client certificate file to use for authenticating
+    # with the k8s API server. It must be specified together with
+    # "client_cert_file"
+    #client_private_key_file = <None>
+
+    # Log level for the kubernetes adaptor. If set, overrides the level specified
+    # for the root logger. Possible values are NOTSET, DEBUG, INFO, WARNING,
+    # ERROR, CRITICAL
+    #loglevel=None
+
+    [nsx_node_agent]
+    #
+    # Configuration for nsx_node_agent
+    #
+
+    # Needs to mount node /proc to container if nsx_node_agent runs in a container.
+    # By default node /proc will be mounted to /host/proc, the prefix is /host.
+    # It should be the same setting with mounted path in the daemonset yaml file.
+    # Set the path to '' if nsx_node_agent is running as a process in minion node.
+    #proc_mount_path_prefix = /host
+
+    # The OVS bridge to configure container interface.
+    #ovs_bridge = br-int
+
+    [nsx_kube_proxy]
+    #
+    # Configuration for nsx_kube_proxy
+    #
+
+    # The OVS uplink OpenFlow port where to apply the NAT rules to.
+    # If not specified, the port that gets assigned ofport=1 is used.
+    #ovs_uplink_port = <None>
+
+
+---
+# nsx-node-agent DaemonSet
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: nsx-node-agent
+  labels:
+    tier: nsx-networking
+    component: nsx-node-agent
+    version: v1
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/nsx-node-agent: localhost/node-agent-apparmor
+      labels:
+        tier: nsx-networking
+        component: nsx-node-agent
+        version: v1
+    spec:
+      hostNetwork: true
+      # If configured with ServiceAccount, update the ServiceAccount
+      # name below.
+      serviceAccountName: nsx-node-agent-svc-account
+      containers:
+        - name: nsx-node-agent
+          # Docker image for NCP
+          image: nsx-ncp
+          imagePullPolicy: IfNotPresent
+          # override NCP image entrypoint
+          command: ["start_node_agent"]
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - timeout 5 check_pod_liveness nsx-node-agent
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 5
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - SYS_ADMIN
+                - SYS_PTRACE
+                - DAC_READ_SEARCH
+          volumeMounts:
+          # ncp.ini
+          - name: config-volume
+            mountPath: /etc/nsx-ujo/ncp.ini
+            subPath: ncp.ini
+            readOnly: true
+          # mount openvswitch dir
+          - name: openvswitch
+            mountPath: /var/run/openvswitch
+          # mount CNI socket path
+          - name: cni-sock
+            mountPath: /var/run/nsx-ujo
+          # mount container namespace
+          - name: netns
+            mountPath: /var/run/netns
+          # mount host proc
+          - name: proc
+            mountPath: /host/proc
+            readOnly: true
+        - name: nsx-kube-proxy
+          # Docker image for NCP
+          image: nsx-ncp
+          imagePullPolicy: IfNotPresent
+          # override NCP image entrypoint
+          command: ["start_kube_proxy"]
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - timeout 5 check_pod_liveness nsx-kube-proxy
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - SYS_ADMIN
+                - SYS_PTRACE
+                - DAC_READ_SEARCH
+                # For BMC usecase
+                # - DAC_OVERRIDE
+          volumeMounts:
+          # ncp.ini
+          - name: config-volume
+            mountPath: /etc/nsx-ujo/ncp.ini
+            subPath: ncp.ini
+            readOnly: true
+          # mount openvswitch dir
+          - name: openvswitch
+            mountPath: /var/run/openvswitch
+          # mount nestdb-sock for baremetal node
+          # - name: nestdb-sock
+          #   mountPath: /var/run/vmware/nestdb/nestdb-server.sock
+      volumes:
+        - name: config-volume
+          configMap:
+            name: nsx-node-agent-config
+        - name: cni-sock
+          hostPath:
+            path: /var/run/nsx-ujo
+        - name: netns
+          hostPath:
+            path: /var/run/netns
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: openvswitch
+          hostPath:
+            path: /var/run/openvswitch
+        # volume for baremetal node
+        # - name: nestdb-sock
+        #   hostPath:
+        #     path: /var/run/vmware/nestdb/nestdb-server.sock
+        #     type: Socket
