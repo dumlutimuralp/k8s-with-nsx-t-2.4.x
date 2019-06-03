@@ -92,7 +92,7 @@ _**Note : If an existing Ubuntu node will be used, take a look at the Appendix t
 
 As mentioned in Part 1 of this series, logical switch/segment "K8SDataPlaneLS" is used as a transport medium for the K8S Pods (**NOT** nodes). K8S Pods will be connected to individual logical switches/segments per K8S Namespace. This will be explained in more detail later on.
 
-_**Note : As mentioned, highlighted earlier, in this environment all K8S Nodes are running on the same ESX Host because of resource constraints. In a realy life environment K8S nodes would be spanning across ESX Hosts. A sample topology is shown below. 
+_**Note : In this environment all K8S Nodes are running on the same ESX Host because of resource constraints. In a real life environment K8S nodes would be spanning across ESX Hosts. A sample topology is shown below.*_
 
 ![](2019-05-31-03-23-38.png)
 
