@@ -99,7 +99,7 @@ _**Note : In this environment all K8S Nodes are running on the same ESX Host bec
 
 ### Container level logical topology
 
-After implementing K8S and integrating it with NSX-T, the topology will look like below. Information shown in this topology will be explained in this article and also in Part 4 of this series. 
+After implementing K8S and integrating it with NSX-T, the topology will look like below. Information shown in this topology will be explained in Part 4 of this series. 
 
 ![](ContainerTopology.gif) 
 
