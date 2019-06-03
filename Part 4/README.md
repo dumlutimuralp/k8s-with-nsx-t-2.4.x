@@ -1,6 +1,20 @@
 # NSX-T & K8S - PART 4
 
+
+
+
+
 ## Current State in K8S Cluster
+
+### On the "k8s-master" node verify K8S cluster nodes status is "Ready"
+
+<pre><code>
+root@k8s-master:/home/vmware# <b>kubectl get nodes</b>
+NAME         STATUS   ROLES    AGE   VERSION
+k8s-master   Ready    master   15m   v1.14.1
+k8s-node1    Ready    <none>   50s   v1.14.1
+k8s-node2    Ready    <none>   14s   v1.14.1
+</code></pre>
 
 <pre><code>
 root@k8s-master:~# <b>kubectl get pods --all-namespaces</b>
