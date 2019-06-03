@@ -277,8 +277,6 @@ The same yml file is also published in VMware NSX-T 2.4 Installation Guide [here
 
 ## Deploy NSX Container Plugin (NCP) 
 
-### Editing Paramaters in Configmap for NCP.ini  
-
 Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is also provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. (It is also included [here]()
 
 However, before moving forward, NSX-T specific environmental parameters need to be configured. The yml file contains a configmap for the configuration of the ncp.ini file for the NCP.  Basically most of the parameters are commented out with a "#" character. The definitions of each parameter are in the yml file itself. 
@@ -320,7 +318,7 @@ _**One additional configuration that is made in the yml file is removing the "#"
 The edited yml file, "ncp-deployment-custom.yml" in this case, can now be deployed from anywhere. In this environment this yml file is copied to /home/vmware folder in K8S Master Node and deployed in the "nsx-system" namespace with the following command.
 
 <pre><code>
-root@k8s-master:/home/vmware# <b>kubectl create -f ncp-deployment.yml --namespace=nsx-system</b>
+root@k8s-master:/home/vmware# <b>kubectl create -f ncp-deployment-custom.yml --namespace=nsx-system</b>
 configmap/nsx-ncp-config created
 deployment.extensions/nsx-ncp created
 root@k8s-master:/home/vmware#
@@ -379,6 +377,10 @@ The "nsx-node-agent-ds.yml" file can simply be edited with a text editor. **"#" 
 The edited yml file, "nsx-node-agent-ds-custom.yml" in this case, can now be deployed from anywhere. In this environment this yml file is copied to /home/vmware folder in K8S Master Node and deployed in the "nsx-system" namespace with the following command.
 
 <pre><code>
+root@k8s-master:/home/vmware# <b>kubectl create -f nsx-node-agent-ds-custom.yml --namespace=nsx-system</b>
+</code></pre>
+
+<pre><code>
 root@k8s-master:/home/vmware# kubectl get pods --all-namespaces -o wide
 NAMESPACE     NAME                                 READY   STATUS              RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
 kube-system   coredns-fb8b8dccf-b592z              0/1     ContainerCreating   0          6h      <none>        k8s-master   <none>           <none>
@@ -396,9 +398,9 @@ nsx-system    nsx-node-agent-nqwgx                 2/2     Running             0
 root@k8s-master:/home/vmware#
 </code></pre>
 
-Note : "-o wide" provides which Pod <=> Node mapping in the output
+**Note :** "-o wide" provides which Pod <=> Node mapping in the output
 
-* Notice yet again the coredns pods are still in ContainerCreating state. 
+Notice yet again the coredns pods are still in ContainerCreating state. 
 
 <pre><code>
 root@k8s-master:/home/vmware# kubectl get pods --all-namespaces <b>-o wide</b>
@@ -418,7 +420,7 @@ nsx-system    nsx-node-agent-nqwgx                 2/2     Running             0
 root@k8s-master:/home/vmware# 
 </code></pre>
 
-* At this stage simply delete those two coredns pods and K8S scheduler will recreate those two pods and both of them will be successfully get attached to the respective overlay network on NSX-T side.
+At this stage simply delete those two coredns pods and K8S scheduler will recreate those two pods and both of them will be successfully get attached to the respective overlay network on NSX-T side.
 
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl delete pod/coredns-fb8b8dccf-b592z --namespace=kube-system</b>
@@ -427,8 +429,8 @@ root@k8s-master:/home/vmware# <b>kubectl delete pod/coredns-fb8b8dccf-j66fg --na
 pod "coredns-fb8b8dccf-j66fg" deleted
 root@k8s-master:/home/vmware# kubectl get pods --all-namespaces <b>-o wide</b>
 NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
-kube-system   coredns-fb8b8dccf-fhn6q              1/1     Running   0          3m40s   172.25.4.4    k8s-node1    <none>           <none>
-kube-system   coredns-fb8b8dccf-wqndw              1/1     Running   0          88s     172.25.4.3    k8s-node2    <none>           <none>
+kube-system   <b>coredns-fb8b8dccf-fhn6q</b>              1/1     Running   0          3m40s   <b>172.25.4.4</b>    k8s-node1    <none>           <none>
+kube-system   <b>coredns-fb8b8dccf-wqndw</b>              1/1     Running   0          88s     <b>172.25.4.3</b>    k8s-node2    <none>           <none>
 kube-system   etcd-k8s-master                      1/1     Running   0          6h4m    10.190.5.10   k8s-master   <none>           <none>
 kube-system   kube-apiserver-k8s-master            1/1     Running   0          6h4m    10.190.5.10   k8s-master   <none>           <none>
 kube-system   kube-controller-manager-k8s-master   1/1     Running   0          6h4m    10.190.5.10   k8s-master   <none>           <none>
