@@ -51,7 +51,7 @@ _**Notice "coredns-xxx" Pods are stuck in "ContainerCreating" phase, the reason 
 
 Below is a reminder of the integration architecture (that is shown in Part 2 of this series)
 
-![](/nsx-t-k8s/Part 2/2019-06-03-00-01-20.png)
+![Alt desc](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/2019-06-03-00-01-20.png)
 
 # Overall Topology
 
