@@ -212,11 +212,31 @@ The above yml file is also published (**WITHOUT** the nsx-system namespace resou
 
 Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
 
-However, before moving forward, NSX-T specific environmental parameters need to be configured in the configmap section of the yml file.  The file can simply be edited with a text editor. Basically most of the parameters are commented out with a "#" character. "#" is removed for the parameters that will be used. Below is a list and explanation of each parameter :
+However, before moving forward, NSX-T specific environmental parameters need to be configured in the configmap section of the yml file.   Basically most of the parameters are commented out with a "#" character. The definitions of each parameter are in the yml file itself. 
 
-**cluster = k8scluster1** : This parameter is used to identify the NSX-T objects that are provisioned for this K8S cluster. Notice that we configured the "k8s-cluster1" tag with the "ncp/cluster" scope on NSX-T side.
+The "ncp-deployment.yml" file can simply be edited with a text editor. The parameters in the file that are used in this environment has "#" removed. Below is a list and explanation of each :
 
-**enable_snat = True** : This parameter basically defines that all the K8S Pods will be NATed in this K8S cluster. (unless K8S annotations are used to specifically not to apply NAT for a specific namespace/
+**cluster = k8scluster1** : Used to identify the NSX-T objects that are provisioned for this K8S cluster. Notice that K8S Node logical ports in "K8SNodeDataPlaneLS" are configured with the "k8s-cluster1" tag and the "ncp/cluster" scope also with the hostname of Ubuntu node as the tag and "ncp/node_name" scope on NSX-T side.
+
+**enable_snat = True** : This parameter basically defines that all the K8S Pods in each K8S namespace in this K8S cluster will be SNATed (to be able to access the other resources in the datacenter external to NSX domain) . The SNAT rules will be autoatically provisioned on Tier 0 Router in this lab. The SNAT IP will be allocated from IP Pool named "K8S-NAT-Pool" that was configured back in Part 3.
+
+**ingress_mode = NAT** : This parameter basically defines that NSX will use SNAT/DNAT rules for K8S ingress (L7 HTTPS/HTTP load balancing) to access the K8S service at the backend.
+
+**nsx_api_managers = 10.190.1.80** , **nsx_api_user = admin** ,  **nsx_api_password = XXXXXXXXXXXXXX**  : These parameters are for NCP to access/consume the NSX Manager.
+
+**insecure = True** : NSX Manager server certificate is not verified. 
+
+**top_tier_router = T0-K8S-Domain** : The name of the Logical Router that will be used for implementing SNAT rules for the Pods in the K8S Namespaces.
+
+**overlay_tz = TZ-Overlay** : The name of the existing overlay transport zone that will be used for creating new logical switches/segments for K8S namespaces and container networking.
+
+**subnet_prefix = 24** : The size of the IP Pools for the namespaces that will be carved out from the main "K8S-POD-IP-BLOCK" configured in Part 3 (172.25.0.0 /16). Whenever a new K8S namespace is created a /24 IP pool will be allocated from thatthat IP block.
+
+**use_native_loadbalancer = True** : This is to use NSX-T load balancer for K8S Service Type : Load Balancer. Whenever a new K8S service is exposed with the Type : Load Balancer then a VIP will be provisioned on NSX-T LB attached to a Tier 1 Logical Router dedicated for LB function. The VIP will be allocated from the IP Pool named "K8S-LB-Pool" that was configured back in Part 3.
+
+**default_ingress_class_nsx = True** : This is to use NSX-T load balancer for K8S ingress (L7 HTTP/HTTPS load balancing) , instead of other solutions such as NGINX, HAProxy etc. Whenever a K8S ingress object is created, a Layer 7 rule will be configured on the NSX-T load balancer.
+
+**
 
 ## Copy the edited NCP-Deployment file to a central location or to K8S Master Node local folder and then deploy the NSX NCP Pod in the "nsx-system" namespace by using the following command
 
