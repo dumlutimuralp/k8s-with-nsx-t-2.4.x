@@ -342,6 +342,21 @@ root@k8s-master:/home/vmware#
 
 * Notice the changes to the existing logical switches/segments, Tier 1 Logical Routers, Load Balancer below . All these newly created objects have been provisioned by NCP (as soon as NCP Pod has been successfully deployed) by identifying the  the K8S desired state and mapping the K8S resources in etcd to the NSX-T Logical Networking constructs.
 
+![](2019-06-03_20-39-24.png)
+
+![](2019-06-03_20-39-41.png)
+
+![](2019-06-03_20-39-59.png)
+
+![](2019-06-03_20-40-28.png)
+
+![](2019-06-03_20-40-40.png)
+
+![](2019-06-03_20-41-55.png)
+
+![](2019-06-03_20-43-42.png)
+
+![](2019-06-03_21-06-24.png)
 
 
 * Notice that CoreDNS pods are still in ContainerCreating phase, the reason for that is NSX Node Agent (which is responsible for connecting the pods to a logical switch) is still not installed on K8S Worker Nodes yet (next step)
