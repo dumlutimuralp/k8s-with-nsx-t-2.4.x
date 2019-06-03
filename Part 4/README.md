@@ -73,7 +73,7 @@ LOGICAL ROUTERS
 
 ![](2019-05-28-17-45-42.png)
 
-IP Pools
+IP POOLS
 
 ![](2019-05-28-19-56-15.png)
 
@@ -164,7 +164,7 @@ k8s.gcr.io/pause                               3.1                 da86e6ba6ca1 
 
 For better isolation and security, NSX infrastructure Pods (NSX Container Plugin (NCP) and NSX Node Agent) will be running in their dedicated K8S namespace and a K8S Role Based Access Control (RBAC) policy will be applied for that namespace.
 
-A single yml file, which is included [here](https://raw.githubusercontent.com/dumlutimuralp/nsx-t-k8s/master/Yaml/nsx-ncp-rbac.yml) , will be used to implement all the following. 
+A single yml file, which is included [here](https://raw.githubusercontent.com/dumlutimuralp/nsx-t-k8s/master/Yaml/nsx-ncp-rbac.yml), will be used to implement all the following. 
 
 create a dedicated K8S namespace, as "nsx-system", for NCP and Node Agent Pods    
 create a service account, as "ncp-svc-account", for NCP  
@@ -210,8 +210,10 @@ The above yml file is also published (**WITHOUT** the nsx-system namespace resou
 
 
 ## Configuring NCP.INI Integration Parameters
-NCP.ini file is the single source of truth that holds all the parameters related to how NCP will consume NSX-T.  
-## Dont forghet to specify the service account
+
+NCP.ini file is the single source of truth that contains all the configuration parameters related to how NCP will consume NSX-T.  
+
+## Dont forghe to specify the service account
 
 ## Deploy NSX NCP 
 ## Note how you commented in the ncp-svc-account line in ncp-deployment.yml file !!!
