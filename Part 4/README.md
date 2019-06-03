@@ -35,15 +35,15 @@ To see which infrastructure Pods are automatically provisioned during the initia
 <pre><code>
 root@k8s-master:~# <b>kubectl get pods --all-namespaces</b>
 NAMESPACE     NAME                                 READY   STATUS              RESTARTS   AGE
-kube-system   coredns-fb8b8dccf-b592z              0/1     <b>ContainerCreating</b>   0          4h27m
-kube-system   coredns-fb8b8dccf-j66fg              0/1     <b>ContainerCreating</b>   0          4h27m
-kube-system   etcd-k8s-master                      1/1     Running             0          4h26m
-kube-system   kube-apiserver-k8s-master            1/1     Running             0          4h26m
-kube-system   kube-controller-manager-k8s-master   1/1     Running             0          4h26m
-kube-system   kube-proxy-bk7rs                     1/1     Running             0          19m
-kube-system   kube-proxy-j4p5f                     1/1     Running             0          4h27m
-kube-system   kube-proxy-mkm4w                     1/1     Running             0          44m
-kube-system   kube-scheduler-k8s-master            1/1     Running             0          4h26m
+<b>kube-system</b>   coredns-fb8b8dccf-b592z              0/1     <b>ContainerCreating</b>   0          4h27m
+<b>kube-system</b>  coredns-fb8b8dccf-j66fg              0/1     <b>ContainerCreating</b>   0          4h27m
+<b>kube-system</b>   etcd-k8s-master                      1/1     Running             0          4h26m
+<b>kube-system</b>   kube-apiserver-k8s-master            1/1     Running             0          4h26m
+<b>kube-system</b>   kube-controller-manager-k8s-master   1/1     Running             0          4h26m
+<b>kube-system</b>   kube-proxy-bk7rs                     1/1     Running             0          19m
+<b>kube-system</b>   kube-proxy-j4p5f                     1/1     Running             0          4h27m
+<b>kube-system</b>   kube-proxy-mkm4w                     1/1     Running             0          44m
+<b>kube-system</b>   kube-scheduler-k8s-master            1/1     Running             0          4h26m
 root@k8s-master:~#
 </code></pre>
 
