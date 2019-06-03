@@ -3,7 +3,7 @@
 # Table Of Contents
 
 [Current State](#Current-State)   
-[NSX Container Plugin (NCP) and NSX Node Agent Installation](#NSX-Container-Plugin-and-NSX-Node-Agent-Installation)
+[NSX Node Agent and NSX Container Plugin (NCP) Installation](#NSX-Node-Agent-and-NSX-Container-Plugin-Installation)
 
 # Current State
 [Back to Table of Contents](#Table-Of-Contents)
@@ -89,7 +89,7 @@ Only the two empty firewall sections and the default section exist in the rule b
 
 ![](2019-05-28-18-06-58.png)
 
-# NSX Container Plugin and NSX Node Agent Installation
+# NSX Node Agent and NSX Container Plugin Installation
 [Back to Table of Contents](#Table-Of-Contents)
 
 Once again, the content and files in the NSX container folder that was copied to each K8S node will be used in this section. 
@@ -250,6 +250,7 @@ system:node                                            6d
 system:node-proxier                                    6d
 system:public-info-viewer                              6d
 system:volume-scheduler                                6d
+root@k8s-master:/home/vmware#
 </code></pre> 
 
 <pre><code>
@@ -270,6 +271,9 @@ root@k8s-master:/home/vmware#
 The "nsx-ncp-rbac.yml" is put together by [Yasen Simeonov](https://github.com/yasensim) (Senior Technical Product Manager at VMware) which is published [here](https://raw.githubusercontent.com/yasensim/k8s-lab/master/nsx-ncp-rbac.yaml) originally.  
 
 The same yml file is also published in VMware NSX-T 2.4 Installation Guide [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-AC96C51A-052B-403F-9670-67E55C4C9170.html) ((**WITHOUT** the nsx-system namespace resource though, hence the namespace needs to be manually created if the yml file in the installation guide will be used)
+
+## Deploy NSX Node Agent
+
 
 ## Deploy NSX Container Plugin (NCP) 
 
