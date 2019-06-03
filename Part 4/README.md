@@ -3,7 +3,8 @@
 # Table Of Contents
 
 [Current State](#Current-State)   
-[NSX Node Agent and NSX Container Plugin (NCP) Installation](#NSX-Node-Agent-and-NSX-Container-Plugin-Installation)
+[NSX Container Plugin (NCP) Installation](#NSX-Container-Plugin-Installation)
+[NSX Node Agent Installation] (#NSX-Node-Agent-Installation)
 
 # Current State
 [Back to Table of Contents](#Table-Of-Contents)
@@ -89,16 +90,18 @@ Only the two empty firewall sections and the default section exist in the rule b
 
 ![](2019-05-28-18-06-58.png)
 
-# NSX Node Agent and NSX Container Plugin Installation
+# NSX Container Plugin Installation
 [Back to Table of Contents](#Table-Of-Contents)
 
-Once again, the content and files in the NSX container folder that was copied to each K8S node will be used in this section. 
+Once again, NSX Container Plugin (NCP) image file is in the NSX container folder that was copied to each K8S node will be used in this section. 
 
-## Load The Docker Image for NSX NCP and Node Agent on K8S Nodes
+## Load The Docker Image for NSX NCP (and NSX Node Agent) on K8S Nodes
 
 For the commands below, "sudo" can be used with each command or privilege can be escalated to root by using "sudo -H bash" in advance.
 
-On each K8S node, navigate to "/home/vmware/nsx-container-2.4.1.13515827/Kubernetes" folder then execute the following command to load respective image to the local Docker repository of each K8S Node. _**NSX Container Plugin (NCP) and Node Agent Pods use the same container image.**_
+On each K8S node, navigate to "/home/vmware/nsx-container-2.4.1.13515827/Kubernetes" folder then execute the following command to load respective image to the local Docker repository of each K8S Node. 
+
+_**NSX Container Plugin (NCP) and NSX Node Agent Pods use the same container image.**_
 
 <pre><code>
 root@k8s-master:/home/vmware/nsx-container-2.4.1.13515827/Kubernetes# <b>docker load -i nsx-ncp-ubuntu-2.4.1.13515827.tar</b>
@@ -272,14 +275,11 @@ The "nsx-ncp-rbac.yml" is put together by [Yasen Simeonov](https://github.com/ya
 
 The same yml file is also published in VMware NSX-T 2.4 Installation Guide [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-AC96C51A-052B-403F-9670-67E55C4C9170.html) ((**WITHOUT** the nsx-system namespace resource though, hence the namespace needs to be manually created if the yml file in the installation guide will be used)
 
-## Deploy NSX Node Agent
-
-
 ## Deploy NSX Container Plugin (NCP) 
 
 ### Editing Paramaters in Configmap for NCP.ini  
 
-Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is also provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
+Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is also provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. (It is also included [here]()
 
 However, before moving forward, NSX-T specific environmental parameters need to be configured. The yml file contains a configmap for the configuration of the ncp.ini file for the NCP.  Basically most of the parameters are commented out with a "#" character. The definitions of each parameter are in the yml file itself. 
 
@@ -339,8 +339,7 @@ kube-system   kube-scheduler-k8s-master            1/1     Running             0
 root@k8s-master:/home/vmware#
 </code></pre>
 
-
-* Notice the changes to the existing logical switches/segments, Tier 1 Logical Routers, Load Balancer below . All these newly created objects have been provisioned by NCP (as soon as NCP Pod has been successfully deployed) by identifying the  the K8S desired state and mapping the K8S resources in etcd to the NSX-T Logical Networking constructs.
+**Notice the changes to the existing logical switches/segments, Tier 1 Logical Routers, Load Balancer below . All these newly created objects have been provisioned by NCP (as soon as NCP Pod has been successfully deployed) by identifying the  the K8S desired state and mapping the K8S resources in etcd to the NSX-T Logical Networking constructs.**
 
 LOGICAL SWITCHES
 ![](2019-06-03_20-39-24.png)
@@ -366,11 +365,17 @@ VIRTUAL SERVERS for INGRESS on LOAD BALANCER
 FIREWALL RULEBASE
 ![](2019-06-03_20-43-42.png)
 
-* Notice that CoreDNS pods are still in ContainerCreating phase, the reason for that is NSX Node Agent (which is responsible for connecting the pods to a logical switch) is still not installed on K8S Worker Nodes yet (next step)
+Notice also that CoreDNS pods are still in ContainerCreating phase, the reason for that is NSX Node Agent (which is responsible for connecting the pods to a logical switch) is still not installed on K8S Worker Nodes yet (next step)
 
-## 
+## NSX Node Agent Installation
+ 
+"nsx-node-agent-ds.yml" will be used to deploy NSX Node Agent. This yml file is also provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
 
-## Copy the edited NCP-Deployment file to a central location or to K8S Master Node local folder and then deploy the NSX NCP Pod in the "nsx-system" namespace by using the following command
+This yml file also contains a configmap for the configuration of the ncp.ini file for the NSX Node Agent. None of the parameters in the configmap will be changed, the only line that needs to be edited is the one where it says "serviceAccountName: nsx-node-agent-svc-account"
+
+The "nsx-node-agent-ds.yml" file can simply be edited with a text editor. **"#" is removed from the line with "serviceAccountname:..." so that role based access control can properly be applied for NSX Node Agent as well.**
+
+The edited yml file, "nsx-node-agent-ds-custom.yml" in this case, can now be deployed from anywhere. In this environment this yml file is copied to /home/vmware folder in K8S Master Node and deployed in the "nsx-system" namespace with the following command.
 
 <pre><code>
 root@k8s-master:/home/vmware# kubectl get pods --all-namespaces -o wide
