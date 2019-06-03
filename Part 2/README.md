@@ -72,7 +72,7 @@ NSX-T leverages Open vSwitch to provide two functions :
 # NSX-T & K8S Overall Architecture
 [Back to Table of Contents](#Table-Of-Contents)
 
-Below diagram shows how the overall architecture looks like. NSX CNI Plugin, NSX Node Agent Pod, NSX Container Plugin Pod, the K8S deployment files for both these Pods and NSX CNI Plugin will be extracted and installed in the Part 3 of this series.
+Below diagram shows how the overall architecture looks like. NSX CNI Plugin, NSX Node Agent Pod, NSX Container Plugin Pod, the K8S deployment files for both Pods and NSX CNI Plugin will be extracted and installed in the Part 3 of this series.
 
 ![](2019-06-03-00-01-20.png)
 
