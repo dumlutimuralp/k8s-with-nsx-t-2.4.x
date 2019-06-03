@@ -204,7 +204,59 @@ kube-public       Active   5h22m
 kube-system       Active   5h22m
 <b>nsx-system</b>        Active   5m47s
 root@k8s-master:~#
-</code></pre>
+</code></pre> 
+
+Verify that the service account and role bindings are successfully configured. 
+
+<pre><code>
+root@k8s-master:/home/vmware# kubectl get sa -n nsx-system
+NAME                         SECRETS   AGE
+default                      1         5d19h
+ncp-svc-account              1         5d19h
+nsx-node-agent-svc-account   1         5d19h
+root@k8s-master:/home/vmware# kubectl describe sa ncp-svc-account -n nsx-system
+Name:                ncp-svc-account
+Namespace:           nsx-system
+Labels:              <none>
+Annotations:         <none>
+Image pull secrets:  <none>
+Mountable secrets:   ncp-svc-account-token-czzwc
+Tokens:              ncp-svc-account-token-czzwc
+Events:              <none>
+root@k8s-master:/home/vmware# kubectl get clusterrolebinding -n nsx-system
+NAME                                                   AGE
+cluster-admin                                          6d
+kubeadm:kubelet-bootstrap                              6d
+kubeadm:node-autoapprove-bootstrap                     6d
+kubeadm:node-autoapprove-certificate-rotation          6d
+kubeadm:node-proxier                                   6d
+ncp-cluster-role-binding                               5d19h
+ncp-patch-role-binding                                 5d19h
+nsx-node-agent-cluster-role-binding                    5d19h
+|
+|
+ Output Omitted
+|
+|
+system:kube-dns                                        6d
+system:kube-scheduler                                  6d
+system:node                                            6d
+system:node-proxier                                    6d
+system:public-info-viewer                              6d
+system:volume-scheduler                                6d
+root@k8s-master:/home/vmware# kubectl describe clusterrolebinding ncp-cluster-role-binding -n nsx-system
+Name:         ncp-cluster-role-binding
+Labels:       <none>
+Annotations:  <none>
+Role:
+  Kind:  ClusterRole
+  Name:  ncp-cluster-role
+Subjects:
+  Kind            Name             Namespace
+  ----            ----             ---------
+  ServiceAccount  ncp-svc-account  nsx-system
+root@k8s-master:/home/vmware#
+</code></pre> 
 
 The above yml file is also published (**WITHOUT** the nsx-system namespace resource though) in VMware NSX-T 2.4 Installation Guide [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-AC96C51A-052B-403F-9670-67E55C4C9170.html)
 
