@@ -77,7 +77,7 @@ IP POOLS
 
 ![](2019-05-28-19-56-15.png)
 
-Load Balancer
+LOAD BALANCER
 
 No load balancers exist yet.
 
@@ -164,7 +164,7 @@ k8s.gcr.io/pause                               3.1                 da86e6ba6ca1 
 
 For better isolation and security, NSX infrastructure Pods (NSX Container Plugin (NCP) and NSX Node Agent) will be running in their dedicated K8S namespace and a K8S Role Based Access Control (RBAC) policy will be applied for that namespace.
 
-A single yml file, which is included [here](https://raw.githubusercontent.com/dumlutimuralp/nsx-t-k8s/master/Yaml/nsx-ncp-rbac.yml), will be used to implement all the following. 
+A single yml file, which is included [here](https://raw.githubusercontent.com/dumlutimuralp/nsx-t-k8s/master/Yaml/nsx-ncp-rbac.yml), will be used to implement the following steps :  
 
 create a dedicated K8S namespace, as "nsx-system", for NCP and Node Agent Pods    
 create a service account, as "ncp-svc-account", for NCP  
@@ -208,15 +208,14 @@ root@k8s-master:~#
 
 The above yml file is also published (**WITHOUT** the nsx-system namespace resource though) in VMware NSX-T 2.4 Installation Guide [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-AC96C51A-052B-403F-9670-67E55C4C9170.html)
 
+## Deploy NSX Container Plugin (NCP) 
 
-## Configuring NCP.INI Integration Parameters
+Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal.    
 
-NCP.ini file is the single source of truth that contains all the configuration parameters related to how NCP will consume NSX-T.  
+To deploy the NSX Container Plugin, NSX-T specific environmental parameters need to be configured in the configmap section of the deployment. Following parameters need to be configured in the configmap section : 
 
-## Dont forghe to specify the service account
 
-## Deploy NSX NCP 
-## Note how you commented in the ncp-svc-account line in ncp-deployment.yml file !!!
+
 ## Copy the edited NCP-Deployment file to a central location or to K8S Master Node local folder and then deploy the NSX NCP Pod in the "nsx-system" namespace by using the following command
 
 <pre><code>
