@@ -225,7 +225,7 @@ data:
     subnet_prefix = 24
 
     # Indicates whether distributed firewall DENY rules are logged.
-    log_dropped_traffic = True
+    # log_dropped_traffic = True
 
     # Option to use native loadbalancer support.
     use_native_loadbalancer = True
