@@ -4,9 +4,9 @@
 
 [Ubuntu OS Installation](#Ubuntu-OS-Installation)  
 [Topology](#Topology)   
-[IPAM and IP Pools](#IPAM-and-IP-Pools) 
-[Firewall Sections](#Firewall-Sections)
-[Reachability](#Reachability)  
+[IPAM and IP Pools](#IPAM-and-IP-Pools)   
+[Firewall Sections](#Firewall-Sections)  
+[Reachability](#Reachability)    
 [Tagging NSX-T Objects for K8S](#Tagging-NSX-T-Objects-for-K8S)  
 [CNI Plugin Installation](#CNI-Plugin-Installation)   
 [Open vSwitch (OVS) Installation](#Open-vSwitch-Installation)  
@@ -136,8 +136,17 @@ NSX-T supports configuring a persistent SNAT IP per K8S namespace or per K8S ser
 
 NSX-T supports No-NAT for the Pods. Meaning that a routable IP address can also be used for K8S Pods, rather then applying SNAT on Tier0. However the default option is SNAT (hence K8S-NAT-Pool is configured above) . This option can be changed in the NCP configuration, which is explained later on in the next chapter.
 
-#Firewall Sections
+# Firewall Sections
 [Back to Table of Contents](#Table-Of-Contents)
+
+Two new sections will be configured in the NSX-T distributed firewall rule base. Any K8S related firewall rule will be configured between these sections. Configuration steps shown below. 
+
+_**Note**_ : Do not forget to check the current section to enable the "Add Section" option. 
+
+![](2019-05-28-18-02-15.png)
+![](2019-05-28-18-02-33.png)
+![](2019-05-28-18-06-58.png)
+![](2019-06-03_14-36-30.png)
 
 # Reachability
 [Back to Table of Contents](#Table-Of-Contents)
