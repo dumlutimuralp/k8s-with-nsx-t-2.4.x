@@ -392,33 +392,15 @@ kube-system   kube-proxy-bk7rs                     1/1     Running             0
 kube-system   kube-proxy-j4p5f                     1/1     Running             0          6h      10.190.5.10   k8s-master   <none>           <none>
 kube-system   kube-proxy-mkm4w                     1/1     Running             0          137m    10.190.5.11   k8s-node1    <none>           <none>
 kube-system   kube-scheduler-k8s-master            1/1     Running             0          5h59m   10.190.5.10   k8s-master   <none>           <none>
-nsx-system    nsx-ncp-7f65bbf6f6-mr29b             1/1     Running             0          14m     10.190.5.12   <b>k8s-node2</b>    <none>           <none>
-nsx-system    nsx-node-agent-2tjb7                 2/2     Running             0          24s     10.190.5.12   <b>k8s-node2</b>    <none>           <none>
-nsx-system    nsx-node-agent-nqwgx                 2/2     Running             0          24s     10.190.5.11   <b>k8s-node1</b>    <none>           <none>
+nsx-system    nsx-ncp-7f65bbf6f6-mr29b             1/1     Running             0          14m     10.190.5.12   k8s-node2    <none>           <none>
+nsx-system    <b>nsx-node-agent-2tjb7</b>                 2/2     Running             0          24s     10.190.5.12   <b>k8s-node2</b>    <none>           <none>
+nsx-system    <b>nsx-node-agent-nqwgx</b>                 2/2     Running             0          24s     10.190.5.11   <b>k8s-node1</b>    <none>           <none>
 root@k8s-master:/home/vmware#
 </code></pre>
 
 **Note :** "-o wide" provides which Pod <=> Node mapping in the output
 
 Notice yet again the coredns pods are still in ContainerCreating state. 
-
-<pre><code>
-root@k8s-master:/home/vmware# kubectl get pods --all-namespaces <b>-o wide</b>
-NAMESPACE     NAME                                 READY   STATUS              RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
-kube-system   coredns-fb8b8dccf-b592z              0/1     ContainerCreating   0          6h      <none>        k8s-master   <none>           <none>
-kube-system   coredns-fb8b8dccf-j66fg              0/1     ContainerCreating   0          6h      <none>        k8s-master   <none>           <none>
-kube-system   etcd-k8s-master                      1/1     Running             0          5h59m   10.190.5.10   k8s-master   <none>           <none>
-kube-system   kube-apiserver-k8s-master            1/1     Running             0          5h59m   10.190.5.10   k8s-master   <none>           <none>
-kube-system   kube-controller-manager-k8s-master   1/1     Running             0          5h59m   10.190.5.10   k8s-master   <none>           <none>
-kube-system   kube-proxy-bk7rs                     1/1     Running             0          112m    10.190.5.12   k8s-node2    <none>           <none>
-kube-system   kube-proxy-j4p5f                     1/1     Running             0          6h      10.190.5.10   k8s-master   <none>           <none>
-kube-system   kube-proxy-mkm4w                     1/1     Running             0          137m    10.190.5.11   k8s-node1    <none>           <none>
-kube-system   kube-scheduler-k8s-master            1/1     Running             0          5h59m   10.190.5.10   k8s-master   <none>           <none>
-nsx-system    nsx-ncp-7f65bbf6f6-mr29b             1/1     Running             0          14m     10.190.5.12   k8s-node2    <none>           <none>
-nsx-system    nsx-node-agent-2tjb7                 2/2     Running             0          24s     10.190.5.12   k8s-node2    <none>           <none>
-nsx-system    nsx-node-agent-nqwgx                 2/2     Running             0          24s     10.190.5.11   k8s-node1    <none>           <none>
-root@k8s-master:/home/vmware# 
-</code></pre>
 
 At this stage simply delete those two coredns pods and K8S scheduler will recreate those two pods and both of them will be successfully get attached to the respective overlay network on NSX-T side.
 
