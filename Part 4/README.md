@@ -55,11 +55,13 @@ Below is a revisit of the NSX-T and K8S integration architecture (which was ment
 
 # NSX-T Topology
 
-Current state of the topology is still as the same that we created in Part 1. Shown below.
+Current state of the topology is still as the same that we created in Part 1. Shown below. The only difference now is K8S cluster is deployed hence the infrastructure Pods are scheduled on K8S nodes. 
 
 ![](2019-06-03_14-13-10.png)
 
-* On the diagram shown above, apart from the manually configured T0 K8S Domain Logical Router and Tier 1 K8S Node Management Logical Router, all the other logical routers (including the Tier 1 Load Balancer) are provisioned NCP. 
+Below screenshots from the NSX-T GUI show the current configuration of the dataplane with NSX-T.
+
+![](2019-05-28-17-45-13.png)
 
 LOGICAL SWITCHES
 
