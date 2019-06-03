@@ -986,7 +986,7 @@ k8s-node2    Ready    <none>   14s   v1.14.1
 
 **Note** : Whenever a new Kubernetes worker needs to be added to the cluster a new token can be generated on K8S master by using "_kubeadm token create --print-join-command_" and then the output will provide the command that needs to be used to join the new worker node.
 
-This concludes Part 2. We will take a deeper look into the PODs running in this initial state of the K8S cluster in Part 3 and explain the NSX NCP architecture.
+This concludes Part 3. We will take a deeper look into the PODs running in this initial state of the K8S cluster.
 
 ### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
 
