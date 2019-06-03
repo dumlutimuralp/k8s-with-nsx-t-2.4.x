@@ -27,7 +27,7 @@ Various solutions that have CNI plugin is listed [here](https://landscape.cncf.i
 
 This section explains the components that are implemented by NSX-T platform to enable Kubernetes integration. More detailed information can be found in official NSX-T NCP installation guide
 published [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-FB641321-319D-41DC-9D16-37D6BA0BC0DE.html) 
-###  The NSX Container Plugin (NCP) 
+##  The NSX Container Plugin (NCP) 
 
 Per [NSX-T Documentation](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-52A92986-0FDF-43A5-A7BB-C037889F7559.html) NCP is explained as following : NSX Container Plug-in (NCP) provides integration between NSX-T Data Center and container orchestrators such as Kubernetes, as well as integration between NSX-T Data Center and container-based PaaS (platform as a service) products such as OpenShift and Pivotal Cloud Foundry.
 
@@ -48,7 +48,7 @@ One other important thing to be aware of is, when NCP creates an object in NSX-T
 
 NCP container Image and the deployment yaml file (ncp-deployment.yaml) comes within the .zip file content as part of the NSX Container Plugin download from my.vmware.com.
  
-### NSX Node Agent 
+## NSX Node Agent 
 
 NSX Node Agent is also a container image that runs as an infrastructure POD on all of the worker nodes in the Kubernetes cluster. It is deployed as a K8S "DaemonSet".  A DaemonSet ensures that all or specific nodes run a copy of a Pod. When a node is added to the cluster, that node will have the respective Pod added to itself. More info on DaemonSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
@@ -58,12 +58,12 @@ In K8S, the native Kube Proxy component provides distributed east-west load bala
 
 NSX-T leverages Open vSwitch (OVS) on the K8S worker nodes. NSX Node Agent manages the OVS uplink and downlink configuration specifics; connecting the Kubernetes Pods to the OVS. Node Agent communicates with both NSX CNI Plugin and NSX Manager to achieve this. When a Pod is spun up on a K8S Node, NSX Node Agent is responsible for creating an OVS port and wiring that Pod to it and also tag the Pod' s traffic with the correct VLAN ID on the OVS uplink port (The use case of VLAN ID will be explained later on) Node Agent communicates with both NSX CNI Plugin and NSX Control Plane to achieve this.
 
-### NSX CNI Plugin
+## NSX CNI Plugin
 
 * NSX CNI plugin is installed on all Kubernetes nodes. (Which is done in Part 3 of this series) 
 * Kubelet, which is the K8S agent that runs on each Kubernetes Node, takes a set of PodSpecs (ie developer deploys an application with yaml file) that are provided through Kubernetes API. Kubelet then sends requests to the CNI Plugin to attach the Pods to the network. More info on kubelet can be found [here](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
 
-### Open vSwitch (OVS)
+## Open vSwitch (OVS)
 
 * NSX-T leverages Open vSwitch to provide two functions. 
 - container networking for K8S Pods
@@ -76,5 +76,5 @@ Below diagram shows how the overall architecture looks like. NSX CNI Plugin, NSX
 
 ![](2019-06-03-00-01-20.png)
 
-### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
+## [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
