@@ -210,9 +210,11 @@ The above yml file is also published (**WITHOUT** the nsx-system namespace resou
 
 ## Deploy NSX Container Plugin (NCP) 
 
+### Editing Paramaters in Configmap for NCP.ini  
+
 Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
 
-However, before moving forward, NSX-T specific environmental parameters need to be configured in the configmap section of the yml file.   Basically most of the parameters are commented out with a "#" character. The definitions of each parameter are in the yml file itself. 
+However, before moving forward, NSX-T specific environmental parameters need to be configured. The yml file contains a configmap for the configuration of the ncp.ini file for the NCP.  Basically most of the parameters are commented out with a "#" character. The definitions of each parameter are in the yml file itself. 
 
 The "ncp-deployment.yml" file can simply be edited with a text editor. The parameters in the file that are used in this environment has "#" removed. Below is a list and explanation of each :
 
@@ -246,6 +248,8 @@ The "ncp-deployment.yml" file can simply be edited with a text editor. The param
 
 **top_firewall_section_marker = Section1** and **bottom_firewall_section_marker = Section2** : This is to specify between which sections the K8S orchestrated firewall rules will fall in between. 
 
+_**One additional configuration that is made in the yml file is removing the "#" from the line where it says "serviceAccountName: ncp-svc-account" . So that the NCP Pod has appropriate role and access to K8S cluster resources**_ 
+
 The edited yml file, "ncp-deployment-custom.yml" in this case, can now be deployed from anywhere. In this environment this yml file is copied to /home/vmware folder in K8S Master Node and deployed in the "nsx-system" namespace with the following command.
 
 <pre><code>
@@ -269,19 +273,9 @@ root@k8s-master:/home/vmware#
 </code></pre>
 
 
-* Notice the changes to the existing logical switches/segments, Tier 1 Routers, Load Balancer below . All these newly created objects have been provisioned by NCP ( as soon as NCP Pod has been successfully deployed) by identifying the state of the K8S state and mapping the K8S objects to the NSX-T Logical Networking constructs.
+* Notice the changes to the existing logical switches/segments, Tier 1 Logical Routers, Load Balancer below . All these newly created objects have been provisioned by NCP (as soon as NCP Pod has been successfully deployed) by identifying the  the K8S desired state and mapping the K8S resources in etcd to the NSX-T Logical Networking constructs.
 
-![](2019-05-29-01-43-24.png)
 
-![](2019-05-29-01-43-59.png)
-
-![](2019-05-29-01-44-10.png)
-
-![](2019-05-29-01-45-44.png)
-
-![](2019-05-29-01-46-09.png)
-
-![](2019-05-29-01-46-30.png)
 
 * Notice that CoreDNS pods are still in ContainerCreating phase, the reason for that is NSX Node Agent (which is responsible for connecting the pods to a logical switch) is still not installed on K8S Worker Nodes yet (next step)
 
