@@ -139,14 +139,15 @@ NSX-T supports No-NAT for the Pods. Meaning that a routable IP address can also 
 # Firewall Sections
 [Back to Table of Contents](#Table-Of-Contents)
 
-Two new sections will be configured in the NSX-T distributed firewall rule base. Any K8S related firewall rule will be configured between these sections. Configuration steps shown below. 
+Two new sections will be configured in the NSX-T distributed firewall rule base. Any K8S related firewall rule will be configured between these sections. Configuration steps shown below. The names used for the sections is important as those will be referenced in Part 4. 
 
 _**Note**_ : Do not forget to check the current section to enable the "Add Section" option. 
 
 ![](2019-05-28-18-02-15.png)
 ![](2019-05-28-18-02-33.png)
-![](2019-05-28-18-06-58.png)
 ![](2019-06-03_14-36-30.png)
+![](2019-05-28-18-06-58.png)
+
 
 # Reachability
 [Back to Table of Contents](#Table-Of-Contents)
