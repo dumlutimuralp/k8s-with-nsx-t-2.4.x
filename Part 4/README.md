@@ -279,7 +279,7 @@ The same yml file is also published in VMware NSX-T 2.4 Installation Guide [here
 
 ### Editing Paramaters in Configmap for NCP.ini  
 
-Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
+Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is also provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
 
 However, before moving forward, NSX-T specific environmental parameters need to be configured. The yml file contains a configmap for the configuration of the ncp.ini file for the NCP.  Basically most of the parameters are commented out with a "#" character. The definitions of each parameter are in the yml file itself. 
 
@@ -346,9 +346,8 @@ root@k8s-master:/home/vmware#
 
 * Notice that CoreDNS pods are still in ContainerCreating phase, the reason for that is NSX Node Agent (which is responsible for connecting the pods to a logical switch) is still not installed on K8S Worker Nodes yet (next step)
 
-## Deploy NSX Node Agent
 ## 
-## Note how you commented in the ncp-svc-account line in ncp-deployment.yml file !!!
+
 ## Copy the edited NCP-Deployment file to a central location or to K8S Master Node local folder and then deploy the NSX NCP Pod in the "nsx-system" namespace by using the following command
 
 <pre><code>
