@@ -65,7 +65,7 @@ NSX-T leverages Open vSwitch (OVS) on the K8S worker nodes. NSX Node Agent manag
 
 ## Open vSwitch (OVS)
 
-* NSX-T leverages Open vSwitch to provide two functions. 
+NSX-T leverages Open vSwitch to provide two functions : 
 - container networking for K8S Pods
 - east west load balancing (aka K8S Service Type Cluster IP)
 
