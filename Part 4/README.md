@@ -2,7 +2,7 @@
 
 # Table Of Contents
 
-[XXXXX](#XXXXX)  
+[Current State](#Current State)  
 
 # Current State
 
@@ -54,6 +54,8 @@ Below is a revisit of the NSX-T and K8S integration architecture (which was ment
 ![Alt desc](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/2019-06-03-00-01-20.png)
 
 # NSX-T Topology
+
+Current state of the topology is still as the same that we created in Part 1. Shown below.
 
 * On the diagram shown above, apart from the manually configured T0 K8S Domain Logical Router and Tier 1 K8S Node Management Logical Router, all the other logical routers (including the Tier 1 Load Balancer) are provisioned NCP. 
 
