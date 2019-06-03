@@ -1,12 +1,14 @@
 # NSX-T & K8S - PART 4
 
+# Table Of Contents
 
+[XXXXX](#XXXXX)  
+ 
 
+# Current State
 
-
-## Current State in K8S Cluster
-
-### On the "k8s-master" node verify K8S cluster nodes status is "Ready"
+### K8S Cluster
+Previously 
 
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl get nodes</b>
