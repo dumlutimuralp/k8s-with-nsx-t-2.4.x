@@ -4,7 +4,7 @@
 
 [Current State](#Current-State)   
 [NSX Container Plugin (NCP) Installation](#NSX-Container-Plugin-Installation)
-[NSX Node Agent Installation] (#NSX-Node-Agent-Installation)
+[NSX Node Agent Installation](#NSX-Node-Agent-Installation)
 
 # Current State
 [Back to Table of Contents](#Table-Of-Contents)
