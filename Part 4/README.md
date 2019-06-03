@@ -210,9 +210,13 @@ The above yml file is also published (**WITHOUT** the nsx-system namespace resou
 
 ## Deploy NSX Container Plugin (NCP) 
 
-Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal.    
+Another yml file, "ncp-deployment.yml" will be used to deploy NSX Container Plugin. This yml file is provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
 
-To deploy the NSX Container Plugin, NSX-T specific environmental parameters need to be configured in the configmap section of the deployment. Following parameters need to be configured in the configmap section : 
+However, before moving forward, NSX-T specific environmental parameters need to be configured in the configmap section of the yml file.  The file can simply be edited with a text editor. Basically most of the parameters are commented out with a "#" character. "#" is removed for the parameters that will be used. Below is a list and explanation of each parameter :
+
+**cluster = k8scluster1** : This parameter is used to identify the NSX-T objects that are provisioned for this K8S cluster. Notice that we configured the "k8s-cluster1" tag with the "ncp/cluster" scope on NSX-T side.
+
+**enable_snat = True** : This parameter basically defines that all the K8S Pods will be NATed in this K8S cluster. (unless K8S annotations are used to specifically not to apply NAT for a specific namespace/
 
 ## Copy the edited NCP-Deployment file to a central location or to K8S Master Node local folder and then deploy the NSX NCP Pod in the "nsx-system" namespace by using the following command
 
