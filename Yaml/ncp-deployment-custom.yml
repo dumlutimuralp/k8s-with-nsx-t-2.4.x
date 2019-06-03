@@ -1,0 +1,375 @@
+# yaml template for NCP Deployment
+# Right kubernetes API and NSX API parameters, and NCP Docker image
+# must be specified.
+# This yaml file is part of NCP 2.4.1 release.
+
+# ConfigMap for ncp.ini
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nsx-ncp-config
+  labels:
+    version: v1
+data:
+  ncp.ini: |
+    [DEFAULT]
+
+    # Set to True to enable logging to stderr
+    #use_stderr = True
+    # Set to True to send logs to the syslog daemon
+    #use_syslog = False
+    # Enabler debug-level logging for the root logger. If set to True, the
+    # root logger debug level will be DEBUG, otherwise it will be INFO.
+    #debug = True
+
+    # The log file path must be set to something like '/var/log/nsx-ujo/'. By
+    # default, logging to file is disabled.
+    #log_dir = None
+
+    # Name of log file to send logging output to. If log_dir is set but log_file is
+    # not, the binary name will be used, i.e., ncp.log, nsx_node_agent.log and
+    # nsx_kube_proxy.log.
+    #log_file = None
+
+    # max MB for each compressed file. Defaults to 100 MB
+    #log_rotation_file_max_mb = 100
+
+    # Total number of compressed backup files to store. Defaults to 5.
+    #log_rotation_backup_count = 5
+    [coe]
+    #
+    # Common options for Container Orchestrators
+    #
+
+    # Container orchestrator adaptor to plug in
+    # Options: kubernetes (default), openshift, pcf.
+    #adaptor = kubernetes
+
+    # Specify cluster for adaptor. It is a prefix of NSX resources name to
+    # distinguish multiple clusters who are using the same NSX.
+    # This is also used as the tag of IP blocks for cluster to allocate
+    # IP addresses. Different clusters should have different IP blocks.
+    cluster = k8scluster1
+
+    # Log level for the NCP operations. If set, overrides the level specified
+    # for the root logger. Possible values are NOTSET, DEBUG, INFO, WARNING,
+    # ERROR, CRITICAL
+    #loglevel=None
+
+    # Log level for the NSX API client operations. If set, overrides the level
+    # specified for the root logger. Possible values are NOTSET, DEBUG, INFO,
+    # WARNING, ERROR, CRITICAL
+    nsxlib_loglevel=INFO
+
+    # Once enabled, all projects in this cluster will be mapped to a NAT
+    # topology in NSX backend
+    enable_snat = True
+
+    # The type of container node. Possible values are HOSTVM, BAREMETAL.
+    #node_type = HOSTVM
+
+    # The time in seconds for NCP/nsx_node_agent to recover the connection to
+    # NSX manager/container orchestrator adaptor/Hyperbus before exiting.
+    # If the value is 0, NCP/nsx_node_agent won't exit automatically when
+    # the connection check fails
+    #connect_retry_timeout = 0
+
+    [ha]
+    #
+    # NCP High Availability configuration options
+    #
+
+    # Time duration in seconds of mastership timeout. NCP instance will
+    # remain master for this duration after elected. Note that the heartbeat
+    # period plus the update timeout must not be greater than this period. This
+    # is done to ensure that the master instance will either confirm
+    # liveness or fail before the timeout.
+    #master_timeout = 18
+
+    # Time in seconds between heartbeats for elected leader. Once an NCP
+    # instance is elected master, it will periodically confirm liveness based
+    # on this value.
+    #heartbeat_period = 6
+
+    # Timeout duration in seconds for update to election resource. The default
+    # value is calculated by subtracting heartbeat period from master timeout.
+    # If the update request does not complete before the timeout it will be
+    # aborted. Used for master heartbeats to ensure that the update finishes
+    # or is aborted before the master timeout occurs.
+    #update_timeout = <None>
+
+    [k8s]
+    #
+    # From kubernetes
+    #
+
+    # IP address of the Kubernetes API Server. If not set, will try to
+    # read and use the Kubernetes Service IP from environment variable
+    # KUBERNETES_SERVICE_HOST.
+    #apiserver_host_ip = <ip_address>
+
+    # Port of the Kubernetes API Server.
+    # Set to 6443 for https. If not set, will try to
+    # read and use the Kubernetes Service port from environment
+    # variable KUBERNETES_SERVICE_PORT.
+    #apiserver_host_port = <port>
+
+    # Specify a CA bundle file to use in verifying the Kubernetes API server
+    # certificate. (string value)
+    #ca_file = <None>
+    ca_file = /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+
+    # Full path of the Token file to use for authenticating with the k8s API server.
+    #client_token_file = <None>
+    client_token_file = /var/run/secrets/kubernetes.io/serviceaccount/token
+
+    # Full path of the client certificate file to use for authenticating
+    # with the k8s API server. It must be specified together with
+    # "client_private_key_file"
+    #client_cert_file = <None>
+
+    # Full path of the client certificate file to use for authenticating
+    # with the k8s API server. It must be specified together with
+    # "client_cert_file"
+    #client_private_key_file = <None>
+
+    # Log level for the kubernetes adaptor. If set, overrides the level specified
+    # for the root logger. Possible values are NOTSET, DEBUG, INFO, WARNING,
+    # ERROR, CRITICAL
+    #loglevel=None
+
+    # Specify how ingress controllers are expected to be deployed. Possible values:
+    # hostnetwork or nat. NSX will create NAT rules only in the second case.
+    ingress_mode = NAT
+
+    # Option to specify ip address for HTTP and HTTPS ingresses
+    #http_and_https_ingress_ip = <ip_address>
+
+    [nsx_v3]
+    #
+    # From nsx
+    #
+
+    # IP address of one or more NSX managers separated by commas. The IP address
+    # should be of the form (list value):
+    # <ip_address1>[:<port1>],<ip_address2>[:<port2>],...
+    # HTTPS will be used for communication with NSX. If port is not provided,
+    # port 443 will be used.
+    nsx_api_managers = 10.190.1.80
+    nsx_api_user = admin
+    nsx_api_password = VMware123!VMware123!
+
+    # If true, the NSX Manager server certificate is not verified. If false the CA
+    # bundle specified via "ca_file" will be used or if unsest the default system
+    # root CAs will be used. (boolean value)
+    insecure = True
+
+    # Specify one or a list of CA bundle files to use in verifying the NSX Manager
+    # server certificate. This option is ignored if "insecure" is set to True. If
+    # "insecure" is set to False and ca_file is unset, the system root CAs will be
+    # used to verify the server certificate. (list value)
+    #ca_file = <None>
+
+    # Path to NSX client certificate file. If specified, the nsx_api_user and
+    # nsx_api_passsword options will be ignored. This option must be specified
+    # along with "nsx_api_private_key_file" option.
+    #nsx_api_cert_file = <None>
+
+    # Path to NSX client private key file. If specified, the nsx_api_user and
+    # nsx_api_passsword options will be ignored. This option must be specified
+    # along with "nsx_api_cert_file" option.
+    #nsx_api_private_key_file = <None>
+
+    # The time in seconds before aborting a HTTP connection to a NSX manager.
+    # (integer value)
+    #http_timeout = 10
+
+    # The time in seconds before aborting a HTTP read response from a NSX manager.
+    # (integer value)
+    #http_read_timeout = 180
+
+    # Maximum number of times to retry a HTTP connection. (integer value)
+    #http_retries = 3
+
+    # Maximum concurrent connections to each NSX manager. (integer value)
+    #concurrent_connections = 10
+
+    # The amount of time in seconds to wait before ensuring connectivity to the NSX
+    # manager if no manager connection has been used. (integer value)
+    #conn_idle_timeout = 10
+
+    # Number of times a HTTP redirect should be followed. (integer value)
+    #redirects = 2
+
+    # Maximum number of times to retry API requests upon stale revision errors.
+    # (integer value)
+    #retries = 10
+
+    # Name or UUID of the top-tier router for the container cluster network,
+    # which could be either tier0 or tier1. This option deprecates the
+    # tier0_router option.
+    top_tier_router = T0-K8S-Domain
+
+    # Name or UUID of the NSX overlay transport zone that will be used for creating
+    # logical switches for container networking. It must refer to an existing
+    # transport zone on NSX and every hypervisor that hosts the Kubernetes
+    # node VMs must join this transport zone
+    overlay_tz = TZ-Overlay
+
+    # Subnet prefix of IP block. IP block will be retrieved from NSX API and
+    # recognised by tag 'cluster'.
+    # Prefix should be less than 31, as two addresses(the first and last addresses)
+    # need to be network address and broadcast address.
+    # The prefix is fixed after the first subnet is created. It can be changed only
+    # if there is no subnets in IP block.
+    subnet_prefix = 24
+
+    # Indicates whether distributed firewall DENY rules are logged.
+    log_dropped_traffic = True
+
+    # Option to use native loadbalancer support.
+    use_native_loadbalancer = True
+
+    # Option to auto scale layer 4 load balancer or not. If set to True, NCP
+    # will create additional LB when necessary upon K8s Service of type LB
+    # creation/update.
+    #l4_lb_auto_scaling = True
+
+    # Used when ingress class annotation is missing
+    # if set to true, the ingress will be handled by nsx lbs
+    # otherwise will be handled by 3rd party ingress controller (e.g. nginx)
+    default_ingress_class_nsx = True
+
+    # Path to the default certificate file for HTTPS load balancing
+    #lb_default_cert_path = <None>
+
+    # Path to the private key file for default certificate for HTTPS load balancing
+    #lb_priv_key_path = <None>
+
+    # Option to set load balancing algorithm in load balancer pool object.
+    # Available choices are
+    # ROUND_ROBIN/LEAST_CONNECTION/IP_HASH/WEIGHTED_ROUND_ROBIN
+    #pool_algorithm = 'ROUND_ROBIN'
+
+    # Option to set load balancer service size. Available choices are
+    # SMALL/MEDIUM/LARGE.
+    # MEDIUM Edge VM (4 vCPU, 8GB) only supports SMALL LB.
+    # LARGE Edge VM (8 vCPU, 16GB) only supports MEDIUM and SMALL LB.
+    # Bare Metal Edge (IvyBridge, 2 socket, 128GB) supports LARGE, MEDIUM and
+    # SMALL LB
+    service_size = 'SMALL'
+
+    # Choice of persistence type for ingress traffic through L7 Loadbalancer.
+    # Accepted values:
+    # 'cookie'
+    # 'source_ip'
+    #l7_persistence = <None>
+
+    # Server (LoadBalancer) side timeout value on layer7 persistence profile.
+    # Defaults to 10800 (seconds). Integer.
+    #l7_persistence_timeout = <None>
+
+    # Choice of persistence type for ingress traffic through L4 Loadbalancer.
+    # Accepted values:
+    # 'source_ip'
+    #l4_persistence = <None>
+
+    # Name or UUID of the NSX lb service that can be attached by virtual servers
+    #lb_service = <None>
+
+    # Enable x_forwarded_for for ingress, supported values are INSERT or REPLACE
+    #x_forwarded_for = <None>
+
+    # Name or UUID of the container ip blocks that will be used for creating
+    # subnets. If name, it must be unique
+    container_ip_blocks = K8S-POD-IP-BLOCK
+
+    # Name or UUID of the container ip blocks that will be used for creating
+    # subnets for no-SNAT projects. If specified, no-SNAT projects will use these
+    # ip blocks ONLY. Otherwise they will use container_ip_blocks
+    #no_snat_ip_blocks = <None>
+
+    # Name or UUID of the external ip pools that will be used for allocating IP
+    # addresses which will be used for translating container IPs via SNAT rules
+    external_ip_pools = K8S-NAT-Pool
+
+    # Name or UUID of the external ip pools that will be used for allocating IP
+    # addresses for exposing LoadBalancer type service and ingress
+    external_ip_pools_lb = K8S-LB-Pool
+
+    # Firewall sections for this cluster will be created below this mark section
+    top_firewall_section_marker = Section1
+
+    # Firewall sections for this cluster will be created above this mark section
+    bottom_firewall_section_marker = Section2
+
+    # Option to enabling error reporting through NSXError CRD
+    #enable_nsx_err_crd = False
+
+    # Option for user to define the maximum allowed virtual servers to be created
+    # for Service of type LoadBalancer in the cluster. The value should be an
+    # integer greater than zero.
+    # max_allowed_virtual_servers = <1000>
+
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  # VMware NSX Container Plugin
+  name: nsx-ncp
+  labels:
+    tier: nsx-networking
+    component: nsx-ncp
+    version: v1
+spec:
+  # Active-Active/Active-Standby is not supported in current release.
+  # so replica *must be* 1.
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        tier: nsx-networking
+        component: nsx-ncp
+        version: v1
+    spec:
+      # NCP shares the host management network.
+      hostNetwork: true
+      # If configured with ServiceAccount, update the ServiceAccount
+      # name below.
+      serviceAccountName: ncp-svc-account
+      containers:
+        - name: nsx-ncp
+          # Docker image for NCP
+          image: nsx-ncp
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NCP_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NCP_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - timeout 5 check_pod_liveness nsx-ncp
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 5
+          volumeMounts:
+          - name: config-volume
+            # NCP expects ncp.ini is present in /etc/nsx-ujo
+            mountPath: /etc/nsx-ujo/ncp.ini
+            subPath: ncp.ini
+            readOnly: true
+      volumes:
+        - name: config-volume
+          # ConfigMap nsx-ncp-config is expected to supply ncp.ini
+          configMap:
+            name: nsx-ncp-config
