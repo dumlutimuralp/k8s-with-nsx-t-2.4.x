@@ -2,7 +2,8 @@
 
 # Table Of Contents
 
-[Current State](#Current State)  
+[Current State](#Current State) 
+[NSX Container Plugin (NCP) and NSX Node Agent Installation](#NSX-Container-Plugin-(NCP)-and-NSX-Node-Agent-Installation)
 
 # Current State
 
@@ -77,13 +78,17 @@ IP Pools
 
 Load Balancer
 
+No load balancers exist yet.
+
 ![](2019-05-29-00-06-34.png)
 
 FIREWALL
 
+Only the two empty firewall sections and the default section exist in the rule base.
+
 ![](2019-05-28-18-06-58.png)
 
-
+# NSX Container Plugin (NCP) and NSX Node Agent Installation
 
 ## Load The Docker Image for NSX NCP and Node Agent on K8S Nodes
 
