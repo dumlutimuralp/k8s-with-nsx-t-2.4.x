@@ -168,7 +168,7 @@ In the above screenshot :
 
 A few objects in NSX-T need to be tagged for integration with K8S. The reason for this will be explained in Part 4. 
 
-Following objects will be tagged with "k8s-cluster1" and with scope of "ncp/cluster" (and also "ncp/node_name" for K8S Nodes)   
+Following objects will be tagged with "k8s-cluster1" and with scope of "ncp/cluster" and "ncp/node_name".
 
 _**Why "k8s-cluster1" ? Will be explained with detail in Part 4 of this series. In short, the same NSX-T domain can be integrated with multiple K8S clusters. Hence it is important to track each NSX-T object with the respective cluster number or name.**_
 
