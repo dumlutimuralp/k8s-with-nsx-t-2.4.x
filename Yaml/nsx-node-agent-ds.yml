@@ -1,7 +1,7 @@
 # yaml template for nsx-node-agent and nsx-kube-proxy DaemonSet
 # Right kubernetes API parameters and NCP Docker image must be
 # specified.
-# This yaml file is part of NCP 2.4.0 release.
+# This yaml file is part of NCP 2.4.1 release.
 
 # ConfigMap for ncp.ini
 apiVersion: v1
@@ -81,21 +81,22 @@ data:
 
     # Time duration in seconds of mastership timeout. NCP instance will
     # remain master for this duration after elected. Note that the heartbeat
-    # period plus the update timeout must be less than this period. This
+    # period plus the update timeout must not be greater than this period. This
     # is done to ensure that the master instance will either confirm
     # liveness or fail before the timeout.
-    #master_timeout = 9
+    #master_timeout = 18
 
     # Time in seconds between heartbeats for elected leader. Once an NCP
     # instance is elected master, it will periodically confirm liveness based
     # on this value.
-    #heartbeat_period = 3
+    #heartbeat_period = 6
 
-    # Timeout duration in seconds for update to election resource. If the
-    # update request does not complete before the timeout it will be
+    # Timeout duration in seconds for update to election resource. The default
+    # value is calculated by subtracting heartbeat period from master timeout.
+    # If the update request does not complete before the timeout it will be
     # aborted. Used for master heartbeats to ensure that the update finishes
     # or is aborted before the master timeout occurs.
-    #update_timeout = 3
+    #update_timeout = <None>
 
     [k8s]
     #
