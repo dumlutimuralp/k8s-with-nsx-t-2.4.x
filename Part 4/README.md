@@ -348,8 +348,11 @@ LOGICAL SWITCHES
 LOGICAL ROUTERS
 ![](2019-06-03_20-39-41.png)
 
-IP POOLS
+IP POOLS per Namespace
 ![](2019-06-03_21-06-24.png)
+
+SNAT Pool
+![](2019-06-03_20-41-55.png)
 
 SNAT RULES
 ![](2019-06-03_20-39-59.png)
@@ -360,12 +363,8 @@ LOAD BALANCER
 VIRTUAL SERVERS for INGRESS on LOAD BALANCER
 ![](2019-06-03_20-40-40.png)
 
-![](2019-06-03_20-41-55.png)
-
+FIREWALL RULEBASE
 ![](2019-06-03_20-43-42.png)
-
-
-
 
 * Notice that CoreDNS pods are still in ContainerCreating phase, the reason for that is NSX Node Agent (which is responsible for connecting the pods to a logical switch) is still not installed on K8S Worker Nodes yet (next step)
 
