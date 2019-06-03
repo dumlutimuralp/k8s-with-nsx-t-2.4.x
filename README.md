@@ -29,7 +29,22 @@ Below articles focus on the basic integration principles of NSX-T and K8S. Hopef
 
 ### [Part 1](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%201/README.md)
 
+* Topology Information
+* Fabric Preperation
+* Host Transport Node
+* Edge Transport Node
+* Edge Cluster
+* Tier 0 Logical Router
+* Tier 1 Logical Router
+* Tier 0 BGP Configuration
+* K8S Node Dataplane Connectivity
+
+
 ### [Part 2](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
+
+* Container Network Interface (CNI)
+* NSX-T Components in Kubernetes Integration
+* NSX-T & K8S Overall Architecture
 
 ### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
