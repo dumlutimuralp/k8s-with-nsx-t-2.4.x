@@ -339,6 +339,8 @@ kube-system   kube-scheduler-k8s-master            1/1     Running             0
 root@k8s-master:/home/vmware#
 </code></pre>
 
+As NCP is deployed as replicaset (replicas :1 is specified in deployment yml) , K8S will make sure that at a given time a single NCP Pod is running and healthy.
+
 **Notice the changes to the existing logical switches/segments, Tier 1 Logical Routers, Load Balancer below . All these newly created objects have been provisioned by NCP (as soon as NCP Pod has been successfully deployed) by identifying the  the K8S desired state and mapping the K8S resources in etcd to the NSX-T Logical Networking constructs.**
 
 LOGICAL SWITCHES
@@ -382,6 +384,8 @@ The edited yml file, "nsx-node-agent-ds-custom.yml" in this case, can now be dep
 root@k8s-master:/home/vmware# <b>kubectl create -f nsx-node-agent-ds-custom.yml --namespace=nsx-system</b>
 </code></pre>
 
+As NSX Node Agent is deployed as a deamonset it will be running on each worker node in the K8S cluster.
+
 <pre><code>
 root@k8s-master:/home/vmware# kubectl get pods --all-namespaces -o wide
 NAMESPACE     NAME                                 READY   STATUS              RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
@@ -402,9 +406,7 @@ root@k8s-master:/home/vmware#
 
 **Note :** "-o wide" provides which Pod <=> Node mapping in the output
 
-Notice yet again the coredns pods are still in ContainerCreating state. 
-
-At this stage simply delete those two coredns pods and K8S scheduler will recreate those two pods and both of them will be successfully get attached to the respective overlay network on NSX-T side.
+Notice yet again the coredns pods are still in ContainerCreating state. At this stage simply delete those two coredns pods and K8S scheduler will recreate those two pods and both of them will be successfully get attached to the respective overlay network on NSX-T side.
 
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl delete pod/coredns-fb8b8dccf-b592z --namespace=kube-system</b>
