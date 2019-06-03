@@ -57,14 +57,6 @@ Below is a revisit of the NSX-T and K8S integration architecture (which was ment
 
 * On the diagram shown above, apart from the manually configured T0 K8S Domain Logical Router and Tier 1 K8S Node Management Logical Router, all the other logical routers (including the Tier 1 Load Balancer) are provisioned NCP. 
 
-FIREWALL
-
-![](2019-05-28-18-02-15.png)
-
-![](2019-05-28-18-02-33.png)
-
-![](2019-05-28-18-06-58.png)
-
 LOGICAL SWITCHES
 
 ![](2019-05-28-17-45-13.png)
@@ -80,6 +72,15 @@ IP Pools
 Load Balancer
 
 ![](2019-05-29-00-06-34.png)
+
+FIREWALL
+
+![](2019-05-28-18-02-15.png)
+
+![](2019-05-28-18-02-33.png)
+
+![](2019-05-28-18-06-58.png)
+
 
 
 ## Load The Docker Image for NSX NCP and Node Agent on K8S Nodes
