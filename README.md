@@ -33,15 +33,15 @@ Below articles focus on the basic integration principles of NSX-T and K8S. Hopef
 
 ### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
-Ubuntu OS Installation
-Topology
-IPAM and IP Pools
-Reachability
-Tagging NSX-T Objects for K8S
-CNI Plugin Installation
-Open vSwitch (OVS) Installation
-Docker Installation
-Deploy K8S
+* Ubuntu OS Installation
+* Topology
+* IPAM and IP Pools
+* Reachability
+* Tagging NSX-T Objects for K8S
+* CNI Plugin Installation
+* Open vSwitch (OVS) Installation
+* Docker Installation
+* Deploy K8S
 
 ### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
 
