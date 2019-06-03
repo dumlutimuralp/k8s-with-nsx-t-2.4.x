@@ -988,7 +988,7 @@ k8s-node2    Ready    <none>   14s   v1.14.1
 
 This concludes Part 2. We will take a deeper look into the PODs running in this initial state of the K8S cluster in Part 3 and explain the NSX NCP architecture.
 
-### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
+### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
 
 # Appendix
 [Back to Table of Contents](#Table-Of-Contents)
@@ -1066,7 +1066,6 @@ vmware@k8s-master:~$ <b>ip addr</b>
 3: ens192: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
     link/ether 00:50:56:b4:bd:d7 brd ff:ff:ff:ff:ff:ff
 vmware@ubuntu:~$
-
 </code></pre>
 
 ### Reboot the node
@@ -1075,6 +1074,6 @@ vmware@ubuntu:~$
 
 [Back to Table of Contents](#Table-Of-Contents)
 
-### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
+### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
 
 
