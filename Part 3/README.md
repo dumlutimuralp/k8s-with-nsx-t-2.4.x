@@ -955,7 +955,7 @@ kubeadm join 10.190.5.10:6443 --token uvty9c.o9lpnuxin9vavyfa \
 
 * Preflight check error about cgroup driver can be ignored in the test environment however in real life scenarios its impact is well explained in this thread : https://github.com/kubernetes/kubeadm/issues/1394
 
-* By default K8S do not schedule any workload/Application Pods on the master node. You can see that in the logs in the above output. (...by adding the taints [node-role.kubernetes.io/master:NoSchedule])
+* By default K8S do not schedule any workload/application Pods on the master node. You can see that in the logs in the above output. (...by adding the taints [node-role.kubernetes.io/master:NoSchedule])
 
 ### Configure the Environment variables for Kubeconfig
 
