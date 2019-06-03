@@ -166,15 +166,9 @@ In the above screenshot :
 # Tagging NSX-T Objects for K8S
 [Back to Table of Contents](#Table-Of-Contents)
 
-A few objects in NSX-T need to be tagged for integration with K8S. The reason for this will be explained in Part 4. 
-
-Following objects will be tagged with "k8s-cluster1" and with scope of "ncp/cluster" and "ncp/node_name".
+In this section the logical ports (in the "K8SNodeDataPlaneLS"), to which the Kubernetes Nodes second vNIC is connected to, will be tagged with "k8s-cluster1" and with scope of "ncp/cluster" and "ncp/node_name".
 
 _**Why "k8s-cluster1" ? Will be explained with detail in Part 4 of this series. In short, the same NSX-T domain can be integrated with multiple K8S clusters. Hence it is important to track each NSX-T object with the respective cluster number or name.**_
-
-## K8S Nodes
-
-In this section the logical ports (in the "K8SNodeDataPlaneLS"), to which the Kubernetes Nodes second vNIC is connected to, will be tagged.
 
 Navigate to "Advanced Networking & Security -> Networking -> Switching" in the NSX-T GUI and then CLICK on "K8SNodeDataPlaneLS". On the top right click on "Related" then select "Ports" on the dropdown menu. (shown below)
 
