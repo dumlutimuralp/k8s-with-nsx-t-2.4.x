@@ -3,13 +3,12 @@
 # Table Of Contents
 
 [XXXXX](#XXXXX)  
- 
 
 # Current State
 
 ## K8S Cluster
 
-Previously in Part 3 K8S cluster has successfully been formed using kubeadm. 
+Previously in Part 3, K8S cluster has successfully been formed using kubeadm. 
 
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl get nodes</b>
@@ -19,7 +18,19 @@ k8s-node1    <b>Ready</b>    <none>   50s   v1.14.1
 k8s-node2    <b>Ready</b>    <none>   14s   v1.14.1
 </code></pre>
 
-To see which infrastructure Pods are automatically provisioned during the initialization of K8S cluster :
+The namespaces that are provisioned by default can be seen using the following kubectl command.
+
+<pre><code>
+root@k8s-master:~# <b>kubectl get namespaces</b>
+NAME              STATUS   AGE
+default           Active   4h36m
+kube-node-lease   Active   4h36m
+kube-public       Active   4h36m
+kube-system       Active   4h36m
+root@k8s-master:~#
+</code></pre>
+
+To see which infrastructure Pods are automatically provisioned during the initialization of K8S cluster, following command can be used.
 
 <pre><code>
 root@k8s-master:~# <b>kubectl get pods --all-namespaces</b>
@@ -36,17 +47,11 @@ kube-system   kube-scheduler-k8s-master            1/1     Running             0
 root@k8s-master:~#
 </code></pre>
 
-<pre><code>
-root@k8s-master:~# <b>kubectl get namespaces</b>
-NAME              STATUS   AGE
-default           Active   4h36m
-kube-node-lease   Active   4h36m
-kube-public       Active   4h36m
-kube-system       Active   4h36m
-root@k8s-master:~#
-</code></pre>
+_**Notice "coredns-xxx" Pods are stuck in "ContainerCreating" phase, the reason is although kubelet agent on K8S worker Node sent a request to NSX-T CNI Plugin module to start provisioning the individual network interface for these Pods, since the NSX Node Agent is not installed on the K8S worker nodes yet (Nor the NSX Container Plugin for attaching NSX-T management plane to K8S API) , kubelet can not move forward with the Pod creation.
 
-The reason "coredns-xxx" Pods are in "ContainerCreating" phase is K8S CNI is still waiting for a response from CNI integrated solution , which is NSX-T in this case to attach these Pods to an network. However , since NSX Container Plugin (NCP) component has not been installed yet this attachment cannot be realized yet. 
+Below is a reminder of the integration architecture (that is shown in Part 2 of this series)
+
+![](Part 2/2019-06-03-00-01-20.png)
 
 # Overall Topology
 
