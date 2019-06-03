@@ -988,7 +988,7 @@ k8s-node2    Ready    <none>   14s   v1.14.1
 
 This concludes Part 2. We will take a deeper look into the PODs running in this initial state of the K8S cluster in Part 3 and explain the NSX NCP architecture.
 
-< SHORTCUT TO PART 3>
+### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
 
 # Appendix
 [Back to Table of Contents](#Table-Of-Contents)
