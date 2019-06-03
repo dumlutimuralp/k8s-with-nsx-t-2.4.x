@@ -4,7 +4,8 @@
 
 [Ubuntu OS Installation](#Ubuntu-OS-Installation)  
 [Topology](#Topology)   
-[IPAM and IP Pools](#IPAM-and-IP-Pools)  
+[IPAM and IP Pools](#IPAM-and-IP-Pools) 
+[Firewall Sections](#Firewall-Sections)
 [Reachability](#Reachability)  
 [Tagging NSX-T Objects for K8S](#Tagging-NSX-T-Objects-for-K8S)  
 [CNI Plugin Installation](#CNI-Plugin-Installation)   
@@ -134,6 +135,9 @@ When a developer creates a new K8S namespace, then an IP is picked from this poo
 NSX-T supports configuring a persistent SNAT IP per K8S namespace or per K8S service by using native K8S annotations. This provides granular operations for Pods to access a physical database for instance.
 
 NSX-T supports No-NAT for the Pods. Meaning that a routable IP address can also be used for K8S Pods, rather then applying SNAT on Tier0. However the default option is SNAT (hence K8S-NAT-Pool is configured above) . This option can be changed in the NCP configuration, which is explained later on in the next chapter.
+
+#Firewall Sections
+[Back to Table of Contents](#Table-Of-Contents)
 
 # Reachability
 [Back to Table of Contents](#Table-Of-Contents)
