@@ -70,6 +70,7 @@ NSX-T leverages Open vSwitch (OVS) on the K8S worker nodes. NSX Node Agent manag
 - east west load balancing (aka K8S Service Type Cluster IP)
 
 # NSX-T & K8S Overall Architecture
+[Back to Table of Contents](#Table-Of-Contents)
 
 Below diagram shows how the overall architecture looks like. NSX CNI Plugin, NSX Node Agent Pod, NSX Container Plugin Pod, the K8S deployment files for both these Pods and NSX CNI Plugin will be extracted and installed in the Part 3 of this series.
 
