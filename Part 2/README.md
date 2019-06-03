@@ -76,5 +76,5 @@ Below diagram shows how the overall architecture looks like. NSX CNI Plugin, NSX
 
 ![](2019-06-03-00-56-31.png)
 
-[Part 3](https://github.com/dumlutimuralp/nsx-t-k8s#part-3)
+### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s#part-3)
 
