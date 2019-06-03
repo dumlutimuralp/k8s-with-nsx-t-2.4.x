@@ -10,7 +10,7 @@
 [CNI Plugin Installation](#CNI-Plugin-Installation)   
 [Open vSwitch (OVS) Installation](#Open-vSwitch-Installation)  
 [Docker Installation](#Docker-Installation)   
-[Deploy K8S](#Deploy-K8S)      
+[K8S Installation](#K8S Installation)      
 
 # Ubuntu OS Installation
 [Back to Table of Contents](#Table-Of-Contents)
@@ -784,7 +784,7 @@ Server: Docker Engine - Community
   Experimental:     false
 </code></pre>
 
-# Deploy K8S
+# K8S Installation
 [Back to Table of Contents](#Table-Of-Contents)
 
 ## Install kubelet, kubeadm, kubectl
