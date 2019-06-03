@@ -10,7 +10,7 @@
 [CNI Plugin Installation](#CNI-Plugin-Installation)   
 [Open vSwitch (OVS) Installation](#Open-vSwitch-Installation)  
 [Docker Installation](#Docker-Installation)   
-[K8S Installation](#K8S Installation)      
+[K8S Installation](#K8S-Installation)      
 
 # Ubuntu OS Installation
 [Back to Table of Contents](#Table-Of-Contents)
