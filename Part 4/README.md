@@ -434,51 +434,41 @@ At this stage the topology looks like this
 
 ![](2019-06-04_00-38-29.jpg)
 
-## Test Pod 
+## Test Application Deployment
 
-* Let' s create a test pod in it (in imperative way)
+Let' s create a new namespace 
 
 <pre><code>
-root@k8s-master:/home/vmware# <b>kubectl run testdeployment --image=praqma/network-multitool --replicas=2</b>
+root@k8s-master:/home/vmware# <b>kubectl create namespace demons</b>
+namespace/demons created
+root@k8s-master:/home/vmware#
+</code></pre>
+
+A new logical switch is created for "demons" namespace , shown below
+![](2019-06-04_01-06-11.jpg)
+
+A new logical router is also created for "demons" namespace, shown below
+![](2019-06-04_01-09-52.jpg)
+
+
+
+
+
+Deploy a sample app in it (in imperative way)
+
+<pre><code>
+
+root@k8s-master:/home/vmware# <b>kubectl run nsxtestapp --image=dumlutimuralp/nsx-demo --replicas=2 --namespace=demons</b>
 kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
-deployment.apps/testdeployment created
-root@k8s-master:/home/vmware#
+<b>deployment.apps/testapp created</b>
+root@k8s-master:/home/vmware# 
 </code></pre>
 
-Note : Notice the message in the output. K8S is recommending declerative way of implementing pods. (kubectl create -f <aaa.yml>)
+Note : Notice the message in the output. K8S is recommending declerative way of implementing pods. 
 
-* Below command is basic, it is used to list the pods running in the default namespace. As shown below, the deployment that has just been created has provisioned
-two pods (since replicas has been set to 2).
 
-<pre><code>
-root@k8s-master:/home/vmware# kubectl get pods -o wide
-NAME                             READY   STATUS    RESTARTS   AGE   IP           NODE        NOMINATED NODE   READINESS GATES
-testdeployment-884f76955-7xvwf   1/1     Running   0          30s   172.25.1.2   k8s-node1   <none>           <none>
-testdeployment-884f76955-rxvb9   1/1     Running   0          30s   172.25.1.3   k8s-node2   <none>           <none>
-root@k8s-master:/home/vmware#
-</code></pre>
 
-* Below is a "Traceroute" output from one of the pods that has just been created. 
-
-<pre><code>
-root@k8s-master:/home/vmware# <b>kubectl exec -it testdeployment-884f76955-7xvwf /bin/bash</b>
-bash-4.4# traceroute 8.8.8.8
-traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 46 byte packets
- 1  172.25.1.1 (172.25.1.1)  1.257 ms  0.280 ms  0.149 ms 
- 2  100.64.208.4 (100.64.208.4)  0.170 ms  0.285 ms  0.134 ms 
- 3  10.190.4.1 (10.190.4.1)  1.478 ms  1.252 ms  1.111 ms 
- 4  192.168.1.254 (192.168.1.254)  3.647 ms  3.714 ms  4.866 ms 
-|
-|
-OUTPUT OMITTED
-|
-|
-13  72.14.208.150 (72.14.208.150)  40.458 ms  *  *
-14  108.170.251.193 (108.170.251.193)  39.072 ms  *  *
-15  209.85.251.239 (209.85.251.239)  40.088 ms  72.14.234.227 (72.14.234.227)  39.396 ms  216.239.54.61 (216.239.54.61)  39.398 ms
-16  google-public-dns-a.google.com (8.8.8.8)  40.616 ms  *  *
-bash-4.4#
-</code></pre>
+Below is a "Traceroute" output from one of the pods that has just been created. 
 
 In the traceroute output : 
 First Router : Tier 1 Default Namespace Downlink IP
