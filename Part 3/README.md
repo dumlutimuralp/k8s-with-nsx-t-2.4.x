@@ -582,7 +582,7 @@ root@k8s-master:/home/vmware# <b>ovs-vsctl show</b>
 root@k8s-master:~#
 </code></pre>
 
-* At this stage a sample output of the "ip addr" command is shown below. For the curious ones out there it is normal to see "br-int" interface in "Down" state since an IP stack is not attached to OVS in this scenario. More info can be found in this Youtube Video https://www.youtube.com/watch?v=rYW7kQRyUvA (Special thanks to @Yuki Tsuboi - Solution Architect at VMware) for pointing out the difference)
+* At this stage a sample output of the "ip addr" command is shown below. For the curious ones out there it is normal to see "br-int" interface in "Down" state since an IP stack is not attached to OVS in this scenario. More info can be found in this Youtube Video https://www.youtube.com/watch?v=rYW7kQRyUvA 
 
 <pre><code>
 root@k8s-master:~# ip addr
