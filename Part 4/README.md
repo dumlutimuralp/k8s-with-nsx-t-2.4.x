@@ -483,7 +483,6 @@ IP Pool allocated for the namespace is also tagged with metadata, shown below
 Deploy a sample app in the namespace (in imperative way)
 
 <pre><code>
-
 root@k8s-master:/home/vmware# <b>kubectl run nsxtestapp --image=dumlutimuralp/nsx-demo --replicas=2 --namespace=demons</b>
 kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
 <b>deployment.apps/nsxtestapp created</b>
@@ -492,7 +491,19 @@ root@k8s-master:/home/vmware#
 
 Note : Notice the message in the output. K8S is recommending declerative way of implementing pods. 
 
+Verify that the Pods are created
 
+<pre><code>
+root@k8s-master:/home/vmware# kubectl get pods -o wide --namespace=demons
+NAME                         READY   STATUS    RESTARTS   AGE   IP           NODE        NOMINATED NODE   READINESS GATES
+nsxtestapp-5bfcc97b5-n5wbz   1/1     Running   0          11m   172.25.5.3   k8s-node2   <none>           <none>
+nsxtestapp-5bfcc97b5-ppkqd   1/1     Running   0          11m   172.25.5.2   k8s-node1   <none>           <none>
+root@k8s-master:/home/vmware#
+</code></pre>
+
+The logical port for each Pod shows up in NSX-T UI, shown below
+
+![](2019-06-04_01-36-06.jpg)
 
 Below is a "Traceroute" output from one of the pods that has just been created. 
 
