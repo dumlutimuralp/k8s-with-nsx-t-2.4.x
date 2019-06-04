@@ -544,18 +544,56 @@ Output Omitted
 </code></pre>
 
 
+Finally let' s check the IP connectivity of the Pod to the resources external to NSX domain.
 
+Perform the command below to get a shell in one of the Pods
 
-Below is a "Traceroute" output from one of the pods that has just been created. 
+<pre><code>
+root@k8s-master:/home/vmware# <b>kubectl exec -it nsxtestapp-5bfcc97b5-n5wbz /bin/bash --namespace=demons</b>
+root@nsxtestapp-5bfcc97b5-n5wbz:/app# 
+</code></pre>
 
-In the traceroute output : 
-First Router : Tier 1 Default Namespace Downlink IP
-Second Router : Tier 0 Router Link , facing Tier 1
-Third Router : Physical Router that Tier 0 is peering with
-and onwards...
+Check the IP address of the Pod
 
+<pre><code>
+root@nsxtestapp-5bfcc97b5-n5wbz:/app# <b>ip addr</b>
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: ovs-gretap0@NONE: <BROADCAST,MULTICAST> mtu 1462 qdisc noop state DOWN group default qlen 1000
+    link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+3: erspan0@NONE: <BROADCAST,MULTICAST> mtu 1450 qdisc noop state DOWN group default qlen 1000
+    link/ether 36:89:34:84:cd:91 brd ff:ff:ff:ff:ff:ff
+4: gre0@NONE: <NOARP> mtu 1476 qdisc noop state DOWN group default qlen 1
+    link/gre 0.0.0.0 brd 0.0.0.0
+5: ovs-ip6gre0@NONE: <NOARP> mtu 1448 qdisc noop state DOWN group default qlen 1
+    link/gre6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+6: ovs-ip6tnl0@NONE: <NOARP> mtu 1452 qdisc noop state DOWN group default qlen 1
+    link/tunnel6 :: brd ::
+50: eth0@if51: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 02:50:56:00:28:03 brd ff:ff:ff:ff:ff:ff
+ inet <b>172.25.5.3/24</b> scope global eth0
+       valid_lft forever preferred_lft forever
+root@nsxtestapp-5bfcc97b5-n5wbz:/app# 
+</code></pre>
 
+Ping the external physical router from the Pod
 
+<pre><code>
+root@nsxtestapp-5bfcc97b5-n5wbz:/app# <b>ping 10.190.4.1</b>
+PING 10.190.4.1 (10.190.4.1): 56 data bytes
+64 bytes from 10.190.4.1: icmp_seq=0 ttl=62 time=3.047 ms
+64 bytes from 10.190.4.1: icmp_seq=1 ttl=62 time=1.534 ms
+64 bytes from 10.190.4.1: icmp_seq=2 ttl=62 time=1.130 ms
+64 bytes from 10.190.4.1: icmp_seq=3 ttl=62 time=1.044 ms
+64 bytes from 10.190.4.1: icmp_seq=4 ttl=62 time=1.957 ms
+64 bytes from 10.190.4.1: icmp_seq=5 ttl=62 time=1.417 ms
+^C--- 10.190.4.1 ping statistics ---
+6 packets transmitted, 6 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.044/1.688/3.047/0.676 ms
+root@nsxtestapp-5bfcc97b5-n5wbz:/app#
+</code></pre>
 
 
 
