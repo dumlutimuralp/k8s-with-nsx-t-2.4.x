@@ -504,6 +504,7 @@ root@k8s-master:/home/vmware#
 </code></pre>
 
 Now the topology looks like below 
+
 ![](2019-06-04_02-11-28.jpg)
 
 The logical port for each Pod shows up in NSX-T UI, shown below
