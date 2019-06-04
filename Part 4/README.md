@@ -290,6 +290,8 @@ The "ncp-deployment.yml" file can simply be edited with a text editor. The param
 
 **enable_snat = True** : This parameter basically defines that all the K8S Pods in each K8S namespace in this K8S cluster will be SNATed (to be able to access the other resources in the datacenter external to NSX domain) . The SNAT rules will be autoatically provisioned on Tier 0 Router in this lab. The SNAT IP will be allocated from IP Pool named "K8S-NAT-Pool" that was configured back in Part 3.
 
+**apiserver_host_ip = 10.190.5.10** , **apiserver_host_port = 6443** : These parameters are for NCP to access K8S API.
+
 **ingress_mode = NAT** : This parameter basically defines that NSX will use SNAT/DNAT rules for K8S ingress (L7 HTTPS/HTTP load balancing) to access the K8S service at the backend.
 
 **nsx_api_managers = 10.190.1.80** , **nsx_api_user = admin** ,  **nsx_api_password = XXXXXXXXXXXXXX**  : These parameters are for NCP to access/consume the NSX Manager.
@@ -375,9 +377,11 @@ Notice also that CoreDNS pods are still in ContainerCreating phase, the reason f
  
 "nsx-node-agent-ds.yml" will be used to deploy NSX Node Agent. This yml file is also provided in the content of the NSX Container Plugin zip file that was downloaded from My.VMware portal. 
 
-This yml file also contains a configmap for the configuration of the ncp.ini file for the NSX Node Agent. None of the parameters in the configmap will be changed, the only line that needs to be edited is the one where it says "serviceAccountName: nsx-node-agent-svc-account"
+This yml file also contains a configmap for the configuration of the ncp.ini file for the NSX Node Agent. The "nsx-node-agent-ds.yml" file can simply be edited with a text editor.  The following parameters need to be configured :
 
-The "nsx-node-agent-ds.yml" file can simply be edited with a text editor. **"#" is removed from the line with "serviceAccountname:..." so that role based access control can properly be applied for NSX Node Agent as well.**
+**apiserver_host_ip = 10.190.5.10** , **apiserver_host_port = 6443** : These parameters are for NSX Node Agent to access K8S API.
+
+ **"#" is removed from the line with "serviceAccountname:..." so that role based access control can properly be applied for NSX Node Agent as well.**
 
 The edited yml file, "nsx-node-agent-ds-custom.yml" in this case, can now be deployed from anywhere. In this environment this yml file is copied to /home/vmware folder in K8S Master Node and deployed in the "nsx-system" namespace with the following command.
 
