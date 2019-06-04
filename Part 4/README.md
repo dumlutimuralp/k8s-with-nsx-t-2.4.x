@@ -451,6 +451,9 @@ A new logical router is also created for "demons" namespace, shown below
 ![](2019-06-04_01-09-52.jpg)
 
 A new IP Pool is also allocated, shown below
+![](2019-06-04_01-14-07.jpg)
+
+
 
 
 
@@ -464,7 +467,7 @@ Deploy a sample app in it (in imperative way)
 
 root@k8s-master:/home/vmware# <b>kubectl run nsxtestapp --image=dumlutimuralp/nsx-demo --replicas=2 --namespace=demons</b>
 kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.
-<b>deployment.apps/testapp created</b>
+<b>deployment.apps/nsxtestapp created</b>
 root@k8s-master:/home/vmware# 
 </code></pre>
 
