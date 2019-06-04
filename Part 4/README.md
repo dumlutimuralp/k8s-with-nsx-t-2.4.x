@@ -449,12 +449,6 @@ root@k8s-master:/home/vmware#
 A new logical switch is created for "demons" namespace , shown below
 ![](2019-06-04_01-06-11.jpg)
 
-A new logical router is also created for "demons" namespace, shown below
-![](2019-06-04_01-09-52.jpg)
-
-A new IP Pool is also allocated, shown below
-![](2019-06-04_01-22-20.jpg)
-
 NCP not only creates the above constructs but also tags them with the appropriate metadata, shown below 
 
 ![](2019-06-04_01-26-26.jpg)
@@ -478,9 +472,18 @@ status:
   phase: Active
 </code></pre>
 
+A new logical router is also created for "demons" namespace, shown below
+![](2019-06-04_01-09-52.jpg)
+
+A new IP Pool is also allocated from K8S-POD-IP-BLOCK, shown below
+![](2019-06-04_01-22-20.jpg)
+
 IP Pool allocated for the namespace is also tagged with metadata, shown below
 ![](2019-06-04_01-24-11.jpg)
 
+An SNAT IP is allocated from the K8S-NAT-Pool (for all the Pods in demons namespace) , and the respective NAT rule is automatically configured on Tier 0 Logical Router (T0-K8S-Domain)
+
+![](2019-06-04_02-17-44.jpg)
 
 Deploy a sample app in the namespace (in imperative way)
 
