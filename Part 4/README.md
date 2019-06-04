@@ -491,7 +491,7 @@ root@k8s-master:/home/vmware#
 
 Note : Notice the message in the output. K8S is recommending declerative way of implementing pods. 
 
-Verify that the Pods are created
+Verify that the Pods are created and allocated IPs from the appropriate IP pool
 
 <pre><code>
 root@k8s-master:/home/vmware# kubectl get pods -o wide --namespace=demons
