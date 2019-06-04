@@ -451,8 +451,7 @@ A new logical router is also created for "demons" namespace, shown below
 ![](2019-06-04_01-09-52.jpg)
 
 A new IP Pool is also allocated, shown below
-![](2019-06-04_01-14-07.jpg)
-
+![](2019-06-04_01-22-20.jpg)
 
 
 
