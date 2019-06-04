@@ -5,6 +5,7 @@
 [Current State](#Current-State)   
 [NSX Container Plugin (NCP) Installation](#NSX-Container-Plugin-Installation)  
 [NSX Node Agent Installation](#NSX-Node-Agent-Installation)
+[Test Workload Deployment](#Test-Workload-Deployment)
 
 # Current State
 [Back to Table of Contents](#Table-Of-Contents)
@@ -434,7 +435,8 @@ At this stage the topology looks like this
 
 ![](2019-06-04_00-38-29.jpg)
 
-## Test Application Deployment
+# Test Workload Deployment
+[Back to Table of Contents](#Table-Of-Contents)
 
 Let' s create a new namespace 
 
@@ -500,6 +502,9 @@ nsxtestapp-5bfcc97b5-n5wbz   1/1     Running   0          11m   172.25.5.3   k8s
 nsxtestapp-5bfcc97b5-ppkqd   1/1     Running   0          11m   172.25.5.2   k8s-node1   <none>           <none>
 root@k8s-master:/home/vmware#
 </code></pre>
+
+Now the topology looks like below 
+![](2019-06-04_02-11-28.jpg)
 
 The logical port for each Pod shows up in NSX-T UI, shown below
 
