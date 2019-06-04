@@ -503,7 +503,16 @@ root@k8s-master:/home/vmware#
 
 The logical port for each Pod shows up in NSX-T UI, shown below
 
-![](2019-06-04_01-36-06.jpg)
+![](2019-06-04_01-44-12.jpg)
+
+Let' s look at the tags that are associated with that logical port as metadata
+
+![](2019-06-04_01-44-40.jpg)
+
+As shown above, the K8S namespace name, K8S Pod name and UUID (can be verified on K8S below) are carried over to NSX-T as metadata.
+
+
+
 
 Below is a "Traceroute" output from one of the pods that has just been created. 
 
