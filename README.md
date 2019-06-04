@@ -60,4 +60,9 @@ Below articles focus on the basic integration principles of NSX-T and K8S. Hopef
 
 ### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
 
+* Current State
+* NSX Container Plugin (NCP) Installation
+* NSX Node Agent Installation
+* Test Workload Deployment
+
 
