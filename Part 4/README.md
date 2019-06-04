@@ -457,10 +457,30 @@ NCP not only creates the above constructs but also tags them with the appropriat
 
 ![](2019-06-04_01-26-26.jpg)
 
+For instance, in the above output , "project id" is the "UUID" for the "demons" K8S namespace. Which can be verified as below : 
+
+<pre><code>
+root@k8s-master:/home/vmware# <b>kubectl get ns demons -o yaml</b>
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2019-06-03T23:54:01Z"
+  name: demons
+  resourceVersion: "773201"
+  selfLink: /api/v1/namespaces/demons
+  <b>uid: dcb423b5-865a-11e9-a2fc-005056b42e41</b>
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
+</code></pre>
+
+IP Pool allocated for the namespace is also tagged with metadata, shown below
 ![](2019-06-04_01-24-11.jpg)
 
 
-Deploy a sample app in it (in imperative way)
+Deploy a sample app in the namespace (in imperative way)
 
 <pre><code>
 
