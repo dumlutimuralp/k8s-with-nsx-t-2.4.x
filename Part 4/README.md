@@ -453,7 +453,9 @@ A new logical router is also created for "demons" namespace, shown below
 A new IP Pool is also allocated, shown below
 ![](2019-06-04_01-22-20.jpg)
 
+NCP not only creates the above constructs but also tags them with the appropriate metadata, shown below 
 
+![](2019-06-04_01-24-11.jpg)
 
 
 
