@@ -455,11 +455,9 @@ A new IP Pool is also allocated, shown below
 
 NCP not only creates the above constructs but also tags them with the appropriate metadata, shown below 
 
+![](2019-06-04_01-26-26.jpg)
+
 ![](2019-06-04_01-24-11.jpg)
-
-
-
-
 
 
 Deploy a sample app in it (in imperative way)
