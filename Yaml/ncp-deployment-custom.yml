@@ -106,13 +106,13 @@ data:
     # IP address of the Kubernetes API Server. If not set, will try to
     # read and use the Kubernetes Service IP from environment variable
     # KUBERNETES_SERVICE_HOST.
-    #apiserver_host_ip = <ip_address>
+    apiserver_host_ip = 10.190.5.10
 
     # Port of the Kubernetes API Server.
     # Set to 6443 for https. If not set, will try to
     # read and use the Kubernetes Service port from environment
     # variable KUBERNETES_SERVICE_PORT.
-    #apiserver_host_port = <port>
+    apiserver_host_port = 6443
 
     # Specify a CA bundle file to use in verifying the Kubernetes API server
     # certificate. (string value)
