@@ -511,6 +511,38 @@ Let' s look at the tags that are associated with that logical port as metadata
 
 As shown above, the K8S namespace name, K8S Pod name and UUID (can be verified on K8S below) are carried over to NSX-T as metadata.
 
+<pre><code>
+root@k8s-master:/home/vmware# <b>kubectl get pod/nsxtestapp-5bfcc97b5-n5wbz -o yaml --namespace=demons>/b>
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2019-06-04T00:23:32Z"
+  generateName: nsxtestapp-5bfcc97b5-
+  labels:
+    pod-template-hash: 5bfcc97b5
+    run: nsxtestapp
+  name: nsxtestapp-5bfcc97b5-n5wbz
+  namespace: demons
+|
+|
+Output Omitted
+|
+|
+  resourceVersion: "776038"
+  selfLink: /api/v1/namespaces/demons/pods/nsxtestapp-5bfcc97b5-n5wbz
+  uid: <b>fc30d02f-865e-11e9-a2fc-005056b42e41</b>
+spec:
+  containers:
+  - image: dumlutimuralp/nsx-demo
+    imagePullPolicy: Always
+    name: nsxtestapp
+|
+|
+Output Omitted
+|
+|
+</code></pre>
+
 
 
 
