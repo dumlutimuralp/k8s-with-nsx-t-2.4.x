@@ -610,8 +610,13 @@ root@nsxtestapp-5bfcc97b5-n5wbz:/app#
 </code></pre>
 
 
+To identify containers per K8S Node, the logical port that the K8S Worker Node' s vNIC2 is connected to can be investigated too. Shown below.
 
+![](2019-06-05_22-51-43.png)
 
+Container ports show up as below.
+
+![](2019-06-05_22-53-16.png)
 
 
 
