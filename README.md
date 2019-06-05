@@ -25,7 +25,7 @@ https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
 
 This series does **NOT** provide the generic 101 level info neither on NSX-T nor on K8S. To have a basic understanding of NSX-T please watch the VMworld 2018 session recordings. Similarly for K8S, Pluralsight and A Cloud Guru trainings by Nigel Poulton is highly recommended.  
 
-Below articles focus on the basic integration principles of NSX-T and K8S. Hopefully we will be able to dive into details and troubleshooting in the upcoming articles.
+Below articles focus on the management and data plane integration principles of NSX-T and K8S. 
 
 ### [Part 1](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%201/README.md)
 
