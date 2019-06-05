@@ -77,7 +77,7 @@ NSX-T leverages Open vSwitch to provide two functions :
 
 Below diagram shows how the overall architecture looks like. The components shown in this diagram like NSX Node Agent Pod, NSX Container Plugin (NCP) Pod , (the K8S deployment files (.yml) for both these Pods), OVS package and NSX CNI Plugin package are all downloadable in a single .zip file from my.VMware portal.
 
-![](2019-06-02-16-06-42.png)
+![](2019-06-04-00-01-20.png)
 
 ## [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
