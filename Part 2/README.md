@@ -26,8 +26,8 @@ Various solutions that have CNI plugin is listed [here](https://landscape.cncf.i
 # NSX-T Components in Kubernetes Integration
 [Back to Table of Contents](#Table-Of-Contents)
 
-This section explains the components that are implemented by NSX-T platform to enable Kubernetes integration. More detailed information can be found in official NSX-T NCP installation guide
-published [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-FB641321-319D-41DC-9D16-37D6BA0BC0DE.html) 
+This section explains the components that are implemented by NSX-T platform to enable Kubernetes integration. 
+
 ##  The NSX Container Plugin (NCP) 
 
 Per [NSX-T Documentation](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/com.vmware.nsxt.ncp_kubernetes.doc/GUID-52A92986-0FDF-43A5-A7BB-C037889F7559.html) NCP is explained as following : NSX Container Plug-in (NCP) provides integration between NSX-T Data Center and container orchestrators such as Kubernetes, as well as integration between NSX-T Data Center and container-based PaaS (platform as a service) products such as OpenShift and Pivotal Cloud Foundry.
