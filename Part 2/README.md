@@ -5,7 +5,7 @@
 
 [Container Network Interface (CNI)](#Container-Network-Interface)  
 [NSX-T Components in Kubernetes Integration](#NSX-T-Components-in-Kubernetes-Integration)  
-[NSX-T & K8S Overall Architecture](#NSX-T-&-K8S-Overall-Architecture)
+[Architecture](#Architecture)
 
 # Container Network Interface
 [Back to Table of Contents](#Table-Of-Contents)
@@ -71,10 +71,10 @@ NSX-T leverages Open vSwitch (OVS) on the K8S nodes. NSX Node Agent manages the 
 ## NSX CNI Plugin
 
 * NSX CNI Plugin module is implemented on each Kubernetes node. (Which is done in Part 3 of this series) 
-* The native K8S component called Kubelet, which is the K8S agent that runs on each Kubernetes Node, takes the set of PodSpecs (ie developer deploys an application with yaml file) that are provided through Kubernetes API. It then sends requests to the CNI Plugin to attach the Pods to the network. More info on kubelet can be found [here](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) 
-* When NSX CNI Plugin receives the request from kubelet, it then instructs 
+* The native K8S component called Kubelet, which is the K8S agent that runs on each Kubernetes Node, takes the set of PodSpecs (ie developer deploys an application with yaml file) that are provided through Kubernetes API. It then sends a request to NSX CNI Plugin to make the network available for the respective Pod(s). More info on kubelet can be found [here](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) 
 
-# NSX-T & K8S Overall Architecture
+
+# Architecture
 [Back to Table of Contents](#Table-Of-Contents)
 
 Below diagram shows how the overall architecture looks like. The components shown in this diagram like NSX Node Agent Pod, NSX Container Plugin (NCP) Pod , (the K8S deployment files (.yml) for both these Pods), OVS package and NSX CNI Plugin package are all downloadable in a single .zip file from my.VMware portal.
