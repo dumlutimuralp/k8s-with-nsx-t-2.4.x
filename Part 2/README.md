@@ -55,7 +55,7 @@ NCP container Image and the deployment yaml file (ncp-deployment.yaml) comes wit
 
 NSX Node Agent is also a container image that runs as an infrastructure Pod on all of the worker nodes in the Kubernetes cluster. **It is deployed as a K8S "DaemonSet"**.  A DaemonSet ensures that all or specific nodes run a copy of a Pod. When a node is added to the cluster, that node will have the respective Pod added to itself. More info on DaemonSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
-NSX Node Agent Pod has two containers. NSX Kube Proxy and NSX Node Agent both explained below.   
+NSX Node Agent Pod has two containers. NSX Kube Proxy and NSX Node Agent, both explained below.   
       
 In K8S, the native Kube Proxy component provides distributed east-west load balancer (aka K8S Service Type : Cluster IP) based on IPTables (or IPVS lately). NSX Kube Proxy, on the other hand, leverages Open vSwitch (OVS) conntrack NAT feature, to provision flow rules on OVS to provide east-west distributed load-balancing. NSX Kube Proxy creates a watch on Kubernetes API for new K8S services which use the type Cluster IP. As soon as a new K8S service gets created with Cluster IP then NSX Kube Proxy provisions respective NAT translation rules and the server groups on OVS.  
 
