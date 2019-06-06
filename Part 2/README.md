@@ -49,7 +49,7 @@ For instance,
 
 One other important thing to be aware of is, when NCP creates an object in NSX-T, it will put tags on it in NSX-T object datastore. Hence, even when NCP Pod fails and restarts, it can figure out which objects have already been created in NSX-T by itself.
 
-NCP container Image and the deployment yaml file (ncp-deployment.yaml) comes within the .zip file content as part of the NSX Container Plugin download from my.vmware.com.
+NCP container Image and the deployment yaml file (ncp-deployment.yaml) comes within the .zip file content as part of the NSX Container Plugin download from my.VMware portal.
  
 ## NSX Node Agent 
 
