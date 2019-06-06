@@ -23,7 +23,7 @@ https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&17
 * VMware NSX Container Plugin Release Notes 
 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
 
-This series does **NOT** provide the generic 101 level info neither on NSX-T nor on K8S. To have a basic understanding of NSX-T please watch the VMworld 2018 session recordings. Similarly for K8S, Pluralsight and A Cloud Guru trainings by Nigel Poulton is highly recommended.  
+This series does **NOT** provide the generic intro level information on NSX-T or K8S. To have a basic understanding of NSX-T please watch the VMworld 2018 session recordings. Similarly for K8S, Pluralsight and A Cloud Guru trainings by Nigel Poulton is highly recommended.  
 
 Below articles focus on the management and data plane integration principles of NSX-T and K8S. 
 
