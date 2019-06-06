@@ -81,7 +81,7 @@ Below diagram shows how the architecture looks like. The components shown in thi
 
 ![](Architecture.png)
 
-**Note** : By default K8S does not deploy workload Pods on the Master node. Hence technically NSX components are not needed on the master node but only on the worker nodes when defaults are used. In our environment, for demonstration purposes NSX Components are installed on all K8S nodes including the master. (Scheduling Pods on the master node can also be configured , more info [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+**Note** : By default K8S does not deploy workload Pods on the Master node. Hence technically NSX components are not needed on the master node but only on the worker nodes when defaults are used. In our environment, for demonstration purposes NSX Components are installed on all K8S nodes including the master. (Scheduling Pods on the master node can also be configured , more info [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) )
 
 ## [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
 
