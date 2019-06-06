@@ -40,7 +40,7 @@ As soon as any changes occur on an existing resource or a new resource gets crea
 
 For instance, 
 
-- when a new namespace object is created in K8S, NCP captures this and creates a logical switch, a Tier 1 Logical Router and allocates an IP Pool for the PODs on NSX-T. It also allocates an SNAT IP for each NATed namespace (also provisions NAT rules on Tier 0 Logical Router)
+- when a new namespace object is created in K8S, NCP captures this and creates a logical switch, a Tier 1 Logical Router and allocates an IP Pool for the PODs on NSX-T. It also allocates an SNAT IP for each NATed namespace and provisions the corresponding NAT rule on Tier 0 Logical Router)
 - when Pods are created in a namespace on K8S, NCP captures this and allocates IP/MACs for each Pod on NSX-T.
 
 **NCP supports a single Kubernetes cluster. However multiple Kubernetes clusters, each with its distinct NCP instance can be using the same NSX-T platform.**
