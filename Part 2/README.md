@@ -45,7 +45,7 @@ For instance,
 
 **NCP supports a single Kubernetes cluster. The same NSX-T platform can be used by multiple Kubernetes clusters, each with its distinct NCP instance**.
 
-**NCP is deployed as a "ReplicaSet" as part of K8S "deployment"**. As mentioned above it always runs on one of the worker nodes.  Basically a ReplicaSet makes sure that a specified number of copies of that Pod are running at any given time. Hence as any "ReplicaSet" in K8S, its availability is guaranteed by K8S. More info on ReplicaSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)   
+**NCP is deployed as a "ReplicaSet" as part of K8S "deployment"**. As mentioned above it always runs on one of the worker nodes.  Basically a ReplicaSet makes sure that a specified number of copies of that Pod are running at any given time. Hence as any "ReplicaSet" in K8S, its availability is guaranteed by K8S. More info on ReplicaSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/).
 
 One other important thing to be aware of is, when NCP creates an object in NSX-T, it will put tags on them in NSX-T object datastore. Hence, even when NCP Pod fails and restarts, it can figure out which objects have already been created in NSX-T by NCP itself.
 
