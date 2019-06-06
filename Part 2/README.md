@@ -21,7 +21,7 @@ Various solutions that have CNI plugin is listed [here](https://landscape.cncf.i
 
 ![](2019-06-02-16-06-42.png)
 
-* NSX Container Plug-in for Kubernetes and Cloud Foundry - Installation and Administration Guide, published [here],(https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html) guides the user on the installation steps and the definition of the different components used for the NSX-T and K8S integration. Below is our own view and comments. 
+* NSX Container Plug-in for Kubernetes and Cloud Foundry - Installation and Administration Guide, published [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html), guides the user on the installation steps and the definition of the different components used for the NSX-T and K8S integration. Below is our own view and comments. 
 
 # NSX-T Components in Kubernetes Integration
 [Back to Table of Contents](#Table-Of-Contents)
