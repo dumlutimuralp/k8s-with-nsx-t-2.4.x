@@ -43,7 +43,7 @@ For instance,
 - when a new namespace object is created in K8S, NCP captures this and creates a logical switch, a Tier 1 Logical Router and allocates an IP Pool for the PODs on NSX-T. It also allocates an SNAT IP for each NATed namespace and provisions the corresponding NAT rule on Tier 0 Logical Router)
 - when Pods are created in a namespace on K8S, NCP captures this and allocates IP/MACs for each Pod on NSX-T
 
-**NCP supports a single Kubernetes cluster. The same NSX-T platform can be used by multiple Kubernetes clusters, each with its distinct NCP instance**
+**NCP supports a single Kubernetes cluster. The same NSX-T platform can be used by multiple Kubernetes clusters, each with its distinct NCP instance**.
 
 **NCP is deployed as a "ReplicaSet" as part of K8S "deployment"**. As mentioned above it always runs on one of the worker nodes.  Basically a ReplicaSet makes sure that a specified number of copies of that Pod are running at any given time. Hence as any "ReplicaSet" in K8S, its availability is guaranteed by K8S. More info on ReplicaSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)   
 
