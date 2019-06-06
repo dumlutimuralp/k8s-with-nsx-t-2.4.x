@@ -40,7 +40,7 @@ As soon as any changes occur on an existing resource or a new resource gets crea
 
 For instance, 
 
-- when a new namespace object is created in K8S, NCP captures this and creates a logical switch, a Tier 1 Logical Router and allocates an IP Pool for the PODs on NSX-T. It also allocates an SNAT IP for each NATed namespace and provisions the corresponding NAT rule on Tier 0 Logical Router)
+- when a new namespace object is created in K8S, NCP captures this and creates a logical switch, a Tier 1 Logical Router and allocates an IP Pool for the Pods on NSX-T. It also allocates an SNAT IP for each NATed namespace and provisions the corresponding NAT rule on Tier 0 Logical Router)
 - when Pods are created in a namespace on K8S, NCP captures this and allocates IP/MACs for each Pod on NSX-T
 
 **NCP supports a single Kubernetes cluster. The same NSX-T platform can be used by multiple Kubernetes clusters, each with its distinct NCP instance**.
@@ -53,7 +53,7 @@ NCP container Image and the deployment yaml file (ncp-deployment.yaml) comes wit
  
 ## NSX Node Agent 
 
-NSX Node Agent is also a container image that runs as an infrastructure POD on all of the worker nodes in the Kubernetes cluster. **It is deployed as a K8S "DaemonSet"**.  A DaemonSet ensures that all or specific nodes run a copy of a Pod. When a node is added to the cluster, that node will have the respective Pod added to itself. More info on DaemonSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+NSX Node Agent is also a container image that runs as an infrastructure Pod on all of the worker nodes in the Kubernetes cluster. **It is deployed as a K8S "DaemonSet"**.  A DaemonSet ensures that all or specific nodes run a copy of a Pod. When a node is added to the cluster, that node will have the respective Pod added to itself. More info on DaemonSet can be found [here](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
 NSX Node Agent Pod has two containers. NSX Kube Proxy and NSX Node Agent both explained below.   
       
