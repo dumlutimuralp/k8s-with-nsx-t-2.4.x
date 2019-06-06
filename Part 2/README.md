@@ -31,7 +31,7 @@ This section explains the components that are implemented by NSX-T platform to e
 
 ## Open vSwitch (OVS)
 
-Instead of Linux bridge, NSX-T implements and uses Open vSwitch (OVS) to provide two functions : 
+Instead of Linux bridge, NSX-T implements and uses Open vSwitch (OVS) on K8S nodes. It provides two main functions : 
 - container networking for K8S Pods
 - east west load balancing (aka K8S Service Type : Cluster IP)
 
@@ -70,8 +70,9 @@ NSX-T leverages Open vSwitch (OVS) on the K8S nodes. NSX Node Agent manages the 
 
 ## NSX CNI Plugin
 
-* NSX CNI plugin module is implemented on each Kubernetes node. (Which is done in Part 3 of this series) 
-* Kubelet, which is the K8S agent that runs on each Kubernetes Node, takes a set of PodSpecs (ie developer deploys an application with yaml file) that are provided through Kubernetes API. Kubelet then sends requests to the CNI Plugin to attach the Pods to the network. More info on kubelet can be found [here](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+* NSX CNI Plugin module is implemented on each Kubernetes node. (Which is done in Part 3 of this series) 
+* The native K8S component called Kubelet, which is the K8S agent that runs on each Kubernetes Node, takes the set of PodSpecs (ie developer deploys an application with yaml file) that are provided through Kubernetes API. It then sends requests to the CNI Plugin to attach the Pods to the network. More info on kubelet can be found [here](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) 
+* When NSX CNI Plugin receives the request from kubelet, it then instructs 
 
 # NSX-T & K8S Overall Architecture
 [Back to Table of Contents](#Table-Of-Contents)
