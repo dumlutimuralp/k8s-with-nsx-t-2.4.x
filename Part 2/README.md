@@ -81,6 +81,10 @@ Below diagram shows how the architecture looks like. The components shown in thi
 
 ![](Architecture.png)
 
+VLANs are used and locally significant only between the K8S worker node vNIC and the NVDS logical switch. The reason for VLAN usage is to be able to isolate each and every K8S Pod from each other secure the communication. This way NSX distributed firewalling can be implemented for each Pod and also each Pod can be connected to a different network (NSX-T Logical Switch/Segment)
+
+As shown in the diagram NSX-T dataplane is still implemented at the hypervisor level (rathen than extending the dataplane and overlay networking constructs all the way down to the K8S node VM level)
+
 **Note** : By default K8S does not deploy workload Pods on the Master node. Hence technically NSX components are not needed on the master node but only on the worker nodes when defaults are used. In our environment, even though workload Pod are not going to be deploted on K8S master, NSX Components are installed on all K8S nodes including the master. (For reference, scheduling Pods on the master node can be configured , more info [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/))
 
 ## [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
