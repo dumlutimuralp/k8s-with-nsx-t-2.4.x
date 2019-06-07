@@ -70,7 +70,7 @@ Below screenshots from the NSX-T GUI show the current configuration of the datap
 
 LOGICAL SWITCHES
 
-![](2019-05-28-17-45-13.png)
+![](2019-06-07-17-45-13.png)
 
 LOGICAL ROUTERS
 
