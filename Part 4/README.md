@@ -176,11 +176,11 @@ A single yml file, which is included [here](https://raw.githubusercontent.com/du
 create a dedicated K8S namespace, as "nsx-system", for NCP and Node Agent Pods    
 create a service account, as "ncp-svc-account", for NCP  
 create a service account, as "nsx-node-agent-svc-account", for Node agent  
-create a cluster role, as "ncp-cluster-role" , for NCP (having specific API access)   
-create a cluster role "ncp-patch-role" , for NCP (having specific API access)  
+create a cluster role, as "ncp-cluster-role" , for NCP (with specific API access)   
+create a cluster role "ncp-patch-role" , for NCP (with specific API access)  
 bind "ncp-svc-account" to "ncp-cluster-role"  
 bind "ncp-svc-account" to "ncp-patch-role"  
-create a cluster role "nsx-node-agent-cluster-role"  
+create a cluster role "nsx-node-agent-cluster-role" , for NSX Node Agent (with specific API access)
 bind "nsx-node-agent-svc-account" to "nsx-node-agent-cluster-role"  
 
 <pre><code>
