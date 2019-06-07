@@ -345,7 +345,7 @@ As NCP is deployed as replicaset (replicas :1 is specified in deployment yml) , 
 
 **Notice the changes to the existing logical switches/segments, Tier 1 Logical Routers, Load Balancer below . All these newly created objects have been provisioned by NCP (as soon as NCP Pod has been successfully deployed) by identifying the  the K8S desired state and mapping the K8S resources in etcd to the NSX-T Logical Networking constructs.**
 
-LOGICAL SWITCHES
+LOGICAL SWITCHES  
 ![](2019-06-07_20-39-24.png)
 
 LOGICAL ROUTERS
