@@ -58,7 +58,7 @@ In the previous output, kube-proxy Pods can be ignored as their functionality wi
 
 Below is a revisit of the NSX-T and K8S integration architecture (which was mentioned in Part 2 of this series)
 
-![Alt desc](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/2019-06-03-00-01-20.png)
+![Alt desc](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/Architecture.png)
 
 ## NSX-T Topology
 
