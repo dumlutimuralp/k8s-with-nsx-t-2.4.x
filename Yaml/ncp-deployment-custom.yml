@@ -157,7 +157,7 @@ data:
     # port 443 will be used.
     nsx_api_managers = 10.190.1.80
     nsx_api_user = admin
-    nsx_api_password = VMware1!
+    nsx_api_password = VMware1!VMware1!
 
     # If true, the NSX Manager server certificate is not verified. If false the CA
     # bundle specified via "ca_file" will be used or if unsest the default system
