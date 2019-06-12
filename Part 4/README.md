@@ -391,7 +391,7 @@ root@k8s-master:/home/vmware# <b>kubectl create -f nsx-node-agent-ds-custom.yml 
 As NSX Node Agent is deployed as a deamonset it will be running on each worker node in the K8S cluster.
 
 <pre><code>
-root@k8s-master:/home/vmware# kubectl get pods --all-namespaces -o wide
+root@k8s-master:/home/vmware# <b>kubectl get pods --all-namespaces -o wide</b>
 NAMESPACE     NAME                                 READY   STATUS              RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
 kube-system   coredns-fb8b8dccf-b592z              0/1     ContainerCreating   0          6h      <none>        k8s-master   <none>           <none>
 kube-system   coredns-fb8b8dccf-j66fg              0/1     ContainerCreating   0          6h      <none>        k8s-master   <none>           <none>
@@ -417,7 +417,7 @@ root@k8s-master:/home/vmware# <b>kubectl delete pod/coredns-fb8b8dccf-b592z --na
 pod "coredns-fb8b8dccf-b592z" deleted
 root@k8s-master:/home/vmware# <b>kubectl delete pod/coredns-fb8b8dccf-j66fg --namespace=kube-system</b>
 pod "coredns-fb8b8dccf-j66fg" deleted
-root@k8s-master:/home/vmware# kubectl get pods --all-namespaces <b>-o wide</b>
+root@k8s-master:/home/vmware# <b>kubectl get pods --all-namespaces -o wide</b>
 NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE     IP            NODE         NOMINATED NODE   READINESS GATES
 kube-system   <b>coredns-fb8b8dccf-fhn6q</b>              1/1     Running   0          3m40s   <b>172.25.4.4</b>    k8s-node1    <none>           <none>
 kube-system   <b>coredns-fb8b8dccf-wqndw</b>              1/1     Running   0          88s     <b>172.25.4.3</b>    k8s-node2    <none>           <none>
@@ -502,7 +502,7 @@ Note : Notice the message in the output. K8S is recommending declerative way of 
 Verify that the Pods are created and allocated IPs from the appropriate IP pool
 
 <pre><code>
-root@k8s-master:/home/vmware# kubectl get pods -o wide --namespace=demons
+root@k8s-master:/home/vmware# <b>kubectl get pods -o wide --namespace=demons</b>
 NAME                         READY   STATUS    RESTARTS   AGE   IP           NODE        NOMINATED NODE   READINESS GATES
 nsxtestapp-5bfcc97b5-n5wbz   1/1     Running   0          11m   172.25.5.3   k8s-node2   <none>           <none>
 nsxtestapp-5bfcc97b5-ppkqd   1/1     Running   0          11m   172.25.5.2   k8s-node1   <none>           <none>
