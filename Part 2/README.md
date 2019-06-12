@@ -77,7 +77,9 @@ NSX-T leverages Open vSwitch (OVS) on the K8S nodes. NSX Node Agent manages the 
 # Architecture
 [Back to Table of Contents](#Table-Of-Contents)
 
-Below diagram shows how the architecture looks like. The components shown in this diagram like NSX Node Agent Pod, NSX Container Plugin (NCP) Pod , (the K8S deployment files (.yml) for both these Pods), OVS package and NSX CNI Plugin package are all downloadable in a single .zip file from my.VMware portal.
+Below diagram shows how the architecture looks like. It is a collection of multiple individual diagrams that were shown in public sessions at VMworld 2017 and 2018 on NSX-T and Kubernetes integration. 
+
+The components shown in this diagram like NSX Node Agent Pod, NSX Container Plugin (NCP) Pod , (the K8S deployment files (.yml) for both these Pods), OVS package and NSX CNI Plugin package are all downloadable in a single .zip file from my.VMware portal.
 
 ![](Architecture.png)
 
