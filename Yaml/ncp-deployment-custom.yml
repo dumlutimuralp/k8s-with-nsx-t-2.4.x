@@ -84,19 +84,19 @@ data:
     # period plus the update timeout must not be greater than this period. This
     # is done to ensure that the master instance will either confirm
     # liveness or fail before the timeout.
-    #master_timeout = 18
+    #master_timeout = 9
 
     # Time in seconds between heartbeats for elected leader. Once an NCP
     # instance is elected master, it will periodically confirm liveness based
     # on this value.
-    #heartbeat_period = 6
+    #heartbeat_period = 3
 
     # Timeout duration in seconds for update to election resource. The default
     # value is calculated by subtracting heartbeat period from master timeout.
     # If the update request does not complete before the timeout it will be
     # aborted. Used for master heartbeats to ensure that the update finishes
     # or is aborted before the master timeout occurs.
-    #update_timeout = <None>
+    #update_timeout = 3
 
     [k8s]
     #
@@ -140,7 +140,7 @@ data:
 
     # Specify how ingress controllers are expected to be deployed. Possible values:
     # hostnetwork or nat. NSX will create NAT rules only in the second case.
-    ingress_mode = NAT
+    ingress_mode = nat
 
     # Option to specify ip address for HTTP and HTTPS ingresses
     #http_and_https_ingress_ip = <ip_address>
