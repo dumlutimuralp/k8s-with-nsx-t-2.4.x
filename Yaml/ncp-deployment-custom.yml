@@ -49,7 +49,7 @@ data:
     # distinguish multiple clusters who are using the same NSX.
     # This is also used as the tag of IP blocks for cluster to allocate
     # IP addresses. Different clusters should have different IP blocks.
-    cluster = k8scluster1
+    cluster = k8s-cluster1
 
     # Log level for the NCP operations. If set, overrides the level specified
     # for the root logger. Possible values are NOTSET, DEBUG, INFO, WARNING,
