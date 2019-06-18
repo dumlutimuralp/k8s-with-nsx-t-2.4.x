@@ -787,7 +787,9 @@ root@k8s-master:/home/vmware#
 * Add Google Repository to APT Source
 
 ```
-root@k8s-master:/home/vmware# a
+root@k8s-master:/home/vmware# cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
 root@k8s-master:/home/vmware#
 ```
 
