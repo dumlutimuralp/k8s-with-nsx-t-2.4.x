@@ -21,7 +21,7 @@ Previously in Part 1, the NSX-T logical networking constructs were prepared to i
 
 ![](2019-05-22-11-06-18.png)
 
-Below steps in this section will be performed for each Ubuntu VM.
+**Below steps in this section will be performed for each Ubuntu VM. Meaning that CNI Plugin, Open vSwitch (OVS) Docker and K8S will be installed on all three Ubuntu nodes.**
 
 * Download Ubuntu 16.04 image (ubuntu-16.04.5-server-amd64.iso) from http://releases.ubuntu.com/16.04/
 
