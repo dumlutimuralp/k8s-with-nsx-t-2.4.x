@@ -291,7 +291,7 @@ The "ncp-deployment.yml" file can simply be edited with a text editor. The param
 
 **apiserver_host_ip = 10.190.5.10** , **apiserver_host_port = 6443** : These parameters are for NCP to access K8S API.
 
-**ingress_mode = NAT** : This parameter basically defines that NSX will use SNAT/DNAT rules for K8S ingress (L7 HTTPS/HTTP load balancing) to access the K8S service at the backend.
+**ingress_mode = nat** : This parameter basically defines that NSX will use SNAT/DNAT rules for K8S ingress (L7 HTTPS/HTTP load balancing) to access the K8S service at the backend.
 
 **nsx_api_managers = 10.190.1.80** , **nsx_api_user = admin** ,  **nsx_api_password = XXXXXXXXXXXXXX**  : These parameters are for NCP to access/consume the NSX Manager.
 
