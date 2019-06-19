@@ -850,7 +850,7 @@ root@k8s-master:/home/vmware#
 ### Disable SWAP  
 
 K8S requires the SWAP to be disabled => https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md#before-upgrading  
-There is a great blog article about why this step is needed => https://frankdenneman.nl/2018/11/15/kubernetes-swap-and-the-vmware-balloon-driver/
+There is a great blog article about why this step is needed => https://frankdenneman.nl/2018/11/15/kubernetes-swap-and-the-vmware-balloon-driver/  
 How to do it on Ubuntu => https://www.tecmint.com/disable-swap-partition-in-centos-ubuntu/ 
 
 The commands used are shown below.
