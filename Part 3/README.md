@@ -843,7 +843,7 @@ Processing triggers for ureadahead (0.100.0-19) ...
 root@k8s-master:/home/vmware#
 </code></pre>
 
-**Note** : Specific versions can be called out if desired, for instance "**apt-get install -y kubelet=1.13.3-00 kubeadm=1.13.3-00 kubectl=1.13.3-00**"
+**Note : In this article no versions have been called out in apt-get command. But youu need to make sure that the compatible version of K8S, NSX NCP is being installed. Hence specific versions may need to be called out with  "apt-get install -y kubelet=1.13.3-00 kubeadm=1.13.3-00 kubectl=1.13.3-00"**
 
 ## Initiate K8S Cluster
 
