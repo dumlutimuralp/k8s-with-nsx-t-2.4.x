@@ -843,7 +843,41 @@ Processing triggers for ureadahead (0.100.0-19) ...
 root@k8s-master:/home/vmware#
 </code></pre>
 
-**Note : In this article no versions have been called out in apt-get command. But youu need to make sure that the compatible version of K8S, NSX NCP is being installed. Hence specific versions may need to be called out with  "apt-get install -y kubelet=1.13.3-00 kubeadm=1.13.3-00 kubectl=1.13.3-00"**
+**Note 1: In this article no versions have been called out in apt-get command. But youu need to make sure that the compatible version of K8S, NSX NCP is being installed. Hence specific versions may need to be called out with  "apt-get install -y kubelet=1.13.3-00 kubeadm=1.13.3-00 kubectl=1.13.3-00"**
+
+To investigate the files installed from a package , "apt-get search ..." and "dpkg -listfiles ...." commands can be used. For example "apt-get search nsx" gives "nsx-cni" as one of the results and "dpkg -listfiles nsx-cni" provides all the details around which files and folders are extracted and installed as related to NSX CNI Plugin. Shown below.
+
+<pre><code>
+root@k8s-master:/tmp# <b>apt-cache search nsx</b>
+aolserver4-nsxml - Module for XML support in aolsever4
+html-xml-utils - HTML and XML manipulation utilities
+python-vmware-nsx - OpenStack virtual network service - VMWare NSX plugin
+torcs-data-cars - data files for TORCS game - Cars set
+<b>nsx-cni - NSX CNI plugin for Kubernetes</b>
+root@k8s-master:/tmp# <b>dpkg --listfiles nsx-cni</b>
+/.
+/etc
+/etc/cni
+/etc/cni/net.d
+/etc/cni/net.d/10-nsx.conf
+/etc/cni/net.d/99-loopback.conf
+/etc/apparmor.d
+/etc/apparmor.d/ncp-apparmor
+/var
+/var/run
+/var/run/nsx-ujo
+/opt
+/opt/cni
+/opt/cni/bin
+/opt/cni/bin/nsx
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/nsx-cni
+/usr/share/doc/nsx-cni/copyright
+/usr/share/doc/nsx-cni/changelog.gz
+root@k8s-master:/tmp#
+</code></pre>
 
 ## Initiate K8S Cluster
 
