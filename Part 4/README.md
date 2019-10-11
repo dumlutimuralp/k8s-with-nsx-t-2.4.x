@@ -498,8 +498,9 @@ root@k8s-master:/home/vmware#
 </code></pre>
 
 Note : Notice the message in the output. K8S is recommending declerative way of implementing pods. 
+Note : Notice the message "deployment.apps/nsxtestapp created"; as K8S always creates a deployment object, which consists of two Pods in this case, here a deployment with the name "nsxtestapp" is created automatically.
 
-Verify that the Pods are created and allocated IPs from the appropriate IP pool
+Verify that the Pods are created and allocated IPs from the appropriate IP pool.
 
 <pre><code>
 root@k8s-master:/home/vmware# <b>kubectl get pods -o wide --namespace=demons</b>
@@ -508,6 +509,15 @@ nsxtestapp-5bfcc97b5-n5wbz   1/1     Running   0          11m   172.25.5.3   k8s
 nsxtestapp-5bfcc97b5-ppkqd   1/1     Running   0          11m   172.25.5.2   k8s-node1   <none>           <none>
 root@k8s-master:/home/vmware#
 </code></pre>
+
+Verify that there is a deployment object named as "nsxtestapp" in the demons namespace.
+
+<pre><code>
+root@k8s-master:/home/vmware# <b>kubectl get deployment -n demons</b>
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+nsxtestapp   2/2     2            2           13m
+root@k8s-master:/home/vmware#
+<pre><code>
 
 Now the topology looks like below 
 
