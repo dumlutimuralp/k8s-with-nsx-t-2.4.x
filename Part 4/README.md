@@ -517,7 +517,7 @@ root@k8s-master:/home/vmware# <b>kubectl get deployment -n demons</b>
 NAME         READY   UP-TO-DATE   AVAILABLE   AGE
 nsxtestapp   2/2     2            2           13m
 root@k8s-master:/home/vmware#
-<pre><code>
+</code></pre>
 
 Now the topology looks like below 
 
