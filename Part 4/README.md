@@ -54,7 +54,7 @@ root@k8s-master:~#
 
 _**Notice "coredns-xxx" Pods are stuck in "ContainerCreating" phase, the reason is although kubelet agent on K8S worker Node sent a request to NSX-T CNI Plugin module to start provisioning the individual network interface for these Pods, since the NSX Node Agent is not installed on the K8S worker nodes yet (Nor the NSX Container Plugin for attaching NSX-T management plane to K8S API) , kubelet can not move forward with the Pod creation.**_
 
-In the previous output, kube-proxy Pods can be ignored as their functionality will be replaced by NSX Kube Proxy container (in the NSX Node Agent Pod)
+In the previous output, kube-proxy Pods can be ignored as their functionality will be replaced by NSX Kube Proxy container (in the NSX Node Agent Pod) . Kube-proxy is explained in Part 5.
 
 Below is a revisit of the NSX-T and K8S integration architecture (which was mentioned in Part 2 of this series)
 
