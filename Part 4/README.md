@@ -523,6 +523,8 @@ Now the topology looks like below
 
 ![](2019-06-04_02-11-28.jpg)
 
+In the topology,the Pods that are connected to "demons" logical switch are shown as "nsx-demo1" and "nsx-demo2" in the lab those pods are provisioned as "nsxtestapp-xxxxx".
+
 The logical port for each Pod shows up in NSX-T UI, shown below
 
 ![](2019-06-04_01-44-12.jpg)
