@@ -242,7 +242,7 @@ Let' s focus on how things work without NSX-T in a generic K8S cluster first.
 
 In a K8S cluster, Kube Proxy is implemented as a Pod on every K8S node. Kube Proxy (on each K8S node) watches K8S API for service objects. As soon as it detects a new service it then provisions IPtables rules (or IPVS; depends on the implementation) on the K8S node. This takes place on each K8S node.  There is a good detail of information [here](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies) on K8S service implementations. 
 
-What the IPtables rules actually do is, applying stateful destination NAT (DNAT) for any IP traffic destined to the K8S service IP and swap the destination IP with one of the Pods which are backing the service. For the return traffic the source the source IP of the Pod will be swapped with the service IP. 
+What the IPtables rules actually do is, applying stateful destination NAT (DNAT) for any IP traffic destined to the K8S service IP and swap the destination IP with one of the Pods which are backing the service. For the return traffic the source IP of the Pod will be swapped with the service IP. 
 
 Note : More info on "watch" can be found [here](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) . This was also mentioned in Part 2 of this series.
 
