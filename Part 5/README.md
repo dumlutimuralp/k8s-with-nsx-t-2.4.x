@@ -6,7 +6,7 @@
 [Current State](#Current-State)   
 [K8S Service](#K8S-Service)   
 [K8S Service Type ClusterIP](#K8S-Service-Type-ClusterIP)  
-[K8S Service Type LoadBalancer](#K8S-Service-Type-LoadBalancer) . 
+[K8S Service Type LoadBalancer](#K8S-Service-Type-LoadBalancer)   
 [Summary](#Summary)
 
 
