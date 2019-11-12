@@ -2,7 +2,7 @@
 by Dumlu Timuralp [@dumlutimuralp](https://twitter.com/dumlutimuralp) / [LinkedIn](https://www.linkedin.com/in/dumlutimuralp/)  
 by Hakan Akkurt [LinkedIn](https://www.linkedin.com/in/hakkurt/) / [Github](https://github.com/hakkurt)
 
-Special thanks to Raymond De Jong [LinkedIn](https://www.linkedin.com/in/dejongraymond/) / [His Blog](http://www.cloudxtreme.info/) for his feedback to make this article better
+Special thanks to Raymond De Jong [LinkedIn](https://www.linkedin.com/in/dejongraymond/) / [His Blog](http://www.cloudxtreme.info/) for his feedback to make this article better.
 
 _**This disclaimer informs readers that the views, thoughts, and opinions expressed in this series of posts belong solely to the author, and not necessarily to the author’s employer, organization, committee or other group or individual.**_
 
@@ -25,7 +25,7 @@ https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&17
 * VMware NSX Container Plugin Release Notes 
 https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
 
-This series does **NOT** provide the generic intro level information on NSX-T or K8S. To have a basic understanding of NSX-T please watch the VMworld 2018 session recordings. Similarly for K8S, Pluralsight and A Cloud Guru trainings by Nigel Poulton is highly recommended.  
+This series does **NOT** provide the generic intro level information on NSX-T or K8S. To have a basic understanding of NSX-T please watch the VMworld session recordings. Similarly for K8S, Pluralsight and A Cloud Guru trainings by Nigel Poulton is highly recommended.  
 
 Below articles focus on the management and data plane integration principles of NSX-T and K8S. 
 
