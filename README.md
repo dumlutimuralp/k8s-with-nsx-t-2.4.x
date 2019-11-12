@@ -1,4 +1,4 @@
-## VMware NSX-T and Kubernetes (K8S) Guide
+## VMware NSX-T 2.4.x and Kubernetes (K8S) Guide
 by Dumlu Timuralp [@dumlutimuralp](https://twitter.com/dumlutimuralp) / [LinkedIn](https://www.linkedin.com/in/dumlutimuralp/)  
 by Hakan Akkurt [LinkedIn](https://www.linkedin.com/in/hakkurt/) / [Github](https://github.com/hakkurt)
 
