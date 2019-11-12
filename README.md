@@ -29,7 +29,7 @@ This series does **NOT** provide the generic intro level information on NSX-T or
 
 Below articles focus on the management and data plane integration principles of NSX-T and K8S. 
 
-### [Part 1](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%201/README.md)
+### [Part 1](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%201/README.md)
 
 * Topology Information
 * Fabric Preperation
@@ -42,13 +42,13 @@ Below articles focus on the management and data plane integration principles of 
 * K8S Node Dataplane Connectivity
 
 
-### [Part 2](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%202/README.md)
+### [Part 2](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%202/README.md)
 
 * Container Network Interface (CNI)
 * NSX-T Components in Kubernetes Integration
 * NSX-T & K8S Overall Architecture
 
-### [Part 3](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%203/README.md)
+### [Part 3](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%203/README.md)
 
 * Ubuntu OS Installation
 * Topology
@@ -60,11 +60,19 @@ Below articles focus on the management and data plane integration principles of 
 * Docker Installation
 * Deploy K8S
 
-### [Part 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)
+### [Part 4](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%204/README.md)
 
 * Current State
 * NSX Container Plugin (NCP) Installation
 * NSX Node Agent Installation
 * Test Workload Deployment
+
+### [Part 5](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%205/README.md)
+
+* Current State
+* K8S Service
+* K8S Service Type ClusterIP
+* K8S Service Type LoadBalancer 
+* Summary
 
 
