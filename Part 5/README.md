@@ -466,6 +466,9 @@ spec:
         - containerPort: 80
 </code></pre>
 
+
+The label specified in "matchLabels" field in spec" section above should match the "labels" field mentioned in "template" part. This way deployment also applies this specific label to all the Pods in that deployment.
+
 In order to provision this deployment following step is performed.
 
 <pre><code>
