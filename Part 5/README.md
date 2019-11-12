@@ -340,7 +340,8 @@ The VIP basically is kind of an anycast implementation within the K8S cluster. W
 
 ![](2019-11-02-00-55-03.png)
 
-The traffic pattern that is shown in diagram above is, as mentioned earlier, Pod to service traffic or in other words east west traffic in the same K8S cluster. For K8S service type of "ClusterIP", <b>NSX-T Load Balancer (that is attached to NSX-T Tier1 Logical Router) is NOT used.</b> . It is NSX Kube Proxy and OVS Conntrack feature that handles the load balancing of Pod to service traffic.
+The traffic pattern that is shown in diagram above is, as mentioned earlier, Pod to service traffic or in other words east west traffic in the same K8S cluster. For K8S service type of "ClusterIP", <b>NSX-T Load Balancer (that is attached to NSX-T Tier1 Logical Router) 
+  .</b> . It is NSX Kube Proxy and OVS Conntrack feature that handles the load balancing of Pod to service traffic.
 
 Now the IP address that is identified as the DNS server IP (which is 10.96.0.10) earlier on can now be investigated. For that lets check all the services configured in this K8S cluster.
 
@@ -372,7 +373,7 @@ kube-scheduler-k8s-master            1/1     Running   30         156d   10.190.
 root@k8s-master:/home/vmware/testymls#
 </code></pre>
 
-Note : DNS pods are named as "coredns-xxxxx". Notice that there are "kube-proxy-xxxxx" Pods as well . These are <b>NOT</b> representing the NSX kube proxy. Basically these "kube-proxy-xxxxx" Pods are just part of default K8S cluster initiation workflow. They are not used in this enviroonment at all. Remember, NSX infrastructure Pods (i.e. NCP and NSX Node Agent) are running in their own namespace which is "nsx-system". (which can be double checked by "kubectl get pods -n nsx-system")
+Note : DNS pods are named as "coredns-xxxxx". Notice that there are "kube-proxy-xxxxx" Pods as well . These are <b>NOT</b> representing the NSX kube proxy. Basically these "kube-proxy-xxxxx" Pods are just part of default K8S cluster initiation workflow. They are not used in this environment at all. Remember, NSX infrastructure Pods (i.e. NCP and NSX Node Agent) are running in their own namespace which is "nsx-system". (which can be double checked by "kubectl get pods -n nsx-system")
 
 Let' s check the K8S service related to DNS. 
 
@@ -408,7 +409,8 @@ It should be clear by now that K8S is using service objects to provide resilienc
 
 However, at this point the Pods and the service that they are part of <b>is still NOT exposed to the external world.</b> These services can only be accessed by workloads that are within the K8S cluster itself.<
 
-So far NSX-T Load Balancer (on a Tier1) is NOT used at all. 
+So far NSX-T Load Balancer (on a Tier1) 
+at all. 
 
 Let' s focus on how to make the service accessible from the external world in the next section.
 
