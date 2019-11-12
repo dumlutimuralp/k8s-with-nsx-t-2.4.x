@@ -552,7 +552,7 @@ In a generic K8S cluster <b>without NSX-T</b>,  when a K8S service is provisione
 
 Basically K8S service type "LoadBalancer" relies on an external load balancer VIP to attract external traffic to that service, but it also provisions a "NodePort" to deliver the traffic to the K8S Nodes, and also provisions a "ClusterIP" to deliver the traffic to the Pods which are part of that respective service.
 
-#### Summary
+#### The Difference
 
 The difference with K8S service type "LoadBalancer" is, 
 
