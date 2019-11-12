@@ -578,7 +578,9 @@ When a K8S service of type "LoadBalancer" gets created , all the objects that ar
 
 On the NSX-T side, a VIP, which is part of a routable IP address space, will be configured on the NSX-T Load Balancer (which is associated with a Tier 1 router) and be associated with this K8S service. In this lab that pool is configured as 10.190.6.0 /24, back in Part 3 [here](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%203/README.md#configuring-ip-pool-k8s-lb-pool-advanced-networking--security---inventory---groups---ip-pools). 
 
-<b>The difference</b> to what has been mentioned above in previous "Generic K8S" section is <b>with NSX-T, the IP addresses of the Pods</b> that are backing the service will be automatically configured as pool members of the VIP on the NSX-T LB. This essentially makes the "NodePort" configuration irrelevant in NSX-T scenario, since for all north - south traffic which takes place between external resources and K8S cluster workloads, the NSX-T load balancer will redirect the requests directly to the Pod IPs. However for <b>Pod to Service traffic</b> obviously "ClusterIP" still has to be used. 
+<b>The difference</b> to what has been mentioned above in previous "Generic K8S" section is, <b>with NSX-T, the IP addresses of the Pods</b> that are backing the service will be automatically configured as pool members of the VIP on the NSX-T LB. This essentially makes the "NodePort" configuration irrelevant in NSX-T scenario, since for all north - south traffic which takes place between external resources and K8S cluster workloads, the NSX-T load balancer will redirect the requests directly to the Pod IPs. However for <b>Pod to Service traffic</b> obviously "ClusterIP" still has to be used. 
+
+Note : Since in the topology NSX-T Load Balancer sits as a one armed Load Balancer, obviously it applies source NAT (SNAT) to the traffic. 
 
 Let' s validate all of the above in the lab. The service "nsxdemoservice" was already configured. 
 
@@ -626,6 +628,8 @@ The interesting piece is when the  server pool for the service is edited by clic
 ![](2019-11-12-17-00-43.png)
 
 ![](2019-11-12-17-02-12.png)
+
+Click on next to see the "SNAT Translation" section. It is automatically set to "Auto Map" which uses the uplink IP of the Tier 1 logical router to be the source IP of the requests.
 
 Click on next (right bottom) until the "Health Monitors" section is brought up, shown below.
 
