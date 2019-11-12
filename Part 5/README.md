@@ -341,7 +341,7 @@ The VIP basically is kind of an anycast implementation within the K8S cluster. W
 ![](2019-11-02-00-55-03.png)
 
 The traffic pattern that is shown in diagram above is, as mentioned earlier, Pod to service traffic or in other words east west traffic in the same K8S cluster. For K8S service type of "ClusterIP", <b>NSX-T Load Balancer (that is attached to NSX-T Tier1 Logical Router) 
-  .</b> . It is NSX Kube Proxy and OVS Conntrack feature that handles the load balancing of Pod to service traffic.
+  .</b> It is NSX Kube Proxy and OVS Conntrack feature that handles the load balancing of Pod to service traffic.
 
 Now the IP address that is identified as the DNS server IP (which is 10.96.0.10) earlier on can now be investigated. For that lets check all the services configured in this K8S cluster.
 
