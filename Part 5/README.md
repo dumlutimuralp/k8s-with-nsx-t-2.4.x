@@ -636,6 +636,8 @@ The reason is K8S implements its own probes to check the state of an application
 
 <b> Note:</b> To achieve healthchecks by using liveness probes in K8S, the <b>K8S Node subnet</b> (the logical switch that vNIC1 of each K8S node is connected to) <b>needs reachability to the subnet of the demons logical switch.</b>
 
+<b>Note 2:</b>Pod failures on the other hand gets healed by K8S API itself automatically. As in this lab deployment "nsxdemoapp" should have four replicas at all times. Hence when one of the Pods fails then K8S deployment controller and scheduler will react and provision a new Pod of the same type. When these actions are taken in the K8S cluster, it can easily be identified that NSX NCP will pick up these changes and delete the failed Pod from the server pool and configure the new Pod. To test this "kubectl delete pod/<pod-name> -n demons" can be used and the changes on NSX-T Load Balancer and logs on NSX NCP Pod can be observed.
+
 Click on cancel in the previous UI.
 
 Rolling back to the other VIP (100.64.208.9) which was shown in the External IP field in K8S service output, it is actually the uplink IP of the NSX-T T1 Load Balancer. This can be validated by connecting to the NSX-T active Edge Node and by performing several "get" commands. Before getting into the CLI view though, let' s check on which specific NSX-T Tier 1 logical router the NSX-T Load Balancer is instantiated. To do that navigate back to virtual servers view. As shown below this K8S service (aka NSX-T virtual server) is provisioned on NSX-T Load Balancer named "k8s-cluster1-cyjfb". 
