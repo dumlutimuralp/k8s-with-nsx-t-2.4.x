@@ -251,7 +251,7 @@ Note : More info on "watch" can be found [here](https://kubernetes.io/docs/refer
 
 ### NSX-T 
 
-In NSX-T,  <b>NSX Kube Proxy container</b> replaces the Kube Proxy' s function in a generic K8S cluster. Just like Kube Proxy, NSX Kube Proxy container (which runs in NSX Node Agent Pod) watches K8S API for those K8S service objects of type ClusterIP, <b>however</b> it then translates those to <b>openflow rules on Open vSwitch (OVS) on the K8S Node.</b> Open vSwitch' s "conntrack" feature is leveraged for this functionality. More info about OVS Conntrack is [here](http://docs.openvswitch.org/en/latest/tutorials/ovs-conntrack/). OVS uses round robin load balancing.
+In NSX-T,  <b>NSX Kube Proxy container</b> replaces the Kube Proxy' s function in a generic K8S cluster. Just like Kube Proxy, NSX Kube Proxy container (which runs in NSX Node Agent Pod) watches K8S API for those K8S service objects of type ClusterIP, <b>however</b> it then translates those to <b>openflow rules on Open vSwitch (OVS) on the K8S Node.</b> Open vSwitch' s "conntrack" feature is leveraged for this functionality. More info about OVS Conntrack is [here](http://docs.openvswitch.org/en/latest/tutorials/ovs-conntrack/). <b>OVS uses round robin load balancing.</b>
 
 Below diagram, which has been used in previous parts of this series may remind the overall architecture again.
 
@@ -586,10 +586,20 @@ On the NSX-T side, a VIP, which is part of a routable IP address space, will be 
 
 Note : Since in the topology NSX-T Load Balancer sits as a one armed Load Balancer, obviously it applies source NAT (SNAT) to the traffic. 
 
-Note 2 : The Load Balancing algorithm that NSX-T Load Balancer uses is round robin by default. It can be configured by specifying the "pool_algorithm" parameter in ncp.ini file which was used during the ncp deployment phase in Part 4. Valid options are ROUND_ROBIN/LEAST_CONNECTION/IP_HASH/WEIGHTED_ROUND_ROBIN.
+Let' s validate all of the above in the lab. The service "nsxdemoservice" was already configured. Before doing that though a few parameters in NCP.ini config should be explained, since those parameters are all left as defaults.
+
+### NCP Parameters 
+
+NCP configuration has a few parameters that defines how NSX-T Load Balancer can be consumed as a K8S Service Type of "LoadBalancer".
+
+- The assumption is NSX-T Load Balancer will be used for K8S Service Type "LoadBalancer" but if this is not desired and rather a different load balancer solution will be used, then "use_native_loadbalancer" can be set to "False" in NCP.ini config file and NSX will not act upon K8S service type of "LoadBalancer" object updates. Default setting for this parameter is "True".
+
+- The Load Balancing algorithm that NSX-T Load Balancer uses is round robin by default. It can be configured by specifying the "pool_algorithm" parameter in ncp.ini file which was used during the ncp deployment phase in Part 4. Valid options are ROUND_ROBIN/LEAST_CONNECTION/IP_HASH/WEIGHTED_ROUND_ROBIN.
+
+- The Load Balancing algorithm that NSX-T Load Balancer can use persistence based on "source IP" to set that the NCP.ini parameter called "l4_persistence = source_ip" can be configured.
    
 
-Let' s validate all of the above in the lab. The service "nsxdemoservice" was already configured. 
+### Validation 
 
 <pre><code>
 root@k8s-master:/home/vmware/testymls#<b>kubectl get service -n demons</b>
