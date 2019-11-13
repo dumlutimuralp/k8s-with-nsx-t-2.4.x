@@ -491,7 +491,7 @@ root@k8s-master:/home/vmware/testymls#
 Now let' s create a K8S service of type "LoadBalancer". Another yaml file is used for that. Shown below. This time a key value pair of "app:nsxdemo" is used for to select the respective Pods for this service.
 
 <pre><code>
-root@k8s-master:/home/vmware/testymls# cat <b>lb.yaml</b>
+root@k8s-master:/home/vmware/testymls# cat <b>lb.yml</b>
 apiVersion: v1
 kind: <b>Service</b>
 metadata:
@@ -509,7 +509,7 @@ spec:
     targetPort: 80
 root@k8s-master:/home/vmware/testymls#
 root@k8s-master:/home/vmware/testymls#
-root@k8s-master:/home/vmware/testymls# <b>kubectl create -f lb.yaml -n demons</b>
+root@k8s-master:/home/vmware/testymls# <b>kubectl create -f lb.yml -n demons</b>
 <b>service/nsxdemoservice created</b>
 root@k8s-master:/home/vmware/testymls# <b>kubectl get service -n demons</b>
 NAME             TYPE           CLUSTER-IP      EXTERNAL-IP                 PORT(S)        AGE
