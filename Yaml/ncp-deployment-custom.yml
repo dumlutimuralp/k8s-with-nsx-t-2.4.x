@@ -298,10 +298,10 @@ data:
     external_ip_pools_lb = K8S-LB-Pool
 
     # Firewall sections for this cluster will be created below this mark section
-    top_firewall_section_marker = Section1
+    top_firewall_section_marker = K8S-Section1
 
     # Firewall sections for this cluster will be created above this mark section
-    bottom_firewall_section_marker = Section2
+    bottom_firewall_section_marker = K8S-Section2
 
     # Option to enabling error reporting through NSXError CRD
     #enable_nsx_err_crd = False
