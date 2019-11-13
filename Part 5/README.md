@@ -588,16 +588,19 @@ Note : Since in the topology NSX-T Load Balancer sits as a one armed Load Balanc
 
 Let' s validate all of the above in the lab. The service "nsxdemoservice" was already configured. Before doing that though a few parameters in NCP.ini config should be explained, since those parameters are all left as defaults.
 
-### NCP Parameters 
+### NCP Parameters for Load Balancer
 
-NCP configuration has a few parameters that defines how NSX-T Load Balancer can be consumed as a K8S Service Type of "LoadBalancer".
+NCP.ini. file mentioned back in Part 4, has a few configuration parameters that defines how NSX-T Load Balancer can be consumed as a K8S Service Type of "LoadBalancer".
 
 - The assumption is NSX-T Load Balancer will be used for K8S Service Type "LoadBalancer" but if this is not desired and rather a different load balancer solution will be used, then "use_native_loadbalancer" can be set to "False" in NCP.ini config file and NSX will not act upon K8S service type of "LoadBalancer" object updates. Default setting for this parameter is "True".
 
-- The Load Balancing algorithm that NSX-T Load Balancer uses is round robin by default. It can be configured by specifying the "pool_algorithm" parameter in ncp.ini file which was used during the ncp deployment phase in Part 4. Valid options are ROUND_ROBIN/LEAST_CONNECTION/IP_HASH/WEIGHTED_ROUND_ROBIN.
+- The Load Balancing algorithm that NSX-T Load Balancer uses is round robin by default. It can be configured by specifying the "pool_algorithm" parameter. Valid options are ROUND_ROBIN/LEAST_CONNECTION/IP_HASH/WEIGHTED_ROUND_ROBIN.
 
-- The Load Balancing algorithm that NSX-T Load Balancer can use persistence based on "source IP" to set that the NCP.ini parameter called "l4_persistence = source_ip" can be configured.
-   
+- The Load Balancing algorithm that NSX-T Load Balancer can use persistence based on "source IP" to set that the NCP.ini parameter called "l4_persistence = source_ip" can be configured. Default is "none".
+
+- Based on number of services that will be instantiated on it there are different NSX-T Load Balancer sizes. It can be specified in NCP.ini with the "service_size = SMALL/MEDIUM/LARGE" parameter. Default is "SMALL" Different load balancer sizes require different NSX-T Edge Node sizes. More details [here](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-19B12230-8BF4-4AF7-9EB7-3701B0A0A439.html?hWord=N4IghgNiBcIQ9mAJgAgEaTAOwMYFMAnFAZwEsAvPEAXyA)
+
+- When the capacity of the NSX-T Load Balancer is reached and if the "l4_lb_auto_scaling" parameter in NCP file is set to "True" then an additional NSX-T Load Balancer will be configured and spun up automatically. Default is "false"
 
 ### Validation 
 
