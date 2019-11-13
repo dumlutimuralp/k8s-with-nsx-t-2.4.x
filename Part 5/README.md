@@ -528,7 +528,7 @@ root@k8s-master:/home/vmware/testymls# <b>kubectl describe service nsxdemoservic
 Name:                     <b>nsxdemoservice</b>
 Namespace:                demons
 Labels:                   app=nsxdemoservice
-Annotations:              ncp/internal_ip_for_policy: 100.64.208.9
+Annotations:              <b>ncp/internal_ip_for_policy: 100.64.208.9</b>
 Selector:                 <b>app=nsxdemo</b>
 Type:                     LoadBalancer
 IP:                       <b>10.103.216.59</b>
@@ -544,6 +544,8 @@ root@k8s-master:/home/vmware/testymls#
 </code></pre>
 
 As expected, in the above output, it can be seen that the endpoints are correctly selected by the service.
+
+<b>Note :</b> The IP address in the annotations section will be explained later on in this article. But the reason that IP address is configured as an annotation is when K8S network policy is used then that IP will be the IP address that the destination Pods will see. Hint => NSX-T Load Balancer applies source NAT to the requests. 
 
 ## Behind The Scenes
 
