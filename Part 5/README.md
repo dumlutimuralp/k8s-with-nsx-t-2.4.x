@@ -245,11 +245,13 @@ In a K8S cluster, Kube Proxy is implemented as a Pod on every K8S node. Kube Pro
 
 What the IPtables rules actually do is, applying stateful destination NAT (DNAT) for any IP traffic destined to the K8S service IP and swap the destination IP with one of the Pods which are backing the service. For the return traffic the source IP of the Pod will be swapped with the service IP. 
 
+IPtables uses round robin load balancing. IPVS on the other hand has more intelligent load balancing mechanisms. Please refer to the link mentioned above for more details.
+
 Note : More info on "watch" can be found [here](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) . This was also mentioned in Part 2 of this series.
 
 ### NSX-T 
 
-In NSX-T,  <b>NSX Kube Proxy container</b> replaces the Kube Proxy' s function in a generic K8S cluster. Just like Kube Proxy, NSX Kube Proxy container (which runs in NSX Node Agent Pod) watches K8S API for those K8S service objects of type ClusterIP, <b>however</b> it then translates those to <b>openflow rules on Open vSwitch (OVS) on the K8S Node.</b> Open vSwitch' s "conntrack" feature is leveraged for this functionality. More info about OVS Conntrack is [here](http://docs.openvswitch.org/en/latest/tutorials/ovs-conntrack/).
+In NSX-T,  <b>NSX Kube Proxy container</b> replaces the Kube Proxy' s function in a generic K8S cluster. Just like Kube Proxy, NSX Kube Proxy container (which runs in NSX Node Agent Pod) watches K8S API for those K8S service objects of type ClusterIP, <b>however</b> it then translates those to <b>openflow rules on Open vSwitch (OVS) on the K8S Node.</b> Open vSwitch' s "conntrack" feature is leveraged for this functionality. More info about OVS Conntrack is [here](http://docs.openvswitch.org/en/latest/tutorials/ovs-conntrack/). OVS uses round robin load balancing.
 
 Below diagram, which has been used in previous parts of this series may remind the overall architecture again.
 
@@ -410,8 +412,7 @@ It should be clear by now that K8S is using service objects to provide resilienc
 
 However, at this point the Pods and the service that they are part of <b>is still NOT exposed to the external world.</b> These services can only be accessed by workloads that are within the K8S cluster itself.<
 
-So far NSX-T Load Balancer (on a Tier1) 
-at all. 
+So far NSX-T Load Balancer (on a Tier1) is <b>NOT USED</b> at all. 
 
 Let' s focus on how to make the service accessible from the external world in the next section.
 
@@ -584,6 +585,9 @@ On the NSX-T side, a VIP, which is part of a routable IP address space, will be 
 <b>The difference</b> to what has been mentioned above in previous "Generic K8S" section is, <b>with NSX-T, the IP addresses of the Pods</b> that are backing the service will be automatically configured as pool members of the VIP on the NSX-T LB. This essentially makes the "NodePort" configuration irrelevant in NSX-T scenario, since for all north - south traffic which takes place between external resources and K8S cluster workloads, the NSX-T load balancer will redirect the requests directly to the Pod IPs. However for <b>Pod to Service traffic</b> obviously "ClusterIP" still has to be used. 
 
 Note : Since in the topology NSX-T Load Balancer sits as a one armed Load Balancer, obviously it applies source NAT (SNAT) to the traffic. 
+
+Note 2 : The Load Balancing algorithm that NSX-T Load Balancer uses is round robin by default. It can be configured by specifying the "pool_algorithm" parameter in ncp.ini file which was used during the ncp deployment phase in Part 4. Valid options are ROUND_ROBIN/LEAST_CONNECTION/IP_HASH/WEIGHTED_ROUND_ROBIN.
+   
 
 Let' s validate all of the above in the lab. The service "nsxdemoservice" was already configured. 
 
