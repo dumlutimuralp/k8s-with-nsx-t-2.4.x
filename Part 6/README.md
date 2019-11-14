@@ -534,7 +534,9 @@ root@deployment2-7558b48474-slr6d:/app#
 # DFW Based K8S Pod Security
 [Back to Table of Contents](#Table-Of-Contents)
 
-An NSX admin can still use the K8S labels and other metadata to apply distributed firewall rules to the K8S Pods, regardless of the use of K8S network policies. The approach each organization takes on this may vary. 
+An NSX admin can still use the K8S labels and other metadata to apply distributed firewall rules to the K8S Pods, regardless of the use of K8S network policies. The approach each organization takes on this may vary. A hybrid model usually makes sense. 
+
+Imagine a firewall rule base in which the first section is "Emergency Rules" for fail safe, then "Infrastructure Rules" for AD, DNS, NTP, Remediation Server access, then "Inter Zone Rules" for isolating zones from each other at a macro level and then "Application Level Rules" to microsegment applications from each other. The NSX admin can leverage K8S labels to isolate zones from each other but yet at the same time allow the developers to push application level rules in the appropriate section.
 
 As mentioned in previous parts, each logical port on NSX-T logical switch, to which a K8S Pod is connected to, gets populated with the K8S metadata. As shown below. 
 
