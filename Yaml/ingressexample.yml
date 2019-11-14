@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <b>deployment1</b>
+spec:
+  selector:
+    matchLabels:
+      app: <b>app1</b>
+  replicas: <b>2</b>
+  template:
+    metadata:
+      labels:
+        app: <b>app1</b>
+    spec:
+      containers:
+      - name: <b>nsx-demo</b>
+        image: <b>dumlutimuralp/nsx-demo</b>
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <b>deployment2</b>
+spec:
+  selector:
+    matchLabels:
+      app: <b>app2</b>
+  replicas: <b>2</b>
+  template:
+    metadata:
+      labels:
+        app: <b>app2</b>
+    spec:
+      containers:
+      - name: <b>nsx-demo</b>
+        image: <b>dumlutimuralp/nsx-demo</b>
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: <b>service1</b>
+  labels:
+    app: service1
+spec:
+  type: <b>LoadBalancer</b>
+  selector:
+    app: <b>app1</b>
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: <b>service2</b>
+  labels:
+    app: service2
+spec:
+  type: <b>LoadBalancer</b>
+  selector:
+    app: <b>app2</b>
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: <b>Ingress</b>
+metadata:
+  name: <b>nsxingress</b>
+  namespace: <b>demons</b>
+  annotations:
+    <b>ingress.kubernetes.io/rewrite-target: /</b>
+spec:
+  rules:
+  - host: nsxingress.demo.local
+    http:
+      paths:
+      - path: <b>/app1</b>
+        backend:
+          serviceName: <b>service1</b>
+          servicePort: 80
+      - path: <b>/app2</b>
+        backend:
+          serviceName: <b>service2</b>
+          servicePort: 80
