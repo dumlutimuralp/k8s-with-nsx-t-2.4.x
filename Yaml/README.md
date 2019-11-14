@@ -10,5 +10,5 @@
 
 * **ingressexample.yml** is the file for configuring two deployments, two services and an ingress with two rules (Part 6)
   
-[K8S-with-NSX-T-2.4.x Guide](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/README.md)
+[VMware NSX-T 2.4.x and Kubernetes (K8S) Guide](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/README.md)
 
