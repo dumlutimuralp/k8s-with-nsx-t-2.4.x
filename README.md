@@ -75,4 +75,13 @@ Below articles focus on the management and data plane integration principles of 
 * K8S Service Type LoadBalancer 
 * Summary
 
+### [Part 6](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/Part%206/README.md)
+
+* Current State
+* K8S Ingress
+* K8S Netwrk Policy
+* DFW Based K8S Pod Security
+* Summary
+
+
 
