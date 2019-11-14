@@ -79,7 +79,7 @@ Below articles focus on the management and data plane integration principles of 
 
 * Current State
 * K8S Ingress
-* K8S Netwrk Policy
+* K8S Network Policy
 * DFW Based K8S Pod Security
 * Summary
 
