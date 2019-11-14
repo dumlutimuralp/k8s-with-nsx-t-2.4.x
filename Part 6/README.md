@@ -573,3 +573,7 @@ root@deployment1-56664c485-mbxs4:/app#
 </code></pre>
 
 As shown above once the DFW rule is enabled ICMP traffic gets droopped. (%50 packet loss)
+
+# Summary
+
+K8S Ingress Controller and K8S Network policy model is explained in this article. The way how NSX DFW also consumes the K8S metadata (labels) is also detailed.
