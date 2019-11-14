@@ -7,7 +7,6 @@
 * **nsx-node-agent-ds-custom.yml** is the customized deployment file that is used in the test environment
 
 * **nsx-ncp-rbac.yml** is the yml file for applying RBAC for NCP and NSX Node Agent Pods in the nsx-system namespace
-
-[NSX-T & K8S - PART 4](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%204/README.md)   
-[VMware NSX-T with Kubernetes (K8S) Installation Guide](https://github.com/dumlutimuralp/nsx-t-k8s)
+  
+[K8S-with-NSX-T-2.4.x](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/README.md)
 
