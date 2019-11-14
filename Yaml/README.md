@@ -8,5 +8,5 @@
 
 * **nsx-ncp-rbac.yml** is the yml file for applying RBAC for NCP and NSX Node Agent Pods in the nsx-system namespace
   
-[K8S-with-NSX-T-2.4.x](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/README.md)
+[K8S-with-NSX-T-2.4.x Guide](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.4.x/blob/master/README.md)
 
