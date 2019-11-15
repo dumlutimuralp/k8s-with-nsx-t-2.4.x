@@ -816,3 +816,8 @@ root@k8s-master:/home/vmware/testymls# <b>kubectl logs nsx-ncp-7f65bbf6f6-jfcxk 
 1 2019-11-12T20:46:09.069Z k8s-node2 NSX 9 - [nsx@6876 comp="nsx-container-ncp" subcomp="ncp" level="INFO"]   nsx_ujo.ncp.nsx.manager.base_k8s_nsxapi <b>Updated LB pool <b>be005ed2-05df-4f1c-85bc-f1375edcdc31 with members</b> [{'ip_address': 
 u'172.25.5.2', 'display_name': u'nsxdemoservice.nsxdemoapp-85d76c598f-q5zzz', 'port': '80', 'weight': 1}, {'ip_address':   u'172.25.5.3', 'display_name': u'nsxdemoservice.nsxdemoapp-85d76c598f-plnqf', 'port': '80', 'weight': 1}, {'ip_address':   u'172.25.5.4', 'display_name': u'nsxdemoservice.nsxdemoapp-85d76c598f-9wjpk', 'port': '80', 'weight': 1}, {'ip_address':   u'<b>172.25.5.6</b>', 'display_name': u'<b>nsxdemoservice.nsxdemoapp-85d76c598f-z5cds</b>', 'port': '80', 'weight': 1}]  
 </code></pre>
+
+
+[Back to Table of Contents](#Table-Of-Contents)
+
+### [Part 6](https://github.com/dumlutimuralp/nsx-t-k8s/blob/master/Part%206/README.md)
