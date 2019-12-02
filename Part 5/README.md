@@ -343,8 +343,7 @@ The VIP basically is kind of an anycast implementation within the K8S cluster. W
 
 ![](2019-11-02-00-55-03.png)
 
-The traffic pattern that is shown in diagram above is, as mentioned earlier, Pod to service traffic or in other words east west traffic in the same K8S cluster. For K8S service type of "ClusterIP", <b>NSX-T Load Balancer (that is attached to NSX-T Tier1 Logical Router) 
-  .</b> It is NSX Kube Proxy and OVS Conntrack feature that handles the load balancing of Pod to service traffic.
+The traffic pattern that is shown in diagram above is, as mentioned earlier, Pod to service traffic or in other words east west traffic in the same K8S cluster. NSX-T Load Balancer (that is attached to NSX-T Tier1 Logical Router) is <b>NOT INVOLVED</b> to K8S service type ClusterIP at all. </b> It is NSX Kube Proxy and OVS Conntrack feature that handles the load balancing of ingress traffic to the service onwards to the back end Pods.
 
 Now the IP address that is identified as the DNS server IP (which is 10.96.0.10) earlier on can now be investigated. For that lets check all the services configured in this K8S cluster.
 
@@ -410,7 +409,9 @@ Notice the endpoints of the DNS service are the "core-dns-xxxxx" Pod IPs.
 
 It should be clear by now that K8S is using service objects to provide resiliency and scale out; even for its own infrastructure functions such as DNS and K8S API.
 
-However, at this point the Pods and the service that they are part of <b>is still NOT exposed to the external world.</b> These services can only be accessed by workloads that are within the K8S cluster itself.<
+However, at this point the Pods and the service that they are part of <b>is still NOT exposed to the external world.</b> These services can only be accessed by workloads that are within the K8S cluster itself.  To make it relevant to the actual application point of view, ClusterIP is there to scale out the backend tiers of an application. As shown below. </b>
+
+![](2019-12-02_12-48-03.jpg)
 
 So far NSX-T Load Balancer (on a Tier1) is <b>NOT USED</b> at all. 
 
