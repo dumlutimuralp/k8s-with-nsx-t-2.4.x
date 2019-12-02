@@ -413,7 +413,7 @@ However, at this point the Pods and the service that they are part of <b>is stil
 
 ![](2019-12-02_12-48-03.jpg)
 
-So far NSX-T Load Balancer (on a Tier1) is <b>NOT USED</b> at all. 
+So far NSX-T Load Balancer (on a Tier1) is <b>NOT USED</b> at all simply because ClusterIP service type just leverages NSX-T kube proxy and OVS conntrack components.
 
 Let' s focus on how to make the service accessible from the external world in the next section.
 
