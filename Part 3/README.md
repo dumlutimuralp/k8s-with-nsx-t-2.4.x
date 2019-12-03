@@ -843,9 +843,9 @@ Processing triggers for ureadahead (0.100.0-19) ...
 root@k8s-master:/home/vmware#
 </code></pre>
 
-**Note 1: In this article no versions have been called out in apt-get command. But youu need to make sure that the compatible version of K8S, NSX NCP is being installed. Hence specific versions may need to be called out with  "apt-get install -y kubelet=1.14.2-00 kubeadm=1.14.2-00 kubectl=1.14.2-00"**
+**Note 1: In this article no versions have been called out in apt-get command. But you need to make sure that the compatible version of K8S, NSX NCP is being installed. Hence specific versions may need to be called out with  "apt-get install -y kubelet=1.14.2-00 kubeadm=1.14.2-00 kubectl=1.14.2-00"**
 
-**Note 2 : To make sure of an "apt-get update" not to break the compatibiility between K8S and NCP, it would be a good practice to apply apt-mark hold on the related components. For example by using "apt-mark hold kubelet kubeadm kubectl"**
+**Note 2 : To make sure of an "apt-get update" not to break the compatibility between K8S and NCP, it would be a good practice to apply apt-mark hold on the related components. For example by using "apt-mark hold kubelet kubeadm kubectl"**
 
 To investigate the files installed from a package , "apt-get search ..." and "dpkg -listfiles ...." commands can be used. For example "apt-get search nsx" gives "nsx-cni" as one of the results and "dpkg -listfiles nsx-cni" provides all the details around which files and folders are extracted and installed as related to NSX CNI Plugin. Shown below.
 
