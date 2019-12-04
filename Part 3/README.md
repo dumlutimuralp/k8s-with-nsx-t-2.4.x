@@ -1,4 +1,4 @@
-# NSX-T & K8S - PART 3
+# NSX-T 2.4.x & K8S - PART 3
 [Home Page](https://github.com/dumlutimuralp/nsx-t-k8s)
 
 # Table Of Contents
