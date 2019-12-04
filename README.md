@@ -22,8 +22,8 @@ Software components used are shown below.
 It is highly recommended to check the following resources for compatibility requirements
 * VMware Product Interoperability Matrices  
 https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&175=&2=&1=
-* VMware NSX Container Plugin Release Notes   
-https://docs.vmware.com/en/VMware-NSX-T-Data-Center/index.html
+* NSX Container Plugin 2.4.1 Release Notes     
+https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4.1/rn/NSX-Container-Plugin-241-Release-Notes.html
 
 This series does **NOT** provide the generic intro level information on NSX-T or K8S. To have a basic understanding of NSX-T please watch the VMworld session recordings. Similarly for K8S, Pluralsight and A Cloud Guru trainings by Nigel Poulton and Udemy trainings by Mumshad Mannambeth is highly recommended.
 
