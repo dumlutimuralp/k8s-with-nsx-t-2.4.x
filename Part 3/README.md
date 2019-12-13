@@ -969,7 +969,7 @@ root@k8s-master:/home/vmware#
 
 ### Join the other Ubuntu nodes to the K8S Cluster
 
-To join other nodes to clusuter simply copy & paste the "kubeadm join..." command that was presented when K8S cluster was initiated on K8S Master.      
+To join other nodes to cluster simply copy & paste the "kubeadm join..." command that was presented when K8S cluster was initiated on K8S Master.      
 On "k8s-node1" and "k8s-node2" : 
 
 <pre><code>
