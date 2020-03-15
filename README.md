@@ -4,7 +4,7 @@ by Hakan Akkurt [LinkedIn](https://www.linkedin.com/in/hakkurt/) / [Github](http
 
 Special thanks to Raymond De Jong ([LinkedIn](https://www.linkedin.com/in/dejongraymond/) / [His Blog](http://www.cloudxtreme.info/)) for his feedback to make this article better.
 
-**UPDATE : NSX-T 2.5.0 Guide is publshed** [here](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.5.x)
+**UPDATE : NSX-T 2.5.0 and Kubernetes Guide is published** [here](https://github.com/dumlutimuralp/k8s-with-nsx-t-2.5.x)
 
 _**This disclaimer informs readers that the views, thoughts, and opinions expressed in this series of posts belong solely to the author, and not necessarily to the author’s employer, organization, committee or other group or individual.**_
 
